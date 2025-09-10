@@ -1,0 +1,880 @@
+﻿<div class="z-40 shadow-sm" [ngClass]="{ 'dark text-white-dark': store.semidark && store.menu === 'horizontal'}">
+    <div class="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-[#0e1726]">
+        <div class="horizontal-logo flex items-center justify-between lg:hidden ltr:mr-2 rtl:ml-2">
+            <a routerLink="/" class="main-logo flex shrink-0 items-center">
+                <!-- <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="/assets/images/logo.svg" alt="" /> -->
+                <svg width="120" height="40" viewBox="0 0 186 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31.5993 73.9401H0.71875V75.9654H31.5993V73.9401Z" fill="black"/>
+                    <path d="M62.4773 73.9397H31.5994V75.965H62.4773V73.9397Z" fill="#F79320"/>
+                    <path d="M62.482 73.9397H62.4767V75.965H62.482H93.3599V73.9397H62.482Z" fill="#DCDDE6"/>
+                    <path d="M124.237 73.9397H93.3564V75.965H124.237V73.9397Z" fill="black"/>
+                    <path d="M155.118 73.9397H124.24V75.965H155.118V73.9397Z" fill="#F79320"/>
+                    <path d="M155.122 73.9397H155.119V75.965H155.122H186V73.9397H155.122Z" fill="#DCDDE6"/>
+                    <path d="M51.6425 9.37032C51.7976 2.57304 47.9424 0.689453 41.5952 0.689453C32.9446 0.689453 24.294 0.689453 15.6312 0.701586C9.71606 0.701586 5.90346 2.46081 5.92476 8.80009C5.9704 18.2605 5.90346 27.7633 5.74524 37.3026L51.7064 37.3147C51.539 24.3328 51.5177 15.018 51.6394 9.37032H51.6425ZM42.4441 25.2913C42.4441 26.8837 41.1479 28.1758 39.5596 28.1758H17.9072C16.3098 28.1758 15.0135 26.8837 15.0135 25.2913V12.5551C15.0135 10.9718 16.3098 9.6797 17.9072 9.6797H39.5566C41.1449 9.6797 42.4411 10.9718 42.4411 12.5551V25.2913H42.4441Z" fill="#DCDDE6"/>
+                    <path d="M41.8142 6.43466H16.3636C14.0724 6.43466 12.2064 8.31281 12.2064 10.6342V27.3578C12.2064 29.6791 14.0724 31.5696 16.3636 31.5696H41.8142C44.1054 31.5696 45.9591 29.6791 45.9591 27.3578V10.6342C45.9591 8.31281 44.1054 6.43466 41.8142 6.43466ZM42.8726 25.5168C42.8726 27.1439 41.5695 28.4642 39.9727 28.4642H18.2051C16.5991 28.4642 15.296 27.1439 15.296 25.5168V12.503C15.296 10.8852 16.5991 9.56491 18.2051 9.56491H39.9696C41.5664 9.56491 42.8695 10.8852 42.8695 12.503V25.5168H42.8726Z" fill="black"/>
+                    <path d="M65.3514 17.1736L62.3003 17.2068C61.8723 13.7823 60.1859 11.0947 57.2441 9.14091C56.7298 8.80269 56.5804 8.08398 56.9051 7.54041C56.9079 7.53437 56.9137 7.52833 56.9165 7.52229L57.1176 7.19918C57.6376 6.37175 58.2984 6.21472 59.1028 6.73413C62.5848 8.96878 64.6676 12.4476 65.3514 17.1736Z" fill="black"/>
+                    <path d="M62.408 17.3197L65.6485 17.2856L69.0782 17.3538C69.8014 17.3724 70.3781 17.9674 70.3781 18.6956V31.571C70.3781 32.3116 69.7983 32.9128 69.0782 32.9252L65.7706 33.0057H62.6643L59.4146 32.9159C58.722 32.8973 58.1697 32.3178 58.1697 31.6082V18.4601C58.1697 18.0603 58.4168 17.704 58.7861 17.5707C59.8327 17.1927 61.0379 17.109 62.408 17.3197Z" fill="#F79320"/>
+                    <path d="M62.856 33.0057H65.9985C66.0973 40.8792 66.0942 46.0351 65.9862 48.4766C65.7022 55.3931 57.8768 57.7732 52.4253 54.6048L52.4809 49.6145C54.2281 53.4669 59.59 54.2797 61.8126 50.8659C63.8531 47.7435 62.8776 37.0176 62.856 33.0088V33.0057Z" fill="black"/>
+                    <path d="M6.00294 37.3148L52.1291 37.3271L52.4222 49.3351L52.3673 54.3191L52.3459 61.5208C52.3459 61.8578 52.5108 62.0324 52.8406 62.0385L57.0822 62.1182C57.696 62.1304 58.1815 62.642 58.1693 63.2547C58.1693 63.2945 58.1662 63.3374 58.1601 63.3772L58.0807 63.9837C57.98 64.7434 57.3356 65.3132 56.5783 65.3101L1.46514 65.3224C0.381073 65.3224 -0.101412 64.7832 0.0176828 63.7019L0.0726494 63.2516C0.152046 62.5899 0.704765 62.0875 1.36131 62.0814L5.23035 62.0477C5.64871 62.0416 5.85941 61.8272 5.85941 61.4075L6.00599 37.3148H6.00294Z" fill="#F79320"/>
+                    <path d="M124.462 12.2489C125.343 12.2489 126.058 11.533 126.058 10.6499C126.058 9.76686 125.343 9.05099 124.462 9.05099C123.58 9.05099 122.865 9.76686 122.865 10.6499C122.865 11.533 123.58 12.2489 124.462 12.2489Z" fill="black"/>
+                    <path d="M167.592 12.2648C168.482 12.2648 169.204 11.5418 169.204 10.65C169.204 9.75816 168.482 9.03519 167.592 9.03519C166.702 9.03519 165.98 9.75816 165.98 10.65C165.98 11.5418 166.702 12.2648 167.592 12.2648Z" fill="black"/>
+                    <path d="M152.369 13.3185C153.25 13.3185 153.965 12.6026 153.965 11.7195C153.965 10.8364 153.25 10.1206 152.369 10.1206C151.487 10.1206 150.772 10.8364 150.772 11.7195C150.772 12.6026 151.487 13.3185 152.369 13.3185Z" fill="black"/>
+                    <path d="M123.023 24.7544V16.1243C123.023 15.6584 123.404 15.2772 123.88 15.2772C123.89 15.2772 123.906 15.2772 123.917 15.2772L125.127 15.3249C125.682 15.3408 125.963 15.6267 125.963 16.1826V24.7067C125.963 25.125 126.169 25.3368 126.586 25.3421L139.812 25.4374C140.346 25.4374 140.61 25.1727 140.61 24.6379V16.0184C140.61 15.5155 140.859 15.2666 141.361 15.2772L142.677 15.2984C143.185 15.3143 143.444 15.579 143.444 16.0979V26.8616C143.444 27.7246 142.741 28.4288 141.868 28.4288H109.835C108.92 28.4288 108.175 27.6875 108.175 26.7663V18.7822C108.175 17.9986 107.789 17.6492 107.012 17.7339L105.4 17.9245C104.543 18.0198 104.115 18.4963 104.105 19.3593L104.057 26.904C104.057 27.6928 103.444 28.3441 102.656 28.3864C99.8016 28.5505 94.6847 28.9159 92.3588 27.2322C89.536 25.2097 89.6576 20.8735 90.958 17.9086C91.0267 17.7498 91.143 17.7074 91.2963 17.7815L93.1411 18.6286C93.4054 18.7504 93.5481 19.0469 93.4689 19.3222C93.1147 20.6353 92.9931 21.9589 93.0935 23.3037C93.194 24.6326 93.9129 25.3103 95.245 25.3421L99.4792 25.448C100.515 25.4692 101.049 24.9662 101.076 23.9285L101.229 18.8298C101.287 16.7438 102.936 15.0496 105.024 14.9331L108 14.7689C110.078 14.6525 111.114 15.6372 111.114 17.7233L111.103 24.6591C111.103 25.1356 111.341 25.3791 111.822 25.3791L122.342 25.4162C122.791 25.4162 123.013 25.1938 123.013 24.7544H123.023Z" fill="black"/>
+                    <path d="M169.754 25.3317L181.791 25.427C182.367 25.427 182.837 24.9611 182.837 24.3893L182.827 15.7963C182.827 15.4575 182.996 15.2881 183.334 15.2881L185.131 15.2987C185.565 15.2987 185.776 15.5104 185.776 15.934L185.755 27.5078C185.755 28.0108 185.348 28.4132 184.851 28.4132L154.498 28.4237C154.076 28.4237 153.79 28.6302 153.642 29.0379C152.136 33.1358 150.47 36.3602 145.39 36.4767C145.216 36.482 145.068 36.3443 145.063 36.1696V36.159L145.084 33.8506C145.084 33.6706 145.174 33.57 145.353 33.5435C152.22 32.8235 151.596 22.8274 151.031 17.6388C150.994 17.2364 151.173 17.0406 151.57 17.0511L153.415 17.0723C153.769 17.0723 154.054 17.3582 154.06 17.7182L154.187 24.7493C154.192 25.1835 154.414 25.3953 154.847 25.3953H165.557C165.98 25.3953 166.191 25.1782 166.191 24.7493L166.181 16.167C166.175 15.5687 166.471 15.2722 167.074 15.2722L168.285 15.2828C168.745 15.2828 169.12 15.6587 169.12 16.1193C169.12 16.1193 169.12 16.1246 169.12 16.1299L169.109 24.6646C169.104 25.1041 169.315 25.3264 169.754 25.3264V25.3317Z" fill="black"/>
+                    <path d="M96.0235 34.4698C96.8993 34.4698 97.6093 33.7587 97.6093 32.8814C97.6093 32.0042 96.8993 31.2931 96.0235 31.2931C95.1476 31.2931 94.4376 32.0042 94.4376 32.8814C94.4376 33.7587 95.1476 34.4698 96.0235 34.4698Z" fill="black"/>
+                    <path d="M100.431 34.4698C101.307 34.4698 102.017 33.7587 102.017 32.8814C102.017 32.0042 101.307 31.2931 100.431 31.2931C99.5556 31.2931 98.8456 32.0042 98.8456 32.8814C98.8456 33.7587 99.5556 34.4698 100.431 34.4698Z" fill="black"/>
+                    <path d="M182.176 34.7245C183.058 34.7245 183.773 34.0087 183.773 33.1256C183.773 32.2425 183.058 31.5266 182.176 31.5266C181.295 31.5266 180.58 32.2425 180.58 33.1256C180.58 34.0087 181.295 34.7245 182.176 34.7245Z" fill="black"/>
+                    <path d="M136.713 34.8248C137.604 34.8248 138.325 34.1018 138.325 33.21C138.325 32.3181 137.604 31.5952 136.713 31.5952C135.823 31.5952 135.101 32.3181 135.101 33.21C135.101 34.1018 135.823 34.8248 136.713 34.8248Z" fill="black"/>
+                    <path d="M141.104 34.8088C141.985 34.8088 142.7 34.093 142.7 33.2099C142.7 32.3268 141.985 31.611 141.104 31.611C140.222 31.611 139.507 32.3268 139.507 33.2099C139.507 34.093 140.222 34.8088 141.104 34.8088Z" fill="black"/>
+                    <path d="M99.5497 51.6452C102.23 52.6936 103.134 55.6955 100.855 57.6863C98.4554 59.7723 93.6134 59.2164 90.7007 59.1476C90.3465 59.1476 90.0558 58.8776 90.0188 58.5228C89.9501 57.8928 90.1774 57.4851 90.7007 57.2998C91.0866 57.1568 91.2769 56.8815 91.2769 56.4633L91.298 47.6214C91.298 47.2032 91.1025 46.9278 90.7113 46.7849C90.6003 46.7478 90.4893 46.7055 90.3835 46.6684C90.225 46.6208 90.1298 46.5149 90.0875 46.3507C89.8602 45.4877 90.1615 45.0324 90.9914 44.9848C94.7234 44.7889 97.1656 44.81 98.3286 45.043C101.41 45.6572 102.711 49.448 99.5285 50.9517C99.0052 51.2005 99.0105 51.4335 99.5497 51.6452ZM94.919 47.1873L94.9402 50.4858C94.9402 50.7664 95.1675 50.994 95.4476 50.994C95.4476 50.994 95.4529 50.994 95.4582 50.994H95.6115C96.8062 50.9782 97.7629 50.0569 97.7524 48.9345V48.7015C97.7418 47.5791 96.7639 46.6737 95.5692 46.6896H95.4159C95.141 46.6949 94.9243 46.9226 94.9243 47.1979L94.919 47.1873ZM94.956 53.2971L94.9349 56.9239C94.9349 57.178 95.141 57.3845 95.3948 57.3845L95.7225 57.3951C97.081 57.4004 98.1858 56.4686 98.1911 55.3144V54.9596C98.1964 53.8054 97.1022 52.8577 95.7437 52.8524L95.4159 52.8418C95.1622 52.8418 94.956 53.0483 94.956 53.3024V53.2971Z" fill="black"/>
+                    <path d="M108.741 47.6324L108.752 50.0679C108.757 50.592 109.022 50.8938 109.54 50.9732C110.227 51.0844 110.681 50.8038 110.893 50.1367C110.988 49.8243 111.3 49.6337 111.622 49.6867L112.537 49.8296C112.928 49.8931 113.118 50.1261 113.102 50.5232L113.034 53.2763C113.018 53.6628 112.754 53.9858 112.389 54.0758L111.908 54.1923C111.474 54.2982 111.036 54.0652 110.888 53.6522C110.613 52.9057 110.047 52.6728 109.185 52.9481C108.863 53.0487 108.704 53.2657 108.704 53.594L108.667 56.1036C108.662 56.6119 108.9 56.9295 109.386 57.046C111.046 57.4696 112.061 56.9031 112.431 55.3412C112.542 54.8911 112.817 54.7323 113.256 54.8594L113.747 55.0023C114.408 55.1824 114.667 55.6112 114.535 56.2836L114.102 58.5232C114.022 58.9573 113.763 59.1691 113.324 59.1691L104.428 59.1585C103.889 59.1585 103.635 58.8885 103.661 58.3485C103.693 57.7819 103.963 57.3849 104.47 57.1466C104.872 56.956 105.068 56.6383 105.068 56.1936L105.057 47.6112C105.057 47.2565 104.893 47.0288 104.565 46.9176C104.111 46.7588 103.809 46.4411 103.661 45.954C103.529 45.4828 103.804 44.9957 104.275 44.8686C104.349 44.8475 104.428 44.8369 104.507 44.8369H113.24C113.673 44.8369 113.901 45.054 113.932 45.4828L114.133 47.9765C114.17 48.4266 113.99 48.7442 113.578 48.9295C113.176 49.1096 112.738 49.136 112.262 48.9984C112.003 48.9189 111.871 48.7495 111.86 48.4795L111.839 47.9606C111.834 47.6747 111.68 47.4153 111.437 47.2671C110.787 46.8753 110.089 46.7482 109.344 46.8912C108.937 46.9759 108.736 47.2247 108.747 47.6324H108.741Z" fill="black"/>
+                    <path d="M126.471 54.0757C126.498 54.134 126.566 54.1657 126.624 54.1393C126.677 54.1181 126.709 54.0599 126.693 54.0069L126.55 47.0976C126.55 47.0023 126.513 46.9387 126.434 46.907C126.191 46.8117 125.943 46.764 125.684 46.7534C125.298 46.7481 125.086 46.5469 125.049 46.1552L125.002 45.6257C124.97 45.218 125.266 44.858 125.668 44.8262C125.689 44.8262 125.71 44.8262 125.731 44.8262L129.659 44.8368C130.055 44.8368 130.372 45.1651 130.367 45.5622C130.367 45.5833 130.367 45.6045 130.367 45.6257C130.33 46.0757 130.134 46.4411 129.78 46.7322C129.416 47.0287 129.204 47.4735 129.204 47.9341L129.146 58.2372C129.146 58.6237 128.972 58.8937 128.617 59.0473C127.38 59.6138 126.455 59.4814 125.583 58.3537C123.802 56.04 122.152 53.7634 120.635 51.5238C120.181 50.8514 119.948 50.9202 119.943 51.7356L119.906 56.2571C119.901 56.7283 120.128 57.0036 120.588 57.083C121.307 57.1995 121.666 57.6601 121.656 58.4596C121.656 58.9308 121.423 59.1638 120.952 59.1638L116.602 59.1426C116.28 59.1426 116.015 58.8726 116.021 58.5443C116.021 58.4755 116.036 58.4066 116.058 58.3378C116.253 57.8348 116.565 57.4166 116.988 57.0777C117.295 56.8448 117.448 56.5324 117.448 56.1459V47.6429C117.448 47.3199 117.305 47.0923 117.025 46.9599C116.459 46.6846 116.11 46.2505 115.978 45.6522C115.878 45.181 116.068 44.9374 116.554 44.9215L119.716 44.7945C120.175 44.7786 120.535 44.9639 120.783 45.3504L126.471 54.0757Z" fill="black"/>
+                    <path d="M138.381 47.1874C136.298 46.4991 135.035 47.1186 134.596 49.0617C134.469 49.6123 134.131 49.8399 133.576 49.7446L132.952 49.6388C132.281 49.5223 132 49.1252 132.117 48.4475L132.645 45.5408C132.73 45.0802 133.01 44.8472 133.481 44.8472H141.346C142.404 44.8472 143.265 45.7049 143.265 46.7638C143.265 47.1927 143.122 47.6057 142.863 47.9445L136.525 56.1298C136.235 56.5057 136.319 56.7493 136.774 56.8605C138.867 57.3634 140.242 56.7069 140.902 54.8962C141.093 54.3721 141.457 54.1656 141.997 54.282L142.763 54.4462C143.249 54.5574 143.434 54.8539 143.329 55.3409L142.599 58.5547C142.504 58.973 142.245 59.1795 141.822 59.1795L132.772 59.1689C132.022 59.1689 131.408 58.5547 131.414 57.7976C131.414 57.5064 131.509 57.2205 131.683 56.9875L138.534 47.6374C138.629 47.5051 138.603 47.3251 138.476 47.2298C138.45 47.2139 138.423 47.198 138.391 47.1874H138.381Z" fill="black"/>
+                    <path d="M150.075 50.5867C150.086 50.9785 150.408 51.2856 150.799 51.275C150.995 51.2697 151.18 51.185 151.307 51.0367C151.894 50.3538 152.602 49.8773 153.421 49.6019C153.834 49.4696 154.278 49.6972 154.41 50.1049C154.442 50.1949 154.452 50.2955 154.447 50.3908C154.399 51.1426 154.368 51.8892 154.352 52.6304C154.336 53.2657 154.193 53.7158 153.929 53.9752C153.638 54.2558 153.263 54.3511 152.803 54.2558C152.459 54.187 152.237 53.9752 152.132 53.6311C151.904 52.8951 151.349 52.6675 150.472 52.9587C150.165 53.0592 150.012 53.271 150.012 53.594L150.022 56.4318C150.022 56.723 150.218 56.9719 150.493 57.046C152.169 57.496 153.242 56.9666 153.712 55.4682C153.855 55.0076 154.161 54.8223 154.627 54.9282L155.145 55.0447C155.641 55.1453 155.964 55.6271 155.863 56.1248C155.863 56.1248 155.863 56.1354 155.863 56.1407L155.308 58.6344C155.229 58.9891 155.012 59.1638 154.648 59.1638H145.656C145.238 59.1638 144.905 58.825 144.905 58.412C144.905 58.3485 144.916 58.2849 144.932 58.2214C145.059 57.7343 145.328 57.3955 145.741 57.1996C146.116 57.0195 146.306 56.723 146.306 56.3154L146.296 47.6165C146.296 47.2935 146.158 47.0553 145.883 46.8964C145.783 46.8276 145.672 46.7694 145.556 46.7323C145.334 46.6476 145.186 46.4941 145.096 46.2717C144.863 45.7369 144.905 45.3399 145.238 45.0698C145.429 44.911 145.714 44.8369 146.095 44.8369C148.907 44.8528 151.719 44.8528 154.521 44.8369C154.928 44.8369 155.171 45.0381 155.25 45.4352C155.382 46.1817 155.441 46.9282 155.414 47.6747C155.409 48.1512 155.287 48.5113 155.049 48.7442C154.743 49.0407 154.346 49.1731 153.849 49.1307C153.458 49.0937 153.231 48.8766 153.168 48.4848L153.041 47.7542C153.004 47.5053 152.866 47.3253 152.639 47.2247C152.052 46.9494 151.439 46.817 150.805 46.8223C150.382 46.8276 150.043 47.1771 150.054 47.6006L150.065 50.592L150.075 50.5867Z" fill="black"/>
+                    <path d="M167.94 53.4242V47.5367C167.94 47.1185 167.734 46.8802 167.316 46.8167L166.846 46.7585C166.534 46.7214 166.338 46.5467 166.259 46.2396C166.132 45.8054 166.195 45.4454 166.449 45.1542C166.624 44.9583 166.888 44.8471 167.247 44.826C168.405 44.7624 169.557 44.773 170.704 44.8471C171.154 44.8789 171.392 45.1172 171.423 45.5672C171.455 46.0755 171.27 46.499 170.868 46.8379C170.62 47.0391 170.477 47.3356 170.467 47.6479L170.361 58.2105C170.356 58.5652 170.197 58.8246 169.89 58.9888C168.653 59.6506 167.607 59.407 166.75 58.2581C164.953 55.8385 163.203 53.4084 161.496 50.957C161.459 50.904 161.385 50.8935 161.332 50.9358C161.3 50.957 161.285 50.9941 161.285 51.0311L161.142 56.5162C161.137 56.7068 161.221 56.8286 161.401 56.8815C161.559 56.9292 161.819 57.0404 162.189 57.2098C162.5 57.3581 162.717 57.5434 162.833 57.7657C162.902 57.914 162.944 58.0622 162.96 58.1999C163.008 58.6764 162.654 59.1052 162.178 59.1476C162.152 59.1476 162.12 59.1476 162.093 59.1476L157.991 59.137C157.505 59.1317 157.299 58.8882 157.368 58.4064C157.463 57.7869 157.769 57.3157 158.298 56.9927C158.594 56.8021 158.747 56.5321 158.747 56.1827L158.726 47.8491C158.726 47.3991 158.536 47.0655 158.15 46.8485C157.716 46.5996 157.405 46.229 157.209 45.7419C157.093 45.4401 157.241 45.096 157.547 44.9795C157.611 44.953 157.674 44.9424 157.738 44.9424L161.205 44.7783C161.491 44.7624 161.76 44.9054 161.924 45.1436L167.438 53.5725C167.776 54.0966 167.945 54.049 167.945 53.4189L167.94 53.4242Z" fill="black"/>
+                    <path d="M180.272 50.7295L181.673 47.7487C181.868 47.3305 181.757 47.0181 181.345 46.8063C180.869 46.5733 180.626 46.2027 180.626 45.6998C180.632 45.1279 180.922 44.842 181.498 44.842L185.294 44.8526C185.674 44.8526 185.986 45.1491 185.997 45.525C186.018 46.1868 185.717 46.6475 185.082 46.9122C184.771 47.0445 184.527 47.2669 184.364 47.574L180.33 55.0287C180.214 55.2405 180.182 55.4946 180.235 55.7328C180.478 56.8235 180.917 57.3318 181.551 57.2524C181.953 57.1994 182.318 57.48 182.371 57.8824C182.371 57.9036 182.371 57.9248 182.376 57.946C182.381 58.1101 182.397 58.2742 182.413 58.4277C182.434 58.8089 182.138 59.1372 181.757 59.1584C181.747 59.1584 181.731 59.1584 181.72 59.1584H176.218C175.758 59.1584 175.499 58.9254 175.441 58.4648C175.377 57.8453 175.668 57.4218 176.313 57.1941C177 56.9506 177.391 56.2146 177.206 55.4999C176.297 51.942 174.648 48.7865 172.258 46.0333C171.989 45.7156 172.026 45.2391 172.338 44.9744C172.475 44.8579 172.655 44.7944 172.835 44.7997L178.559 44.895C179.014 44.9003 179.22 45.1332 179.183 45.5886C179.146 46.1286 178.871 46.5257 178.359 46.7798C177.973 46.9757 177.867 47.2722 178.041 47.664L179.395 50.7242C179.685 51.3755 179.976 51.3808 180.277 50.7348L180.272 50.7295Z" fill="black"/>
+                    <path d="M80.836 7.15271H80.4329V62.6748H80.836V7.15271Z" fill="#221F1F"/>
+                </svg>
+            </a>
+
+            <a
+                href="javascript:;"
+                class="collapse-icon flex flex-none rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-mainColor dark:bg-dark/40 dark:text-[#d0d2d6] dark:hover:bg-dark/60 dark:hover:text-mainColor lg:hidden ltr:ml-2 rtl:mr-2"
+                (click)="storeData.dispatch({type: 'toggleSidebar'})"
+            >
+                <icon-menu class="h-5 w-5" />
+            </a>
+        </div>
+        <div class="hidden sm:block ltr:mr-2 rtl:ml-2">
+            <ul class="flex items-center space-x-2 dark:text-[#d0d2d6] rtl:space-x-reverse">
+                <li>
+                    <a
+                        routerLink="/apps/calendar"
+                        class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-mainColor dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <icon-calendar />
+                    </a>
+                </li>
+                <!-- <li>
+                    <a
+                        routerLink="/apps/todolist"
+                        class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <icon-edit />
+                    </a>
+                </li> -->
+                <!-- <li>
+                    <a
+                        routerLink="/apps/chat"
+                        class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <icon-chat-notification />
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <div
+            class="flex items-center space-x-1.5 dark:text-[#d0d2d6] sm:flex-1 lg:space-x-2 ltr:ml-auto ltr:sm:ml-0 rtl:mr-auto rtl:space-x-reverse sm:rtl:mr-0"
+        >
+            <div class="sm:ltr:mr-auto sm:rtl:ml-auto">
+                <!-- <form
+                    class="absolute inset-x-0 top-1/2 z-10 mx-4 hidden -translate-y-1/2 sm:relative sm:top-0 sm:mx-0 sm:block sm:translate-y-0"
+                    [ngClass]="{ '!block': search }"
+                    (submit.prevent)="search = false"
+                >
+                    <div class="relative">
+                        <input
+                            type="text"
+                            class="peer form-input border-1 focus-within:border-mainColor bg-gray-100 placeholder:tracking-widest sm:bg-transparent ltr:pl-9 ltr:pr-9 ltr:sm:pr-4 rtl:pl-9 rtl:pr-9 rtl:sm:pl-4"
+                            placeholder="Search..."
+                        />
+                        <button type="button" class="absolute inset-0 h-9 w-9 appearance-none peer-focus:text-mainColor ltr:right-auto rtl:left-auto">
+                            <icon-search class="mx-auto" />
+                        </button>
+                        <button
+                            type="button"
+                            class="absolute top-1/2 block -translate-y-1/2 hover:opacity-80 sm:hidden ltr:right-2 rtl:left-2"
+                            (click)="search = false"
+                        >
+                            <icon-x-circle />
+                        </button>
+                    </div>
+                </form>
+
+                <button
+                    type="button"
+                    class="search_btn rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 dark:bg-dark/40 dark:hover:bg-dark/60 sm:hidden"
+                    (click)="search = !search"
+                >
+                    <icon-search class="mx-auto h-4.5 w-4.5 dark:text-[#d0d2d6]" />
+                </button> -->
+            </div>
+
+            @if(role == 'BranchManager'){
+                <div>
+                    <ng-select
+                    [items]="branches"
+                    bindLabel="branchName"
+                    bindValue="branchId"
+                    [(ngModel)]="selectedBranchId"
+                    [searchable]="false"
+                    [clearable]="false"
+                    class="custom-multiselect"
+                    (change)="changeBranch()"
+                    >
+                    </ng-select>
+                </div>
+            }
+
+
+            <div>
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'light'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'dark'})"
+                >
+                    <icon-sun />
+                </a>
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'dark'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'system'})"
+                >
+                    <icon-moon />
+                </a>
+                <a
+                    href="javascript:;"
+                    *ngIf="store.theme === 'system'"
+                    class="flex items-center rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    (click)="storeData.dispatch({type: 'toggleTheme', payload:'light'})"
+                >
+                    <icon-laptop />
+                </a>
+            </div>
+
+            <!-- <div class="dropdown shrink-0">
+                <div hlMenu>
+                    <button
+                        type="button"
+                        hlMenuButton
+                        class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <img [src]="'/assets/images/flags/'+ store.locale.toUpperCase() + '.svg'" alt="flag" class="h-5 w-5 rounded-full object-cover" />
+                    </button>
+                    <ul
+                        *hlMenuItems
+                        @toggleAnimation
+                        class="top-11 grid w-[280px] grid-cols-2 gap-2 !px-2 font-semibold text-dark dark:text-white-dark dark:text-white-light/90 ltr:-right-14 sm:ltr:-right-2 rtl:-left-14 sm:rtl:-left-2"
+                    >
+                        <li *ngFor="let item of store.languageList;">
+                            <button
+                                *hlMenuItem="let menuItem"
+                                type="button"
+                                class="w-full hover:text-primary"
+                                [ngClass]="{ 'bg-primary/10 text-primary': translate.currentLang === item.code }"
+                                (click)="changeLanguage(item)"
+                            >
+                                <img class="h-5 w-5 rounded-full object-cover" [src]="'/assets/images/flags/'+ item.code.toUpperCase() + '.svg'" alt="" />
+                                <span class="ltr:ml-3 rtl:mr-3">{{ item.name }}</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <!-- <div class="dropdown shrink-0">
+                <div hlMenu>
+                    <button
+                        type="button"
+                        hlMenuButton
+                        class="block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <icon-mail-dot />
+                    </button>
+                    <ul
+                        *hlMenuItems
+                        @toggleAnimation
+                        class="top-11 w-[300px] !py-0 text-xs text-dark dark:text-white-dark sm:w-[375px] ltr:-right-16 sm:ltr:-right-2 rtl:-left-16 sm:rtl:-left-2"
+                    >
+                        <li class="mb-5">
+                            <div class="relative overflow-hidden rounded-t-md !p-5 text-white">
+                                <div class="absolute inset-0 h-full w-full bg-[url('/assets/images/menu-heade.jpg')] bg-cover bg-center bg-no-repeat"></div>
+                                <h4 class="relative z-10 text-lg font-semibold">Messages</h4>
+                            </div>
+                        </li>
+                        <li *ngFor="let msg of messages">
+                            <div class="flex items-center px-5 py-3">
+                                <div [innerHTML]="msg.image"></div>
+                                <span class="px-3 dark:text-gray-500">
+                                    <div class="text-sm font-semibold dark:text-white-light/90">{{msg.title}}</div>
+                                    <div>{{msg.message}}</div>
+                                </span>
+                                <span
+                                    class="whitespace-pre rounded bg-white-dark/20 px-1 font-semibold text-dark/60 dark:text-white-dark ltr:ml-auto ltr:mr-2 rtl:ml-2 rtl:mr-auto"
+                                    >{{msg.time}}</span
+                                >
+                                <button type="button" class="text-neutral-300 hover:text-danger" (click)="$event.stopPropagation();removeMessage(msg.id)">
+                                    <icon-x-circle />
+                                </button>
+                            </div>
+                        </li>
+                        <li *ngIf="messages.length" class="mt-5 border-t border-white-light text-center dark:border-white/10">
+                            <div
+                                class="group flex cursor-pointer items-center justify-center px-5 py-4 font-semibold text-primary dark:text-gray-400"
+                                *hlMenuItem="let menuItem"
+                            >
+                                <span class="group-hover:underline ltr:mr-1 rtl:ml-1">VIEW ALL ACTIVITIES</span>
+
+                                <icon-arrow-left class="transition duration-300 group-hover:translate-x-1 ltr:ml-1 rtl:mr-1" />
+                            </div>
+                        </li>
+                        <li *ngIf="!messages.length" class="mb-5">
+                            <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
+                                <div class="mx-auto mb-4 rounded-full text-primary ring-4 ring-primary/30">
+                                    <icon-info-circle [fill]="true" class="h-10 w-10" />
+                                </div>
+                                No data available.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <!-- <div class="dropdown shrink-0">
+                <div hlMenu>
+                    <button
+                        type="button"
+                        hlMenuButton
+                        class="relative block rounded-full bg-white-light/40 p-2 hover:bg-white-light/90 hover:text-primary dark:bg-dark/40 dark:hover:bg-dark/60"
+                    >
+                        <icon-bell-bing />
+
+                        <span class="absolute top-0 flex h-3 w-3 ltr:right-0 rtl:left-0">
+                            <span
+                                class="absolute -top-[3px] inline-flex h-full w-full animate-ping rounded-full bg-success/50 opacity-75 ltr:-left-[3px] rtl:-right-[3px]"
+                            ></span>
+                            <span class="relative inline-flex h-[6px] w-[6px] rounded-full bg-success"></span>
+                        </span>
+                    </button>
+                    <ul
+                        *hlMenuItems
+                        @toggleAnimation
+                        class="top-11 w-[300px] divide-y !py-0 text-dark dark:divide-white/10 dark:text-white-dark sm:w-[350px] ltr:-right-2 rtl:-left-2"
+                    >
+                        <li>
+                            <div class="flex items-center justify-between px-4 py-2 font-semibold">
+                                <h4 class="text-lg">Notification</h4>
+                                <span *ngIf="notifications.length" class="badge bg-primary/80">{{notifications.length + 'New'}}</span>
+                            </div>
+                        </li>
+                        <li *ngFor="let notification of notifications" class="dark:text-white-light/90">
+                            <div class="group flex items-center px-4 py-2">
+                                <div class="grid place-content-center rounded">
+                                    <div class="relative h-12 w-12">
+                                        <img class="h-12 w-12 rounded-full object-cover" [src]="'/assets/images/' + notification.profile" alt="" />
+                                        <span class="absolute bottom-0 right-[6px] block h-2 w-2 rounded-full bg-success"></span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-auto ltr:pl-3 rtl:pr-3">
+                                    <div class="ltr:pr-3 rtl:pl-3">
+                                        <h6 [innerHTML]="notification.message"></h6>
+                                        <span class="block text-xs font-normal dark:text-gray-500">{{notification.time}}</span>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="text-neutral-300 opacity-0 hover:text-danger group-hover:opacity-100 ltr:ml-auto rtl:mr-auto"
+                                        (click)="$event.stopPropagation();removeNotification(notification.id)"
+                                    >
+                                        <icon-x-circle />
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li *ngIf="notifications.length">
+                            <div class="p-4">
+                                <button type="button" class="btn btn-primary btn-small block w-full" *hlMenuItem="let menuItem">Read All Notifications</button>
+                            </div>
+                        </li>
+                        <li *ngIf="!notifications.length">
+                            <div class="!grid min-h-[200px] place-content-center text-lg hover:!bg-transparent">
+                                <div class="mx-auto mb-4 rounded-full text-primary ring-4 ring-primary/30">
+                                    <icon-info-circle [fill]="true" class="h-10 w-10" />
+                                </div>
+                                No data available.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <div class="dropdown shrink-0">
+                <div hlMenu class="!block">
+                    <button type="button" hlMenuButton class="group relative block">
+                        <p class="bg-mainColor rounded-full p-2 text-white font-bold">{{userData?.fullName.slice(0,2).toUpperCase()}}</p>
+                        <!-- <img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100" src="/assets/images/user-profile.jpeg" alt="" /> -->
+                    </button>
+                    <ul
+                        *hlMenuItems
+                        @toggleAnimation
+                        class="top-11 w-[230px] !py-0 font-semibold text-dark dark:text-white-dark dark:text-white-light/90 ltr:right-0 rtl:left-0"
+                    >
+                        <li>
+                            <div class="flex items-center px-4 py-4">
+                                <div class="flex-none">
+                                    <p class="bg-mainColor rounded-full p-2 text-white font-bold">{{userData.fullName.slice(0,2).toUpperCase()}}</p>
+                                    <!-- <img class="h-10 w-10 rounded-md object-cover" src="/assets/images/user-profile.jpeg" alt="" /> -->
+                                </div>
+                                <div class="truncate ltr:pl-4 rtl:pr-4">
+                                    <h4 class="text-base">
+                                        {{userData?.fullName}}<span class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Pro</span>
+                                    </h4>
+                                    <a class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white" href="javascript:;">
+                                        {{userData?.email}}
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li>
+                            <a routerLink="/users/profile" *hlMenuItem="let menuItem" class="dark:hover:text-white">
+                                <icon-user class="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
+                                Profile
+                            </a>
+                        </li> -->
+                        <!-- <li>
+                            <a routerLink="/apps/mailbox" *hlMenuItem="let menuItem" class="dark:hover:text-white">
+                                <icon-mail class="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
+
+                                Inbox
+                            </a>
+                        </li> -->
+                        <!-- <li>
+                            <a routerLink="/auth/boxed-lockscreen" *hlMenuItem="let menuItem" class="dark:hover:text-white">
+                                <icon-lock-dots class="h-4.5 w-4.5 shrink-0 ltr:mr-2 rtl:ml-2" />
+
+                                Lock Screen
+                            </a>
+                        </li> -->
+                        <li class="border-t border-white-light dark:border-white-light/10">
+                            <a (click)="logout()" *hlMenuItem="let menuItem" class="!py-3 text-danger">
+                                <icon-logout class="h-4.5 w-4.5 shrink-0 rotate-90 ltr:mr-2 rtl:ml-2" />
+
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- horizontal menu -->
+    <ul
+        class="horizontal-menu hidden border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8 rtl:space-x-reverse"
+    >
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-dashboard class="shrink-0" />
+
+                    <span class="px-2">{{ 'dashboard' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'sales' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/analytics" routerLinkActive="active">{{ 'analytics' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/finance" routerLinkActive="active">{{ 'finance' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/crypto" routerLinkActive="active">{{ 'crypto' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-apps class="shrink-0" />
+
+                    <span class="px-2">{{'apps' | translate}}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/apps/chat" routerLinkActive="active">{{ 'chat' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/apps/mailbox" routerLinkActive="active">{{ 'mailbox' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/apps/todolist" routerLinkActive="active">{{ 'todo_list' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/apps/notes" routerLinkActive="active">{{ 'notes' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/apps/scrumboard" routerLinkActive="active">{{ 'scrumboard' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/apps/contacts" routerLinkActive="active">{{ 'contacts' | translate }}</a>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'invoice' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/apps/invoice/list" routerLinkActive="active">{{ 'list' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/apps/invoice/preview" routerLinkActive="active">{{ 'preview' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/apps/invoice/add" routerLinkActive="active">{{ 'add' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/apps/invoice/edit" routerLinkActive="active">{{ 'edit' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="/apps/calendar" routerLinkActive="active">{{ 'calendar' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-components class="shrink-0" />
+                    <span class="px-2">{{ 'components' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/components/tabs" routerLinkActive="active">{{ 'tabs' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/accordions" routerLinkActive="active">{{ 'accordions' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/modals" routerLinkActive="active">{{ 'modals' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/cards" routerLinkActive="active">{{ 'cards' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/carousel" routerLinkActive="active">{{ 'carousel' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/countdown" routerLinkActive="active">{{ 'countdown' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/counter" routerLinkActive="active">{{ 'counter' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/sweetalert" routerLinkActive="active">{{ 'sweet_alerts' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/timeline" routerLinkActive="active">{{ 'timeline' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/notifications" routerLinkActive="active">{{ 'notifications' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/media-object" routerLinkActive="active">{{ 'media_object' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/list-group" routerLinkActive="active">{{ 'list_group' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/pricing-table" routerLinkActive="active">{{ 'pricing_tables' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/components/lightbox" routerLinkActive="active">{{ 'lightbox' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-elements class="shrink-0" />
+                    <span class="px-2">{{ 'elements' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/elements/alerts" routerLinkActive="active">{{ 'alerts' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/avatar" routerLinkActive="active">{{ 'avatar' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/badges" routerLinkActive="active">{{ 'badges' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/breadcrumbs" routerLinkActive="active">{{ 'breadcrumbs' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/buttons" routerLinkActive="active">{{ 'buttons' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/buttons-group" routerLinkActive="active">{{ 'button_groups' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/color-library" routerLinkActive="active">{{ 'color_library' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/dropdown" routerLinkActive="active">{{ 'dropdown' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/infobox" routerLinkActive="active">{{ 'infobox' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/jumbotron" routerLinkActive="active">{{ 'jumbotron' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/loader" routerLinkActive="active">{{ 'loader' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/pagination" routerLinkActive="active">{{ 'pagination' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/popovers" routerLinkActive="active">{{ 'popovers' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/progress-bar" routerLinkActive="active">{{ 'progress_bar' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/search" routerLinkActive="active">{{ 'search' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/tooltips" routerLinkActive="active">{{ 'tooltips' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/treeview" routerLinkActive="active">{{ 'treeview' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/elements/typography" routerLinkActive="active">{{ 'typography' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-datatables class="shrink-0" />
+                    <span class="px-2">{{ 'tables' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/tables" routerLinkActive="active">{{ 'tables' | translate }}</a>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'datatables' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/datatables/basic" routerLinkActive="active">{{ 'basic' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/advanced" routerLinkActive="active">{{ 'advanced' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/skin" routerLinkActive="active">{{ 'skin' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/order-sorting" routerLinkActive="active">{{ 'order_sorting' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/columns-filter" routerLinkActive="active">{{ 'columns_filter' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/multi-column" routerLinkActive="active">{{ 'multi_column' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/multiple-tables" routerLinkActive="active">{{ 'multiple_tables' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/alt-pagination" routerLinkActive="active">{{ 'alt_pagination' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/checkbox" routerLinkActive="active">{{ 'checkbox' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/range-search" routerLinkActive="active">{{ 'range_search' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/export" routerLinkActive="active">{{ 'export' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/sticky-header" routerLinkActive="active">{{ 'sticky_header' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/clone-header" routerLinkActive="active">{{ 'clone_header' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/datatables/column-chooser" routerLinkActive="active">{{ 'column_chooser' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-forms class="shrink-0" />
+                    <span class="px-2">{{ 'forms' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/forms/basic" routerLinkActive="active">{{ 'basic' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/input-group" routerLinkActive="active">{{ 'input_group' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/layouts" routerLinkActive="active">{{ 'layouts' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/validation" routerLinkActive="active">{{ 'validation' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/input-mask" routerLinkActive="active">{{ 'input_mask' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/select2" routerLinkActive="active">{{ 'select2' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/checkbox-radio" routerLinkActive="active">{{ 'checkbox_and_radio' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/switches" routerLinkActive="active">{{ 'switches' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/wizards" routerLinkActive="active">{{ 'wizards' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/file-upload" routerLinkActive="active">{{ 'file_upload' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/quill-editor" routerLinkActive="active">{{ 'quill_editor' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/date-picker" routerLinkActive="active">{{ 'date_and_range_picker' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/forms/clipboard" routerLinkActive="active">{{ 'clipboard' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-pages class="shrink-0" />
+                    <span class="px-2">{{ 'pages' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'users' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/users/profile" routerLinkActive="active">{{ 'profile' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/user-account-settings" routerLinkActive="active">{{ 'account_settings' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="/pages/knowledge-base" routerLinkActive="active">{{ 'knowledge_base' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/contact-us-boxed" target="_blank" routerLinkActive="active">{{ 'contact_us_boxed' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/contact-us-cover" target="_blank" routerLinkActive="active">{{ 'contact_us_cover' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/faq" routerLinkActive="active">{{ 'faq' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/coming-soon-boxed" target="_blank" routerLinkActive="active">{{ 'coming_soon_boxed' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/coming-soon-cover" target="_blank" routerLinkActive="active">{{ 'coming_soon_cover' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/pages/maintenence" target="_blank" routerLinkActive="active">{{ 'maintenence' | translate }}</a>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'error' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/pages/error404" target="_blank" routerLinkActive="active">{{ '404' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/pages/error500" target="_blank" routerLinkActive="active">{{ '500' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/pages/error503" target="_blank" routerLinkActive="active">{{ '503' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'login' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/auth/cover-login" target="_blank" routerLinkActive="active">{{ 'login_cover' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/auth/boxed-signin" target="_blank" routerLinkActive="active">{{ 'login_boxed' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'register' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/auth/cover-register" target="_blank" routerLinkActive="active">{{ 'register_cover' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/auth/boxed-signup" target="_blank" routerLinkActive="active">{{ 'register_boxed' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'password_recovery' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/auth/cover-password-reset" target="_blank" routerLinkActive="active">{{ 'recover_id_cover' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/auth/boxed-password-reset" target="_blank" routerLinkActive="active">{{ 'recover_id_boxed' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="relative">
+                    <a href="javascript:;"
+                        >{{ 'lockscreen' | translate }}
+                        <div class="-rotate-90 ltr:ml-auto rtl:mr-auto rtl:rotate-90">
+                            <icon-caret-down />
+                        </div>
+                    </a>
+                    <ul
+                        class="absolute top-0 z-[10] hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark ltr:left-[95%] rtl:right-[95%]"
+                    >
+                        <li>
+                            <a routerLink="/auth/cover-lockscreen" target="_blank" routerLinkActive="active">{{ 'unlock_cover' | translate }}</a>
+                        </li>
+                        <li>
+                            <a routerLink="/auth/boxed-lockscreen" target="_blank" routerLinkActive="active">{{ 'unlock_boxed' | translate }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="menu nav-item relative">
+            <a href="javascript:;" class="nav-link">
+                <div class="flex items-center">
+                    <icon-menu-more class="shrink-0" />
+
+                    <span class="px-2">{{ 'more' | translate }}</span>
+                </div>
+                <div class="right_arrow">
+                    <icon-caret-down />
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a routerLink="/dragndrop" routerLinkActive="active">{{ 'drag_and_drop' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/charts" routerLinkActive="active">{{ 'charts' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/font-icons" routerLinkActive="active">{{ 'font_icons' | translate }}</a>
+                </li>
+                <li>
+                    <a routerLink="/widgets" routerLinkActive="active">{{ 'widgets' | translate }}</a>
+                </li>
+                <li>
+                    <a href="https://vristo.sbthemes.com" target="_blank" routerLinkActive="active">{{ 'documentation' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,458 @@
+<section>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Total Branch -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Branch</p>
+                <div class="flex items-center gap-3 mt-2 mb-1">
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ branchData().companyName }} - {{branchData().address}}</h3>
+                    <span
+                        class="border px-4 rounded-lg w-fit"
+                        [ngClass]="{
+                            'border-green-400 text-green-400': branchData().isActive,
+                            'border-red-400 text-red-400': !branchData().isActive
+                        }"
+                        >
+                        {{ branchData().isActive ? 'Active' : 'DeActive' }}
+                    </span>
+                </div>
+                <form class="flex items-center justify-start gap-1 z-2">
+                    <p class="cursor-pointer" ngxClipboard [cbContent]="message1" (cbOnSuccess)="showMessage('Copied successfully.')">{{message1}}</p>
+                    <svg ngxClipboard [cbContent]="message1" (cbOnSuccess)="showMessage('Copied successfully.')"  width="15" height="15" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer"><path  d="M11.875 15.8333H3.95833C2.9089 15.8321 1.90282 15.4146 1.16076 14.6726C0.418698 13.9305 0.00125705 12.9244 0 11.875L0 3.95833C0.00125705 2.9089 0.418698 1.90282 1.16076 1.16076C1.90282 0.418698 2.9089 0.00125705 3.95833 0L11.875 0C12.9244 0.00125705 13.9305 0.418698 14.6726 1.16076C15.4146 1.90282 15.8321 2.9089 15.8333 3.95833V11.875C15.8321 12.9244 15.4146 13.9305 14.6726 14.6726C13.9305 15.4146 12.9244 15.8321 11.875 15.8333ZM19 15.0417V4.75C19 4.54004 18.9166 4.33867 18.7681 4.19021C18.6197 4.04174 18.4183 3.95833 18.2083 3.95833C17.9984 3.95833 17.797 4.04174 17.6485 4.19021C17.5001 4.33867 17.4167 4.54004 17.4167 4.75V15.0417C17.4167 15.6716 17.1664 16.2756 16.721 16.721C16.2756 17.1664 15.6716 17.4167 15.0417 17.4167H4.75C4.54004 17.4167 4.33867 17.5001 4.19021 17.6485C4.04174 17.797 3.95833 17.9984 3.95833 18.2083C3.95833 18.4183 4.04174 18.6197 4.19021 18.7681C4.33867 18.9166 4.54004 19 4.75 19H15.0417C16.0911 18.9987 17.0972 18.5813 17.8392 17.8392C18.5813 17.0972 18.9987 16.0911 19 15.0417Z" fill="#AEAEAE"></path></svg>
+                </form>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-code-branch transform rotate-180 text-[22px] shrink-0 text-[#mainColor]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Users -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Users</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ branchData().users?.length + driversCount() || 0 }}</h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <icon-users class="h-7 w-7 text-mainColor" />
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Vehicles -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Vehicles</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ carsCount() || 0 }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{ totalActiveCars() || 0 }} </span> Active - <span class="text-mainColor font-bold">{{ totalDeActiveCars() || 0 }}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.533203 10.8442V8.33489C0.533203 7.93559 0.684654 7.55264 0.954237 7.27029C1.22382 6.98794 1.58945 6.82931 1.9707 6.82931C1.9707 6.82931 2.88974 6.82931 2.92904 6.82931C3.522 5.44912 4.22302 4.12269 5.02491 2.86361C5.50373 2.21149 6.16725 1.73473 6.92049 1.50157C8.60812 0.642382 15.4583 0.642382 17.1459 1.50157C17.8992 1.73473 18.5627 2.21149 19.0415 2.86361C19.8434 4.12269 20.5444 5.44912 21.1374 6.82931C21.1767 6.82931 22.0957 6.82931 22.0957 6.82931C22.477 6.82931 22.8426 6.98794 23.1122 7.27029C23.3818 7.55264 23.5332 7.93559 23.5332 8.33489V10.8442C19.7254 10.243 15.8835 9.90768 12.0332 9.84048C8.18286 9.90768 4.34105 10.243 0.533203 10.8442ZM23.5332 12.8747V14.8591C23.5332 15.9239 23.1293 16.9451 22.4104 17.698C21.6916 18.451 20.7165 18.874 19.6999 18.874H4.36654C3.34987 18.874 2.37485 18.451 1.65596 17.698C0.937071 16.9451 0.533203 15.9239 0.533203 14.8591V12.8787C4.34054 12.269 8.18232 11.9247 12.0332 11.8479C15.8841 11.9247 19.7259 12.269 23.5332 12.8787V12.8747ZM6.2832 15.8628C6.2832 15.5966 6.18224 15.3413 6.00251 15.1531C5.82279 14.9648 5.57904 14.8591 5.32487 14.8591C5.0707 14.8591 4.82695 14.9648 4.64723 15.1531C4.4675 15.3413 4.36654 15.5966 4.36654 15.8628C4.36654 16.129 4.4675 16.3843 4.64723 16.5725C4.82695 16.7608 5.0707 16.8665 5.32487 16.8665C5.57904 16.8665 5.82279 16.7608 6.00251 16.5725C6.18224 16.3843 6.2832 16.129 6.2832 15.8628ZM19.6999 15.8628C19.6999 15.5966 19.5989 15.3413 19.4192 15.1531C19.2395 14.9648 18.9957 14.8591 18.7415 14.8591C18.4874 14.8591 18.2436 14.9648 18.0639 15.1531C17.8842 15.3413 17.7832 15.5966 17.7832 15.8628C17.7832 16.129 17.8842 16.3843 18.0639 16.5725C18.2436 16.7608 18.4874 16.8665 18.7415 16.8665C18.9957 16.8665 19.2395 16.7608 19.4192 16.5725C19.5989 16.3843 19.6999 16.129 19.6999 15.8628ZM7.18595 20.8814C7.74849 24.8501 1.94195 24.8481 2.50545 20.8814H7.18595ZM21.561 20.8814C22.1235 24.8501 16.317 24.8481 16.8805 20.8814H21.561Z" fill="#f79320"/>
+                </svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Drivers -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Drivers</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ driversCount() || 0 }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{ totalActiveDrivers() || 0 }} </span> Active - <span class="text-mainColor font-bold">{{ totalDeActiveDrivers() || 0 }}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="25" height="25" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 17C12.8123 17 9 13.1877 9 8.5C9 3.81225 12.8123 0 17.5 0C22.1878 0 26 3.81225 26 8.5C26 13.1877 22.1878 17 17.5 17ZM17.5 19.8333C10.2708 19.8333 4.21875 25.2478 3.424 32.4275C3.38008 32.8284 3.509 33.2279 3.77675 33.5282C4.04592 33.8286 4.42983 34 4.83217 34H8.99858C8.99858 29.3123 12.8108 25.5 17.4986 25.5C22.1863 25.5 25.9986 29.3123 25.9986 34H30.165C30.5673 34 30.9513 33.8286 31.2204 33.5282C31.4882 33.2279 31.6171 32.8284 31.5732 32.4275C30.7784 25.2478 24.7264 19.8333 17.4972 19.8333H17.5ZM17.5 28.3333C14.3748 28.3333 11.8333 30.8748 11.8333 34H23.1667C23.1667 30.8748 20.6252 28.3333 17.5 28.3333Z" fill="#f79320"></path></svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+          <!-- Total Transactions -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Transactions</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ 25 }}</h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-money-bill-transfer text-[20px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Invoices -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Invoices</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ 237 }}</h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-receipt text-[20px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Fuel Consumed -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Fuel Consumed</p>
+                <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                    <svg fill="#222" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                    {{ 6350 }}
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="25" height="25" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c2521696480="" d="M42 31.5C42 32.8924 41.4469 34.2277 40.4623 35.2123C39.4777 36.1969 38.1424 36.75 36.75 36.75C35.3576 36.75 34.0223 36.1969 33.0377 35.2123C32.0531 34.2277 31.5 32.8924 31.5 31.5V29.75C31.5 29.2859 31.3156 28.8407 30.9874 28.5126C30.6592 28.1844 30.2141 28 29.75 28H28V33.25C27.9972 35.5698 27.0745 37.7938 25.4341 39.4341C23.7938 41.0745 21.5698 41.9972 19.25 42H8.75C6.43021 41.9972 4.20623 41.0745 2.56588 39.4341C0.925543 37.7938 0.00277875 35.5698 0 33.25L0 19.25H28V24.5H29.75C31.1424 24.5 32.4777 25.0531 33.4623 26.0377C34.4469 27.0223 35 28.3576 35 29.75V31.5C35 31.9641 35.1844 32.4092 35.5126 32.7374C35.8407 33.0656 36.2859 33.25 36.75 33.25C37.2141 33.25 37.6592 33.0656 37.9874 32.7374C38.3156 32.4092 38.5 31.9641 38.5 31.5V14C37.5717 14 36.6815 13.6313 36.0251 12.9749C35.3687 12.3185 35 11.4283 35 10.5V5.9745L32.0127 2.98725C31.694 2.6572 31.5176 2.21514 31.5216 1.7563C31.5256 1.29745 31.7096 0.858532 32.0341 0.534067C32.3585 0.209603 32.7975 0.0255577 33.2563 0.0215704C33.7151 0.0175832 34.1572 0.193973 34.4873 0.51275L38.9252 4.949C40.8606 6.87378 41.9645 9.48044 42 12.2097C42 12.2237 42 31.5 42 31.5ZM28 8.75C27.9972 6.43021 27.0745 4.20623 25.4341 2.56588C23.7938 0.925543 21.5698 0.00277875 19.25 0L8.75 0C6.43021 0.00277875 4.20623 0.925543 2.56588 2.56588C0.925543 4.20623 0.00277875 6.43021 0 8.75L0 15.75H28V8.75Z" fill="#F79320"></path></svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @if(role() == 'BranchManager'){
+            <!-- Total Transactions Chart -->
+            <div class="panel rounded-[20px] h-full">
+                <div class="mb-5 flex items-center justify-between dark:text-white-light">
+                    <h5 class="text-lg font-semibold">Total Transactions</h5>
+                    <!-- <select name="adsFilter" id="adsFilter" class="form-input w-fit border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1">
+                        <option value="1">All</option>
+                        <option value="2">Jan</option>
+                        <option value="3">Feb</option>
+                        <option value="4">Mar</option>
+                        <option value="4">Apr</option>
+                        <option value="4">May</option>
+                        <option value="4">Jun</option>
+                        <option value="4">Jul</option>
+                        <option value="4">Aug</option>
+                        <option value="4">Sep</option>
+                        <option value="4">Nov</option>
+                        <option value="4">Dec</option>
+                    </select> -->
+                </div>
+                <div class="text-lg dark:text-white-light/90 flex items-center">
+                    <p>Total Profit :</p>
+                    <svg fill="#f79320" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6 ml-1">
+                        <path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path>
+                    </svg>
+                    <span class="text-mainColor">10,840</span>
+                </div>
+                <div class="relative overflow-hidden">
+                    <apx-chart
+                        [series]="transactionsToday.series"
+                        [chart]="transactionsToday.chart"
+                        [dataLabels]="transactionsToday.dataLabels"
+                        [stroke]="transactionsToday.stroke"
+                        [colors]="transactionsToday.colors"
+                        [markers]="transactionsToday.markers"
+                        [labels]="transactionsToday.labels"
+                        [xaxis]="transactionsToday.xaxis"
+                        [yaxis]="transactionsToday.yaxis"
+                        [grid]="transactionsToday.grid"
+                        [legend]="transactionsToday.legend"
+                        [tooltip]="transactionsToday.tooltip"
+                        [fill]="transactionsToday.fill"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[325px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Fuel Budget Used -->
+            <div class="panel rounded-[20px] h-full">
+                <div class="mb-5 flex items-center">
+                    <h5 class="text-lg font-semibold dark:text-white-light">
+                        Fuel Budget Used
+                        <div class="flex items-center text-sm font-normal text-white-dark">
+                            <span>🔸18250</span>
+                            <sub>
+                                <svg fill="#96A0B5" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1124.14 1256.39" >
+                                    <path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path>
+                                </svg>
+                            </sub>
+                            <span class="mx-1">/</span>
+                            <span>18250</span>
+                            <sub>
+                                <svg fill="#96A0B5" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1124.14 1256.39" >
+                                    <path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path>
+                                </svg>
+                            </sub>
+                        </div>
+                    </h5>
+                    <div class="relative ltr:ml-auto rtl:mr-auto">
+                        <div class="grid h-11 w-11 place-content-center rounded-full bg-[#ffeccb] text-warning dark:bg-warning dark:text-[#ffeccb]">
+                            <svg fill="#e2a03f" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="fuelBudge.series"
+                        [chart]="fuelBudge.chart"
+                        [dataLabels]="fuelBudge.dataLabels"
+                        [stroke]="fuelBudge.stroke"
+                        [colors]="fuelBudge.colors"
+                        [legend]="fuelBudge.legend"
+                        [plotOptions]="fuelBudge.plotOptions"
+                        [labels]="fuelBudge.labels"
+                        [states]="fuelBudge.states"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[460px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Savings Insights -->
+            <div class="panel rounded-[20px] h-full">
+                <div class="mb-5 flex items-center">
+                    <h5 class="text-lg font-semibold dark:text-white-light">
+                        Savings Insights
+                        <span class="block text-sm font-normal text-white-dark">
+                            🔸You saved 500 SAR this week<br>
+                            🔸Fuel efficiency improved by 10%<br>
+                            🔸Below average fuel usage on Tuesday
+                        </span>
+                    </h5>
+                    <div class="relative ltr:ml-auto rtl:mr-auto">
+                        <div class="grid h-11 w-11 place-content-center rounded-full bg-[#ffeccb] text-warning dark:bg-warning dark:text-[#ffeccb]">
+                            <svg fill="#e2a03f" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="savingsInsights.series"
+                        [chart]="savingsInsights.chart"
+                        [dataLabels]="savingsInsights.dataLabels"
+                        [stroke]="savingsInsights.stroke"
+                        [colors]="savingsInsights.colors"
+                        [responsive]="savingsInsights.responsive"
+                        [xaxis]="savingsInsights.xaxis"
+                        [yaxis]="savingsInsights.yaxis"
+                        [fill]="savingsInsights.fill"
+                        [plotOptions]="savingsInsights.plotOptions"
+                        [legend]="savingsInsights.legend"
+                        [grid]="savingsInsights.grid"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[175px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Total Fuel Consumed -->
+            <div class="panel rounded-[20px] h-full">
+                <div class="mb-5 flex items-center">
+                    <h5 class="text-lg font-semibold dark:text-white-light">
+                        Total Fuel Consumed (L/month)
+                        <span class="block text-sm font-normal text-white-dark">
+                            🔸56<sub>L/Month</sub>
+                        </span>
+                    </h5>
+                    <div class="relative ltr:ml-auto rtl:mr-auto">
+                        <div class="grid h-11 w-11 place-content-center rounded-full bg-[#ffeccb] text-warning dark:bg-warning dark:text-[#ffeccb]">
+                            <svg width="20" height="20" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path  d="M42 31.5C42 32.8924 41.4469 34.2277 40.4623 35.2123C39.4777 36.1969 38.1424 36.75 36.75 36.75C35.3576 36.75 34.0223 36.1969 33.0377 35.2123C32.0531 34.2277 31.5 32.8924 31.5 31.5V29.75C31.5 29.2859 31.3156 28.8407 30.9874 28.5126C30.6592 28.1844 30.2141 28 29.75 28H28V33.25C27.9972 35.5698 27.0745 37.7938 25.4341 39.4341C23.7938 41.0745 21.5698 41.9972 19.25 42H8.75C6.43021 41.9972 4.20623 41.0745 2.56588 39.4341C0.925543 37.7938 0.00277875 35.5698 0 33.25L0 19.25H28V24.5H29.75C31.1424 24.5 32.4777 25.0531 33.4623 26.0377C34.4469 27.0223 35 28.3576 35 29.75V31.5C35 31.9641 35.1844 32.4092 35.5126 32.7374C35.8407 33.0656 36.2859 33.25 36.75 33.25C37.2141 33.25 37.6592 33.0656 37.9874 32.7374C38.3156 32.4092 38.5 31.9641 38.5 31.5V14C37.5717 14 36.6815 13.6313 36.0251 12.9749C35.3687 12.3185 35 11.4283 35 10.5V5.9745L32.0127 2.98725C31.694 2.6572 31.5176 2.21514 31.5216 1.7563C31.5256 1.29745 31.7096 0.858532 32.0341 0.534067C32.3585 0.209603 32.7975 0.0255577 33.2563 0.0215704C33.7151 0.0175832 34.1572 0.193973 34.4873 0.51275L38.9252 4.949C40.8606 6.87378 41.9645 9.48044 42 12.2097C42 12.2237 42 31.5 42 31.5ZM28 8.75C27.9972 6.43021 27.0745 4.20623 25.4341 2.56588C23.7938 0.925543 21.5698 0.00277875 19.25 0L8.75 0C6.43021 0.00277875 4.20623 0.925543 2.56588 2.56588C0.925543 4.20623 0.00277875 6.43021 0 8.75L0 15.75H28V8.75Z" fill="#E2A03F"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="fuelConsumed.series"
+                        [chart]="fuelConsumed.chart"
+                        [dataLabels]="fuelConsumed.dataLabels"
+                        [stroke]="fuelConsumed.stroke"
+                        [colors]="fuelConsumed.colors"
+                        [responsive]="fuelConsumed.responsive"
+                        [xaxis]="fuelConsumed.xaxis"
+                        [yaxis]="fuelConsumed.yaxis"
+                        [fill]="fuelConsumed.fill"
+                        [plotOptions]="fuelConsumed.plotOptions"
+                        [legend]="fuelConsumed.legend"
+                        [grid]="fuelConsumed.grid"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[175px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (role() == "Benzeny"){
+        <!-- Table Car -->
+        <div class="panel shadow-none mt-6 pb-0">
+            <!-- Title Table-->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                <div class="flex items-center gap-2">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.533203 10.8442V8.33489C0.533203 7.93559 0.684654 7.55264 0.954237 7.27029C1.22382 6.98794 1.58945 6.82931 1.9707 6.82931C1.9707 6.82931 2.88974 6.82931 2.92904 6.82931C3.522 5.44912 4.22302 4.12269 5.02491 2.86361C5.50373 2.21149 6.16725 1.73473 6.92049 1.50157C8.60812 0.642382 15.4583 0.642382 17.1459 1.50157C17.8992 1.73473 18.5627 2.21149 19.0415 2.86361C19.8434 4.12269 20.5444 5.44912 21.1374 6.82931C21.1767 6.82931 22.0957 6.82931 22.0957 6.82931C22.477 6.82931 22.8426 6.98794 23.1122 7.27029C23.3818 7.55264 23.5332 7.93559 23.5332 8.33489V10.8442C19.7254 10.243 15.8835 9.90768 12.0332 9.84048C8.18286 9.90768 4.34105 10.243 0.533203 10.8442ZM23.5332 12.8747V14.8591C23.5332 15.9239 23.1293 16.9451 22.4104 17.698C21.6916 18.451 20.7165 18.874 19.6999 18.874H4.36654C3.34987 18.874 2.37485 18.451 1.65596 17.698C0.937071 16.9451 0.533203 15.9239 0.533203 14.8591V12.8787C4.34054 12.269 8.18232 11.9247 12.0332 11.8479C15.8841 11.9247 19.7259 12.269 23.5332 12.8787V12.8747ZM6.2832 15.8628C6.2832 15.5966 6.18224 15.3413 6.00251 15.1531C5.82279 14.9648 5.57904 14.8591 5.32487 14.8591C5.0707 14.8591 4.82695 14.9648 4.64723 15.1531C4.4675 15.3413 4.36654 15.5966 4.36654 15.8628C4.36654 16.129 4.4675 16.3843 4.64723 16.5725C4.82695 16.7608 5.0707 16.8665 5.32487 16.8665C5.57904 16.8665 5.82279 16.7608 6.00251 16.5725C6.18224 16.3843 6.2832 16.129 6.2832 15.8628ZM19.6999 15.8628C19.6999 15.5966 19.5989 15.3413 19.4192 15.1531C19.2395 14.9648 18.9957 14.8591 18.7415 14.8591C18.4874 14.8591 18.2436 14.9648 18.0639 15.1531C17.8842 15.3413 17.7832 15.5966 17.7832 15.8628C17.7832 16.129 17.8842 16.3843 18.0639 16.5725C18.2436 16.7608 18.4874 16.8665 18.7415 16.8665C18.9957 16.8665 19.2395 16.7608 19.4192 16.5725C19.5989 16.3843 19.6999 16.129 19.6999 15.8628ZM7.18595 20.8814C7.74849 24.8501 1.94195 24.8481 2.50545 20.8814H7.18595ZM21.561 20.8814C22.1235 24.8501 16.317 24.8481 16.8805 20.8814H21.561Z" fill="#f79320"/>
+                    </svg>
+                    <div class="flex flex-col gap-0">
+                        <h3 class="relative top-[-2px] text-[25px] font-semibold">All</h3>
+                        <h3 class="ms-3 text-[25px] font-semibold">Vehicles</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3">
+                    <!-- Search Input -->
+                    <div class="flex items-center justify-end gap-3">
+                        <input (input)="searchCar($event)" type="text" class="form-input w-[200px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1" placeholder="Search..." />
+
+                        <!-- Print Button -->
+                        <div class="flex items-center" ngxTippy="Print" (click)="exportTable('print')">
+                            <icon-printer class="text-mainColor h-6 w-6 cursor-pointer hover:scale-110 transition" />
+                        </div>
+
+                        <!-- Excel Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="Excel" class="text-mainColor fa-solid fa-file-excel text-xl cursor-pointer hover:scale-110 transition" (click)="exportTable('csv')"></i>
+                        </div>
+
+                        <!-- PDF Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="PDF" class="text-mainColor fa-solid fa-file-pdf text-xl cursor-pointer hover:scale-110 transition" (click)="downloadPdf()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="datatable">
+                <ng-datatable
+                    #table
+                    [rows]="allCars()"
+                    [columns]="ColsCars"
+                    [totalRows]="carsCount()"
+                    [sortable]="true"
+                    [pageSize]="pageSize"
+                    (pageChange)="onPageChange($event)"
+                    (pageSizeChange)="onPageSizeChange($event)"
+                    sortColumn="companyName"
+                    skin="whitespace-nowrap table-hover"
+                    firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'>
+                    <ng-template slot="driversName" let-value="data">
+                        <ul class="flex flex-col gap-1">
+                            @for(driver of value.driversName; track $index){
+                                <li>- {{driver}}</li>
+                            }
+                        </ul>
+                    </ng-template>
+                    <ng-template slot="isActive" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <span
+                            class="border px-4 rounded-lg"
+                            [ngClass]="{
+                                'border-green-400 text-green-400': value.isActive,
+                                'border-red-400 text-red-400': !value.isActive
+                            }"
+                            >
+                            {{ value.isActive ? 'Active' : 'DeActive' }}
+                            </span>
+                        </div>
+                    </ng-template>
+                </ng-datatable>
+            </div>
+        </div>
+
+        <!-- Table Driver -->
+        <div class="panel shadow-none mt-6 pb-0">
+            <!-- Title Table-->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-code-branch transform rotate-180 text-[50px] text-mainColor"></i>
+                    <div class="flex flex-col gap-0">
+                        <h3 class="relative top-[-2px] text-[25px] font-semibold">All</h3>
+                        <h3 class="ms-3 text-[25px] font-semibold">Drivers</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3">
+                    <!-- Search Input -->
+                    <div class="flex items-center justify-end gap-3">
+                        <input (input)="searchDriver($event)" type="text" class="form-input w-[200px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1" placeholder="Search..." />
+
+                        <!-- Print Button -->
+                        <div class="flex items-center" ngxTippy="Print" (click)="exportTable('print')">
+                            <icon-printer class="text-mainColor h-6 w-6 cursor-pointer hover:scale-110 transition" />
+                        </div>
+
+                        <!-- Excel Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="Excel" class="text-mainColor fa-solid fa-file-excel text-xl cursor-pointer hover:scale-110 transition" (click)="exportTable('csv')"></i>
+                        </div>
+
+                        <!-- PDF Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="PDF" class="text-mainColor fa-solid fa-file-pdf text-xl cursor-pointer hover:scale-110 transition" (click)="downloadPdf()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="datatable">
+                <ng-datatable
+                    #table
+                    [rows]="allDrivers()"
+                    [columns]="ColsDrivers"
+                    [totalRows]="driversCount()"
+                    [sortable]="true"
+                    [pageSize]="pageSize"
+                    (pageChange)="onPageChangeDriver($event)"
+                    (pageSizeChange)="onPageSizeChangeDriver($event)"
+                    sortColumn="companyName"
+                    skin="whitespace-nowrap table-hover"
+                    firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'>
+                    <ng-template slot="driversName" let-value="data">
+                        <ul class="flex flex-col gap-1">
+                            @for(driver of value.driversName; track $index){
+                                <li>- {{driver}}</li>
+                            }
+                        </ul>
+                    </ng-template>
+                    <ng-template slot="isActive" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <span
+                            class="border px-4 rounded-lg"
+                            [ngClass]="{
+                                'border-green-400 text-green-400': value.isActive,
+                                'border-red-400 text-red-400': !value.isActive
+                            }"
+                            >
+                            {{ value.isActive ? 'Active' : 'DeActive' }}
+                            </span>
+                        </div>
+                    </ng-template>
+                </ng-datatable>
+            </div>
+        </div>
+    }
+</section>

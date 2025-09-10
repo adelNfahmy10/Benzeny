@@ -1,0 +1,230 @@
+<section>
+    <div class="grid grid-cols-1 md:grid-cols-2 mb-4 gap-4">
+        <!-- Total Companies -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="text-center w-full position-relative z-10">
+                <img [src]="companyData().profilePicturePath" class="w-[80px] mx-auto" [alt]="companyData().name">
+                <p class="text-[#96a0b5] text-lg">{{companyData().name}}</p>
+
+                @if (role() == 'Benzeny') {
+                    <a class="text-[#96a0b5] hover:text-[#222] transition-all" [href]="companyData().companyEmail">{{companyData().companyEmail}}</a>
+                }
+
+                <form class="flex items-center justify-center gap-1 z-2">
+                    <p class="cursor-pointer" ngxClipboard [cbContent]="message1" (cbOnSuccess)="showMessage('Copied successfully.')">{{message1}}</p>
+                    <svg ngxClipboard [cbContent]="message1" (cbOnSuccess)="showMessage('Copied successfully.')"  width="15" height="15" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer"><path  d="M11.875 15.8333H3.95833C2.9089 15.8321 1.90282 15.4146 1.16076 14.6726C0.418698 13.9305 0.00125705 12.9244 0 11.875L0 3.95833C0.00125705 2.9089 0.418698 1.90282 1.16076 1.16076C1.90282 0.418698 2.9089 0.00125705 3.95833 0L11.875 0C12.9244 0.00125705 13.9305 0.418698 14.6726 1.16076C15.4146 1.90282 15.8321 2.9089 15.8333 3.95833V11.875C15.8321 12.9244 15.4146 13.9305 14.6726 14.6726C13.9305 15.4146 12.9244 15.8321 11.875 15.8333ZM19 15.0417V4.75C19 4.54004 18.9166 4.33867 18.7681 4.19021C18.6197 4.04174 18.4183 3.95833 18.2083 3.95833C17.9984 3.95833 17.797 4.04174 17.6485 4.19021C17.5001 4.33867 17.4167 4.54004 17.4167 4.75V15.0417C17.4167 15.6716 17.1664 16.2756 16.721 16.721C16.2756 17.1664 15.6716 17.4167 15.0417 17.4167H4.75C4.54004 17.4167 4.33867 17.5001 4.19021 17.6485C4.04174 17.797 3.95833 17.9984 3.95833 18.2083C3.95833 18.4183 4.04174 18.6197 4.19021 18.7681C4.33867 18.9166 4.54004 19 4.75 19H15.0417C16.0911 18.9987 17.0972 18.5813 17.8392 17.8392C18.5813 17.0972 18.9987 16.0911 19 15.0417Z" fill="#AEAEAE"></path></svg>
+                </form>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5] z-1" alt="" />
+        </div>
+
+        <!-- Total Branches -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Branches</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ totalBranches() }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{totalActiveBranches()}} </span> Active - <span class="text-mainColor font-bold">{{totalDeActiveBranches()}}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-code-branch transform rotate-180 text-[22px] shrink-0 text-[#mainColor]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Total Balance -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Balance</p>
+                <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                    <svg fill="#222" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                    {{ 6350 }}
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-money-bill-1-wave text-[25px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Users -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Users</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ usersCount() || 0 }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{ activeUsersCount() || 0 }} </span> Active - <span class="text-mainColor font-bold">{{ deActiveUsersCount() || 0 }}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+             <div class="p-1 rounded-lg mt-4">
+                <icon-users class="h-7 w-7 text-mainColor" />
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Vehicles -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Vehicles</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ allCarsCount().activeCars + allCarsCount().inactiveCars || 0 }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{ allCarsCount().activeCars || 0 }} </span> Active - <span class="text-mainColor font-bold">{{ allCarsCount().inactiveCars || 0 }}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.533203 10.8442V8.33489C0.533203 7.93559 0.684654 7.55264 0.954237 7.27029C1.22382 6.98794 1.58945 6.82931 1.9707 6.82931C1.9707 6.82931 2.88974 6.82931 2.92904 6.82931C3.522 5.44912 4.22302 4.12269 5.02491 2.86361C5.50373 2.21149 6.16725 1.73473 6.92049 1.50157C8.60812 0.642382 15.4583 0.642382 17.1459 1.50157C17.8992 1.73473 18.5627 2.21149 19.0415 2.86361C19.8434 4.12269 20.5444 5.44912 21.1374 6.82931C21.1767 6.82931 22.0957 6.82931 22.0957 6.82931C22.477 6.82931 22.8426 6.98794 23.1122 7.27029C23.3818 7.55264 23.5332 7.93559 23.5332 8.33489V10.8442C19.7254 10.243 15.8835 9.90768 12.0332 9.84048C8.18286 9.90768 4.34105 10.243 0.533203 10.8442ZM23.5332 12.8747V14.8591C23.5332 15.9239 23.1293 16.9451 22.4104 17.698C21.6916 18.451 20.7165 18.874 19.6999 18.874H4.36654C3.34987 18.874 2.37485 18.451 1.65596 17.698C0.937071 16.9451 0.533203 15.9239 0.533203 14.8591V12.8787C4.34054 12.269 8.18232 11.9247 12.0332 11.8479C15.8841 11.9247 19.7259 12.269 23.5332 12.8787V12.8747ZM6.2832 15.8628C6.2832 15.5966 6.18224 15.3413 6.00251 15.1531C5.82279 14.9648 5.57904 14.8591 5.32487 14.8591C5.0707 14.8591 4.82695 14.9648 4.64723 15.1531C4.4675 15.3413 4.36654 15.5966 4.36654 15.8628C4.36654 16.129 4.4675 16.3843 4.64723 16.5725C4.82695 16.7608 5.0707 16.8665 5.32487 16.8665C5.57904 16.8665 5.82279 16.7608 6.00251 16.5725C6.18224 16.3843 6.2832 16.129 6.2832 15.8628ZM19.6999 15.8628C19.6999 15.5966 19.5989 15.3413 19.4192 15.1531C19.2395 14.9648 18.9957 14.8591 18.7415 14.8591C18.4874 14.8591 18.2436 14.9648 18.0639 15.1531C17.8842 15.3413 17.7832 15.5966 17.7832 15.8628C17.7832 16.129 17.8842 16.3843 18.0639 16.5725C18.2436 16.7608 18.4874 16.8665 18.7415 16.8665C18.9957 16.8665 19.2395 16.7608 19.4192 16.5725C19.5989 16.3843 19.6999 16.129 19.6999 15.8628ZM7.18595 20.8814C7.74849 24.8501 1.94195 24.8481 2.50545 20.8814H7.18595ZM21.561 20.8814C22.1235 24.8501 16.317 24.8481 16.8805 20.8814H21.561Z"  fill="#f79320"/>
+                </svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Drivers -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Drivers</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ allDriversCount().activeDrivers + allDriversCount().inActiveDrivers || 0 }}
+                    <sub class="text-dark text-[12px]">
+                        <span class="text-mainColor font-bold">{{ allDriversCount().activeDrivers || 0 }} </span> Active - <span class="text-mainColor font-bold">{{ allDriversCount().inActiveDrivers || 0 }}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="24" height="24" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path  d="M17.5 17C12.8123 17 9 13.1877 9 8.5C9 3.81225 12.8123 0 17.5 0C22.1878 0 26 3.81225 26 8.5C26 13.1877 22.1878 17 17.5 17ZM17.5 19.8333C10.2708 19.8333 4.21875 25.2478 3.424 32.4275C3.38008 32.8284 3.509 33.2279 3.77675 33.5282C4.04592 33.8286 4.42983 34 4.83217 34H8.99858C8.99858 29.3123 12.8108 25.5 17.4986 25.5C22.1863 25.5 25.9986 29.3123 25.9986 34H30.165C30.5673 34 30.9513 33.8286 31.2204 33.5282C31.4882 33.2279 31.6171 32.8284 31.5732 32.4275C30.7784 25.2478 24.7264 19.8333 17.4972 19.8333H17.5ZM17.5 28.3333C14.3748 28.3333 11.8333 30.8748 11.8333 34H23.1667C23.1667 30.8748 20.6252 28.3333 17.5 28.3333Z" fill="#f79320"></path></svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+    </div>
+
+    @if (role() == "CompanyOwner" || role() == "Admin") {
+        <div class="panel rounded-[20px] h-full swiper mx-auto p-0 my-4" id="slider4">
+            <div class="swiper-wrapper">
+                @for (item of items; track $index) {
+                    <div class="swiper-slide">
+                        <img [src]="'/assets/images/' + item" class="w-full" alt="" />
+                        <div class="absolute bottom-8 left-1/2 z-[999] w-full -translate-x-1/2 px-11 text-center text-white sm:px-0">
+                            <div class="text-3xl font-bold">Slide {{$index + 1}}</div>
+                            <div class="mb-4 font-medium sm:text-base">Lorem Ipsum is simply dummy text of the printing.</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <a href="javascript:;" class="swiper-button-prev-ex4 absolute top-1/2 z-[999] grid -translate-y-1/2 place-content-center rounded-full border border-mainColor p-1 text-mainColor transition hover:border-mainColor hover:bg-mainColor hover:text-white ltr:left-2 rtl:right-2" >
+                <icon-caret-down class="h-5 w-5 rotate-90 rtl:-rotate-90" />
+            </a>
+            <a href="javascript:;" class="swiper-button-next-ex4 absolute top-1/2 z-[999] grid -translate-y-1/2 place-content-center rounded-full border border-mainColor p-1 text-mainColor transition hover:border-mainColor hover:bg-mainColor hover:text-white ltr:right-2 rtl:left-2" >
+                <icon-caret-down class="h-5 w-5 -rotate-90 rtl:rotate-90" />
+            </a>
+        </div>
+
+        <div [class.mt-4]="role() == 'Benzeny'" class="grid gap-4 xl:grid-cols-3">
+            <!-- Saving Money Chart -->
+            <div class="panel rounded-[20px] h-full xl:col-span-2">
+                <div class="mb-5 flex items-center justify-between dark:text-white-light">
+                    <h5 class="text-lg font-semibold">Saving Money</h5>
+                    <i class="fa-solid fa-money-bill-1-wave text-[25px] text-mainColor"></i>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-lg dark:text-white-light/90">Total Profit : </span>
+                    <svg fill="#f79320" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                    <span class="text-lg dark:text-white-light/90 text-mainColor">10,840</span>
+                </div>
+                <div class="relative overflow-hidden">
+                    <apx-chart
+                        [series]="savingChart.series"
+                        [chart]="savingChart.chart"
+                        [dataLabels]="savingChart.dataLabels"
+                        [stroke]="savingChart.stroke"
+                        [colors]="savingChart.colors"
+                        [markers]="savingChart.markers"
+                        [labels]="savingChart.labels"
+                        [xaxis]="savingChart.xaxis"
+                        [yaxis]="savingChart.yaxis"
+                        [grid]="savingChart.grid"
+                        [legend]="savingChart.legend"
+                        [tooltip]="savingChart.tooltip"
+                        [fill]="savingChart.fill"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[325px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Total Transaction Volum Chart -->
+            <div class="panel rounded-[20px] h-full">
+                <div class="mb-5 flex items-center">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Total Transaction Volum</h5>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="transactionVolum.series"
+                        [chart]="transactionVolum.chart"
+                        [dataLabels]="transactionVolum.dataLabels"
+                        [stroke]="transactionVolum.stroke"
+                        [colors]="transactionVolum.colors"
+                        [legend]="transactionVolum.legend"
+                        [plotOptions]="transactionVolum.plotOptions"
+                        [labels]="transactionVolum.labels"
+                        [states]="transactionVolum.states"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[460px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+
+            <!-- Daily Transactions Chart -->
+            <div class="panel rounded-[20px] h-full xl:col-span-2">
+                <div class="mb-5 flex items-center">
+                    <h5 class="text-lg font-semibold dark:text-white-light">
+                        Daily Transactions <span class="block text-sm font-normal text-white-dark">Go to columns for details.</span>
+                    </h5>
+                    <div class="relative ltr:ml-auto rtl:mr-auto">
+                        <div class="grid h-11 w-11 place-content-center rounded-full bg-[#ffeccb] text-warning dark:bg-warning dark:text-[#ffeccb]">
+                            <icon-dollar-sign />
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="dailyTransactions.series"
+                        [chart]="dailyTransactions.chart"
+                        [dataLabels]="dailyTransactions.dataLabels"
+                        [stroke]="dailyTransactions.stroke"
+                        [colors]="dailyTransactions.colors"
+                        [responsive]="dailyTransactions.responsive"
+                        [xaxis]="dailyTransactions.xaxis"
+                        [yaxis]="dailyTransactions.yaxis"
+                        [fill]="dailyTransactions.fill"
+                        [plotOptions]="dailyTransactions.plotOptions"
+                        [legend]="dailyTransactions.legend"
+                        [grid]="dailyTransactions.grid"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[175px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    }
+</section>

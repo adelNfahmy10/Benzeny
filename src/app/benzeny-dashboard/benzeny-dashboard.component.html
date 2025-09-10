@@ -1,0 +1,275 @@
+<section>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Total Companies -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/companies">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Companies</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ totalCompanies() }}
+                    <sub class="text-dark text-[14px]">
+                        <span class="text-mainColor font-bold">{{totalActiveCompanies()}}</span> Active - <span class="text-mainColor font-bold">{{totalDeActiveCompanies()}}</span> DeActive
+                    </sub>
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="#F79320" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.15833 0.795914H5.32499C4.05416 0.795914 2.83538 1.30075 1.93677 2.19936C1.03816 3.09797 0.533325 4.31675 0.533325 5.58758L0.533325 19.0042C0.533325 19.6335 0.657265 20.2566 0.898069 20.8379C1.13887 21.4193 1.49182 21.9475 1.93677 22.3925C2.83538 23.2911 4.05416 23.7959 5.32499 23.7959H13.95V5.58758C13.95 4.95833 13.8261 4.33524 13.5852 3.75389C13.3444 3.17254 12.9915 2.64431 12.5465 2.19936C12.1016 1.75441 11.5734 1.40146 10.992 1.16066C10.4107 0.919854 9.78758 0.795914 9.15833 0.795914ZM5.32499 19.0042H4.36666C4.11249 19.0042 3.86874 18.9033 3.68901 18.7236C3.50929 18.5438 3.40833 18.3001 3.40833 18.0459C3.40833 17.7917 3.50929 17.548 3.68901 17.3683C3.86874 17.1885 4.11249 17.0876 4.36666 17.0876H5.32499C5.57916 17.0876 5.82291 17.1885 6.00264 17.3683C6.18236 17.548 6.28333 17.7917 6.28333 18.0459C6.28333 18.3001 6.18236 18.5438 6.00264 18.7236C5.82291 18.9033 5.57916 19.0042 5.32499 19.0042ZM5.32499 15.1709H4.36666C4.11249 15.1709 3.86874 15.0699 3.68901 14.8902C3.50929 14.7105 3.40833 14.4667 3.40833 14.2126C3.40833 13.9584 3.50929 13.7147 3.68901 13.5349C3.86874 13.3552 4.11249 13.2542 4.36666 13.2542H5.32499C5.57916 13.2542 5.82291 13.3552 6.00264 13.5349C6.18236 13.7147 6.28333 13.9584 6.28333 14.2126C6.28333 14.4667 6.18236 14.7105 6.00264 14.8902C5.82291 15.0699 5.57916 15.1709 5.32499 15.1709ZM5.32499 11.3376H4.36666C4.11249 11.3376 3.86874 11.2366 3.68901 11.0569C3.50929 10.8772 3.40833 10.6334 3.40833 10.3792C3.40833 10.1251 3.50929 9.88133 3.68901 9.7016C3.86874 9.52188 4.11249 9.42091 4.36666 9.42091H5.32499C5.57916 9.42091 5.82291 9.52188 6.00264 9.7016C6.18236 9.88133 6.28333 10.1251 6.28333 10.3792C6.28333 10.6334 6.18236 10.8772 6.00264 11.0569C5.82291 11.2366 5.57916 11.3376 5.32499 11.3376ZM5.32499 7.50425H4.36666C4.11249 7.50425 3.86874 7.40328 3.68901 7.22356C3.50929 7.04384 3.40833 6.80008 3.40833 6.54591C3.40833 6.29175 3.50929 6.04799 3.68901 5.86827C3.86874 5.68855 4.11249 5.58758 4.36666 5.58758H5.32499C5.57916 5.58758 5.82291 5.68855 6.00264 5.86827C6.18236 6.04799 6.28333 6.29175 6.28333 6.54591C6.28333 6.80008 6.18236 7.04384 6.00264 7.22356C5.82291 7.40328 5.57916 7.50425 5.32499 7.50425ZM10.1167 19.0042H9.15833C8.90416 19.0042 8.6604 18.9033 8.48068 18.7236C8.30096 18.5438 8.19999 18.3001 8.19999 18.0459C8.19999 17.7917 8.30096 17.548 8.48068 17.3683C8.6604 17.1885 8.90416 17.0876 9.15833 17.0876H10.1167C10.3708 17.0876 10.6146 17.1885 10.7943 17.3683C10.974 17.548 11.075 17.7917 11.075 18.0459C11.075 18.3001 10.974 18.5438 10.7943 18.7236C10.6146 18.9033 10.3708 19.0042 10.1167 19.0042ZM10.1167 15.1709H9.15833C8.90416 15.1709 8.6604 15.0699 8.48068 14.8902C8.30096 14.7105 8.19999 14.4667 8.19999 14.2126C8.19999 13.9584 8.30096 13.7147 8.48068 13.5349C8.6604 13.3552 8.90416 13.2542 9.15833 13.2542H10.1167C10.3708 13.2542 10.6146 13.3552 10.7943 13.5349C10.974 13.7147 11.075 13.9584 11.075 14.2126C11.075 14.4667 10.974 14.7105 10.7943 14.8902C10.6146 15.0699 10.3708 15.1709 10.1167 15.1709ZM10.1167 11.3376H9.15833C8.90416 11.3376 8.6604 11.2366 8.48068 11.0569C8.30096 10.8772 8.19999 10.6334 8.19999 10.3792C8.19999 10.1251 8.30096 9.88133 8.48068 9.7016C8.6604 9.52188 8.90416 9.42091 9.15833 9.42091H10.1167C10.3708 9.42091 10.6146 9.52188 10.7943 9.7016C10.974 9.88133 11.075 10.1251 11.075 10.3792C11.075 10.6334 10.974 10.8772 10.7943 11.0569C10.6146 11.2366 10.3708 11.3376 10.1167 11.3376ZM10.1167 7.50425H9.15833C8.90416 7.50425 8.6604 7.40328 8.48068 7.22356C8.30096 7.04384 8.19999 6.80008 8.19999 6.54591C8.19999 6.29175 8.30096 6.04799 8.48068 5.86827C8.6604 5.68855 8.90416 5.58758 9.15833 5.58758H10.1167C10.3708 5.58758 10.6146 5.68855 10.7943 5.86827C10.974 6.04799 11.075 6.29175 11.075 6.54591C11.075 6.80008 10.974 7.04384 10.7943 7.22356C10.6146 7.40328 10.3708 7.50425 10.1167 7.50425ZM18.7417 5.58758H15.8667V23.7959H18.7417C20.012 23.7944 21.2299 23.2891 22.1282 22.3908C23.0265 21.4925 23.5318 20.2746 23.5333 19.0042V10.3792C23.5318 9.10888 23.0265 7.89099 22.1282 6.99271C21.2299 6.09443 20.012 5.5891 18.7417 5.58758ZM19.7 19.0042C19.5105 19.0042 19.3252 18.948 19.1676 18.8427C19.01 18.7374 18.8871 18.5878 18.8146 18.4127C18.7421 18.2375 18.7231 18.0448 18.7601 17.859C18.7971 17.6731 18.8883 17.5023 19.0223 17.3683C19.1564 17.2342 19.3271 17.143 19.513 17.106C19.6989 17.069 19.8916 17.088 20.0667 17.1605C20.2418 17.2331 20.3915 17.3559 20.4968 17.5135C20.6021 17.6711 20.6583 17.8564 20.6583 18.0459C20.6583 18.3001 20.5574 18.5438 20.3776 18.7236C20.1979 18.9033 19.9542 19.0042 19.7 19.0042ZM19.7 15.1709C19.5105 15.1709 19.3252 15.1147 19.1676 15.0094C19.01 14.9041 18.8871 14.7544 18.8146 14.5793C18.7421 14.4042 18.7231 14.2115 18.7601 14.0256C18.7971 13.8397 18.8883 13.669 19.0223 13.5349C19.1564 13.4009 19.3271 13.3096 19.513 13.2727C19.6989 13.2357 19.8916 13.2547 20.0667 13.3272C20.2418 13.3997 20.3915 13.5226 20.4968 13.6802C20.6021 13.8378 20.6583 14.023 20.6583 14.2126C20.6583 14.4667 20.5574 14.7105 20.3776 14.8902C20.1979 15.0699 19.9542 15.1709 19.7 15.1709ZM19.7 11.3376C19.5105 11.3376 19.3252 11.2814 19.1676 11.1761C19.01 11.0708 18.8871 10.9211 18.8146 10.746C18.7421 10.5709 18.7231 10.3782 18.7601 10.1923C18.7971 10.0064 18.8883 9.83563 19.0223 9.7016C19.1564 9.56758 19.3271 9.47631 19.513 9.43933C19.6989 9.40235 19.8916 9.42133 20.0667 9.49386C20.2418 9.5664 20.3915 9.68923 20.4968 9.84682C20.6021 10.0044 20.6583 10.1897 20.6583 10.3792C20.6583 10.6334 20.5574 10.8772 20.3776 11.0569C20.1979 11.2366 19.9542 11.3376 19.7 11.3376Z"/>
+                </svg>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Balance -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/balance">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Balance</p>
+                <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                    <svg fill="#222" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" ><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                    {{ 6350 }}
+                </h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-solid fa-money-bill-1-wave text-[25px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total NFCS -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/nfc">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total NFCs</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ 40 }}</h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-brands fa-nfc-directional text-[25px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+    </div>
+
+    <div class="pt-5">
+        <div class="mb-6 grid grid-cols-12 gap-3">
+            <!-- Top Company Table -->
+            <div class="panel rounded-[20px] h-full col-span-12 lg:col-span-8">
+                <div class="mb-5 flex items-center justify-between">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Top Companies</h5>
+                    <svg width="25" height="25" viewBox="0 0 24 24" fill="#F79320" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.15833 0.795914H5.32499C4.05416 0.795914 2.83538 1.30075 1.93677 2.19936C1.03816 3.09797 0.533325 4.31675 0.533325 5.58758L0.533325 19.0042C0.533325 19.6335 0.657265 20.2566 0.898069 20.8379C1.13887 21.4193 1.49182 21.9475 1.93677 22.3925C2.83538 23.2911 4.05416 23.7959 5.32499 23.7959H13.95V5.58758C13.95 4.95833 13.8261 4.33524 13.5852 3.75389C13.3444 3.17254 12.9915 2.64431 12.5465 2.19936C12.1016 1.75441 11.5734 1.40146 10.992 1.16066C10.4107 0.919854 9.78758 0.795914 9.15833 0.795914ZM5.32499 19.0042H4.36666C4.11249 19.0042 3.86874 18.9033 3.68901 18.7236C3.50929 18.5438 3.40833 18.3001 3.40833 18.0459C3.40833 17.7917 3.50929 17.548 3.68901 17.3683C3.86874 17.1885 4.11249 17.0876 4.36666 17.0876H5.32499C5.57916 17.0876 5.82291 17.1885 6.00264 17.3683C6.18236 17.548 6.28333 17.7917 6.28333 18.0459C6.28333 18.3001 6.18236 18.5438 6.00264 18.7236C5.82291 18.9033 5.57916 19.0042 5.32499 19.0042ZM5.32499 15.1709H4.36666C4.11249 15.1709 3.86874 15.0699 3.68901 14.8902C3.50929 14.7105 3.40833 14.4667 3.40833 14.2126C3.40833 13.9584 3.50929 13.7147 3.68901 13.5349C3.86874 13.3552 4.11249 13.2542 4.36666 13.2542H5.32499C5.57916 13.2542 5.82291 13.3552 6.00264 13.5349C6.18236 13.7147 6.28333 13.9584 6.28333 14.2126C6.28333 14.4667 6.18236 14.7105 6.00264 14.8902C5.82291 15.0699 5.57916 15.1709 5.32499 15.1709ZM5.32499 11.3376H4.36666C4.11249 11.3376 3.86874 11.2366 3.68901 11.0569C3.50929 10.8772 3.40833 10.6334 3.40833 10.3792C3.40833 10.1251 3.50929 9.88133 3.68901 9.7016C3.86874 9.52188 4.11249 9.42091 4.36666 9.42091H5.32499C5.57916 9.42091 5.82291 9.52188 6.00264 9.7016C6.18236 9.88133 6.28333 10.1251 6.28333 10.3792C6.28333 10.6334 6.18236 10.8772 6.00264 11.0569C5.82291 11.2366 5.57916 11.3376 5.32499 11.3376ZM5.32499 7.50425H4.36666C4.11249 7.50425 3.86874 7.40328 3.68901 7.22356C3.50929 7.04384 3.40833 6.80008 3.40833 6.54591C3.40833 6.29175 3.50929 6.04799 3.68901 5.86827C3.86874 5.68855 4.11249 5.58758 4.36666 5.58758H5.32499C5.57916 5.58758 5.82291 5.68855 6.00264 5.86827C6.18236 6.04799 6.28333 6.29175 6.28333 6.54591C6.28333 6.80008 6.18236 7.04384 6.00264 7.22356C5.82291 7.40328 5.57916 7.50425 5.32499 7.50425ZM10.1167 19.0042H9.15833C8.90416 19.0042 8.6604 18.9033 8.48068 18.7236C8.30096 18.5438 8.19999 18.3001 8.19999 18.0459C8.19999 17.7917 8.30096 17.548 8.48068 17.3683C8.6604 17.1885 8.90416 17.0876 9.15833 17.0876H10.1167C10.3708 17.0876 10.6146 17.1885 10.7943 17.3683C10.974 17.548 11.075 17.7917 11.075 18.0459C11.075 18.3001 10.974 18.5438 10.7943 18.7236C10.6146 18.9033 10.3708 19.0042 10.1167 19.0042ZM10.1167 15.1709H9.15833C8.90416 15.1709 8.6604 15.0699 8.48068 14.8902C8.30096 14.7105 8.19999 14.4667 8.19999 14.2126C8.19999 13.9584 8.30096 13.7147 8.48068 13.5349C8.6604 13.3552 8.90416 13.2542 9.15833 13.2542H10.1167C10.3708 13.2542 10.6146 13.3552 10.7943 13.5349C10.974 13.7147 11.075 13.9584 11.075 14.2126C11.075 14.4667 10.974 14.7105 10.7943 14.8902C10.6146 15.0699 10.3708 15.1709 10.1167 15.1709ZM10.1167 11.3376H9.15833C8.90416 11.3376 8.6604 11.2366 8.48068 11.0569C8.30096 10.8772 8.19999 10.6334 8.19999 10.3792C8.19999 10.1251 8.30096 9.88133 8.48068 9.7016C8.6604 9.52188 8.90416 9.42091 9.15833 9.42091H10.1167C10.3708 9.42091 10.6146 9.52188 10.7943 9.7016C10.974 9.88133 11.075 10.1251 11.075 10.3792C11.075 10.6334 10.974 10.8772 10.7943 11.0569C10.6146 11.2366 10.3708 11.3376 10.1167 11.3376ZM10.1167 7.50425H9.15833C8.90416 7.50425 8.6604 7.40328 8.48068 7.22356C8.30096 7.04384 8.19999 6.80008 8.19999 6.54591C8.19999 6.29175 8.30096 6.04799 8.48068 5.86827C8.6604 5.68855 8.90416 5.58758 9.15833 5.58758H10.1167C10.3708 5.58758 10.6146 5.68855 10.7943 5.86827C10.974 6.04799 11.075 6.29175 11.075 6.54591C11.075 6.80008 10.974 7.04384 10.7943 7.22356C10.6146 7.40328 10.3708 7.50425 10.1167 7.50425ZM18.7417 5.58758H15.8667V23.7959H18.7417C20.012 23.7944 21.2299 23.2891 22.1282 22.3908C23.0265 21.4925 23.5318 20.2746 23.5333 19.0042V10.3792C23.5318 9.10888 23.0265 7.89099 22.1282 6.99271C21.2299 6.09443 20.012 5.5891 18.7417 5.58758ZM19.7 19.0042C19.5105 19.0042 19.3252 18.948 19.1676 18.8427C19.01 18.7374 18.8871 18.5878 18.8146 18.4127C18.7421 18.2375 18.7231 18.0448 18.7601 17.859C18.7971 17.6731 18.8883 17.5023 19.0223 17.3683C19.1564 17.2342 19.3271 17.143 19.513 17.106C19.6989 17.069 19.8916 17.088 20.0667 17.1605C20.2418 17.2331 20.3915 17.3559 20.4968 17.5135C20.6021 17.6711 20.6583 17.8564 20.6583 18.0459C20.6583 18.3001 20.5574 18.5438 20.3776 18.7236C20.1979 18.9033 19.9542 19.0042 19.7 19.0042ZM19.7 15.1709C19.5105 15.1709 19.3252 15.1147 19.1676 15.0094C19.01 14.9041 18.8871 14.7544 18.8146 14.5793C18.7421 14.4042 18.7231 14.2115 18.7601 14.0256C18.7971 13.8397 18.8883 13.669 19.0223 13.5349C19.1564 13.4009 19.3271 13.3096 19.513 13.2727C19.6989 13.2357 19.8916 13.2547 20.0667 13.3272C20.2418 13.3997 20.3915 13.5226 20.4968 13.6802C20.6021 13.8378 20.6583 14.023 20.6583 14.2126C20.6583 14.4667 20.5574 14.7105 20.3776 14.8902C20.1979 15.0699 19.9542 15.1709 19.7 15.1709ZM19.7 11.3376C19.5105 11.3376 19.3252 11.2814 19.1676 11.1761C19.01 11.0708 18.8871 10.9211 18.8146 10.746C18.7421 10.5709 18.7231 10.3782 18.7601 10.1923C18.7971 10.0064 18.8883 9.83563 19.0223 9.7016C19.1564 9.56758 19.3271 9.47631 19.513 9.43933C19.6989 9.40235 19.8916 9.42133 20.0667 9.49386C20.2418 9.5664 20.3915 9.68923 20.4968 9.84682C20.6021 10.0044 20.6583 10.1897 20.6583 10.3792C20.6583 10.6334 20.5574 10.8772 20.3776 11.0569C20.1979 11.2366 19.9542 11.3376 19.7 11.3376Z"/>
+                    </svg>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="ltr:rounded-l-md rtl:rounded-r-md">Company</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Subscripe</th>
+                                <th class="ltr:rounded-r-md rtl:rounded-l-md">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="min-w-[150px] text-black dark:text-white">
+                                    <div class="flex items-center">
+                                        <img class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3" src="/assets/images/profile-6.jpeg" alt="avatar" />
+                                        <span class="whitespace-nowrap">Luke Ivory</span>
+                                    </div>
+                                </td>
+                                <td>ahmad.test123&#64;gmail.com</td>
+                                <td><a routerLink="/apps/invoice/preview">+966504721935</a></td>
+                                <td>$56.07</td>
+                                <td><span class="border px-4 rounded-lg cursor-pointer border-green-400 text-green-400">Active</span></td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <div class="flex items-center">
+                                        <img class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3" src="/assets/images/profile-7.jpeg" alt="avatar" />
+                                        <span class="whitespace-nowrap">Andy King</span>
+                                    </div>
+                                </td>
+                                <td>sara.dev456&#64;yahoo.com</td>
+                                <td><a routerLink="/apps/invoice/preview">+966538196402</a></td>
+                                <td>$126.04</td>
+                                <td><span class="border px-4 rounded-lg cursor-pointer border-red-400 text-red-400">DeActive</span></td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <div class="flex items-center">
+                                        <img class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3" src="/assets/images/profile-8.jpeg" alt="avatar" />
+                                        <span class="whitespace-nowrap">Laurie Fox</span>
+                                    </div>
+                                </td>
+                                <td>mohd.user789&#64;outlook.com</td>
+                                <td><a routerLink="/apps/invoice/preview">+966557041289</a></td>
+                                <td>$56.07</td>
+                                <td><span class="border px-4 rounded-lg cursor-pointer border-green-400 text-green-400">Active</span></td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <div class="flex items-center">
+                                        <img class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3" src="/assets/images/profile-9.jpeg" alt="avatar" />
+                                        <span class="whitespace-nowrap">Ryan Collins</span>
+                                    </div>
+                                </td>
+                                <td>fatimah.mock001&#64;hotmail.com</td>
+                                <td><a routerLink="/apps/invoice/preview">+966583915724</a></td>
+                                <td>$110.00</td>
+                                <td><span class="border px-4 rounded-lg cursor-pointer border-green-400 text-green-400">Active</span></td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <div class="flex items-center">
+                                        <img class="h-8 w-8 rounded-md object-cover ltr:mr-3 rtl:ml-3" src="/assets/images/profile-10.jpeg" alt="avatar" />
+                                        <span class="whitespace-nowrap">Irene Collins</span>
+                                    </div>
+                                </td>
+                                <td>khaled.demo2025&#64;mail.com</td>
+                                <td><a routerLink="/apps/invoice/preview">+966542369857</a></td>
+                                <td>$56.07</td>
+                                <td><span class="border px-4 rounded-lg cursor-pointer border-red-400 text-red-400">DeActive</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Balance Statistics Chart -->
+            <div class="panel rounded-[20px] h-full col-span-12 lg:col-span-4">
+                <div class="mb-5 flex items-center justify-between">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Balance Statistics</h5>
+                    <i class="fa-solid fa-money-bill-1-wave text-[25px] text-mainColor"></i>
+                </div>
+                <div class="overflow-hidden">
+                    <apx-chart
+                        [series]="balanceStatistics.series"
+                        [chart]="balanceStatistics.chart"
+                        [dataLabels]="balanceStatistics.dataLabels"
+                        [stroke]="balanceStatistics.stroke"
+                        [colors]="balanceStatistics.colors"
+                        [legend]="balanceStatistics.legend"
+                        [plotOptions]="balanceStatistics.plotOptions"
+                        [labels]="balanceStatistics.labels"
+                        [states]="balanceStatistics.states"
+                        class="rounded-lg bg-white dark:bg-black"
+                    >
+                        <!-- loader -->
+                        <div class="grid min-h-[460px] place-content-center bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08]">
+                            <span class="inline-flex h-5 w-5 animate-spin rounded-full border-2 border-black !border-l-transparent dark:border-white"></span>
+                        </div>
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <!-- Top Transactions Table -->
+            <div class="panel rounded-[20px] h-full w-full">
+                <div class="mb-5 flex items-center justify-between">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Top Transactions</h5>
+                    <i class="fa-solid fa-money-bill-transfer text-[25px] text-mainColor"></i>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="ltr:rounded-l-md rtl:rounded-r-md">Transaction</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="min-w-[150px] text-black dark:text-white"><span class="whitespace-nowrap">VADE0B248948</span></td>
+                                <td>$56.07</td>
+                                <td>2025-03-14</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="min-w-[150px] text-black dark:text-white">
+                                    <span class="whitespace-nowrap">VADE0B248935</span>
+                                </td>
+                                <td>$412</td>
+                                <td>2024-11-27</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                               <td class="min-w-[150px] text-black dark:text-white">
+                                    <span class="whitespace-nowrap">VADE0B248966</span>
+                                </td>
+                                <td>$412</td>
+                                <td>2024-11-27</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <span class="whitespace-nowrap">VADE0B248915</span>
+                                </td>
+                                <td>$165.00</td>
+                                <td>2023-07-09</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <span class="whitespace-nowrap">VADE0B248942</span>
+                                </td>
+                                <td>$56.07</td>
+                                <td>2022-01-25</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Top Fuel Stations Table -->
+            <div class="panel rounded-[20px] h-full w-full">
+                <div class="mb-5 flex items-center justify-between">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Top Fuel Stations</h5>
+                        <svg width="25" height="25" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path  d="M42 31.5C42 32.8924 41.4469 34.2277 40.4623 35.2123C39.4777 36.1969 38.1424 36.75 36.75 36.75C35.3576 36.75 34.0223 36.1969 33.0377 35.2123C32.0531 34.2277 31.5 32.8924 31.5 31.5V29.75C31.5 29.2859 31.3156 28.8407 30.9874 28.5126C30.6592 28.1844 30.2141 28 29.75 28H28V33.25C27.9972 35.5698 27.0745 37.7938 25.4341 39.4341C23.7938 41.0745 21.5698 41.9972 19.25 42H8.75C6.43021 41.9972 4.20623 41.0745 2.56588 39.4341C0.925543 37.7938 0.00277875 35.5698 0 33.25L0 19.25H28V24.5H29.75C31.1424 24.5 32.4777 25.0531 33.4623 26.0377C34.4469 27.0223 35 28.3576 35 29.75V31.5C35 31.9641 35.1844 32.4092 35.5126 32.7374C35.8407 33.0656 36.2859 33.25 36.75 33.25C37.2141 33.25 37.6592 33.0656 37.9874 32.7374C38.3156 32.4092 38.5 31.9641 38.5 31.5V14C37.5717 14 36.6815 13.6313 36.0251 12.9749C35.3687 12.3185 35 11.4283 35 10.5V5.9745L32.0127 2.98725C31.694 2.6572 31.5176 2.21514 31.5216 1.7563C31.5256 1.29745 31.7096 0.858532 32.0341 0.534067C32.3585 0.209603 32.7975 0.0255577 33.2563 0.0215704C33.7151 0.0175832 34.1572 0.193973 34.4873 0.51275L38.9252 4.949C40.8606 6.87378 41.9645 9.48044 42 12.2097C42 12.2237 42 31.5 42 31.5ZM28 8.75C27.9972 6.43021 27.0745 4.20623 25.4341 2.56588C23.7938 0.925543 21.5698 0.00277875 19.25 0L8.75 0C6.43021 0.00277875 4.20623 0.925543 2.56588 2.56588C0.925543 4.20623 0.00277875 6.43021 0 8.75L0 15.75H28V8.75Z" fill="#F79320"></path></svg>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="ltr:rounded-l-md rtl:rounded-r-md">Fuel Station</th>
+                                <th>Transaction</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="min-w-[150px] text-black dark:text-white"><span class="whitespace-nowrap">Saudi Aramco</span></td>
+                                <td>787</td>
+                                <td>$656.07</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="min-w-[150px] text-black dark:text-white">
+                                    <span class="whitespace-nowrap">Aldrees Petroleum</span>
+                                </td>
+                                <td>758</td>
+                                <td>$520</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                               <td class="min-w-[150px] text-black dark:text-white">
+                                    <span class="whitespace-nowrap">Petromin</span>
+                                </td>
+                                <td>714</td>
+                                <td>$415</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <span class="whitespace-nowrap">Tas’heelat Marketing Co.</span>
+                                </td>
+                                <td>653</td>
+                                <td>$365.64</td>
+                            </tr>
+                            <tr class="group text-white-dark hover:text-black dark:hover:text-white-light/90">
+                                <td class="text-black dark:text-white">
+                                    <span class="whitespace-nowrap">Al-Ma’jil Fuel Stations</span>
+                                </td>
+                                <td>532</td>
+                                <td>$256.52</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,459 @@
+@if(role() == "Admin" || role() == "CompanyOwner"){
+    <section>
+        <div class="grid grid-cols-1 md:grid-cols-2 mb-4 gap-4">
+            <!-- Total Companies -->
+            <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="text-center w-full position-relative z-10">
+                    <img [src]="companyLogo" class="w-[50px] mx-auto" alt="logo">
+                    <p class="text-[#96a0b5] text-lg">{{ companyName() }}</p>
+                        <form class="flex items-center justify-center gap-3 z-2">
+                        <p class="text-">{{message1}}</p>
+                        <svg ngxClipboard [cbContent]="message1" (cbOnSuccess)="showMessage('Copied successfully.')"  width="15" height="15" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer"><path _ngcontent-ng-c2829211677="" d="M11.875 15.8333H3.95833C2.9089 15.8321 1.90282 15.4146 1.16076 14.6726C0.418698 13.9305 0.00125705 12.9244 0 11.875L0 3.95833C0.00125705 2.9089 0.418698 1.90282 1.16076 1.16076C1.90282 0.418698 2.9089 0.00125705 3.95833 0L11.875 0C12.9244 0.00125705 13.9305 0.418698 14.6726 1.16076C15.4146 1.90282 15.8321 2.9089 15.8333 3.95833V11.875C15.8321 12.9244 15.4146 13.9305 14.6726 14.6726C13.9305 15.4146 12.9244 15.8321 11.875 15.8333ZM19 15.0417V4.75C19 4.54004 18.9166 4.33867 18.7681 4.19021C18.6197 4.04174 18.4183 3.95833 18.2083 3.95833C17.9984 3.95833 17.797 4.04174 17.6485 4.19021C17.5001 4.33867 17.4167 4.54004 17.4167 4.75V15.0417C17.4167 15.6716 17.1664 16.2756 16.721 16.721C16.2756 17.1664 15.6716 17.4167 15.0417 17.4167H4.75C4.54004 17.4167 4.33867 17.5001 4.19021 17.6485C4.04174 17.797 3.95833 17.9984 3.95833 18.2083C3.95833 18.4183 4.04174 18.6197 4.19021 18.7681C4.33867 18.9166 4.54004 19 4.75 19H15.0417C16.0911 18.9987 17.0972 18.5813 17.8392 17.8392C18.5813 17.0972 18.9987 16.0911 19 15.0417Z" fill="#AEAEAE"></path></svg>
+                    </form>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5] z-1" alt="" />
+            </div>
+
+            <!-- Total Balance -->
+            <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">Total Balance</p>
+                    <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                        <svg _ngcontent-ng-c161484493="" fill="#222" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" class="w-6"><path _ngcontent-ng-c161484493="" d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path _ngcontent-ng-c161484493="" d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                        {{ 6350 }}
+                    </h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <i class="fa-solid fa-money-bill-1-wave text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Total Branches -->
+            <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">Total Branches</p>
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ totalBranches() }} <sub class="text-dark text-[14px]">0 Active - 0 DeActive</sub> </h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <i class="fa-solid fa-code-branch transform rotate-180 text-[22px] shrink-0 text-[#mainColor]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Total Users -->
+            <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">Total Users</p>
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ totalUsers() || 0 }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <icon-users class="h-7 w-7 text-mainColor" />
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Branches Table -->
+            <div class="table-responsive bg-white p-4 rounded-2xl">
+                <table>
+                    <thead >
+                        <tr>
+                            <th>Company</th>
+                            <th>Region</th>
+                            <th>City</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (branch of allBranches(); track $index) {
+                            <tr>
+                                <td class="whitespace-nowrap">{{ branch.companyName }}</td>
+                                <td class="whitespace-nowrap">{{ branch.regionTitle }}</td>
+                                <td>{{ branch.cityTitle }}</td>
+                                <td>{{ branch.address }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="flex gap-3 mt-3">
+                    <app-btn-view routerLink="/branches"></app-btn-view>
+                    <app-btn-add btnText="Add Branch" (click)="modal5.open()"></app-btn-add>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="table-responsive bg-white p-4 rounded-2xl">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="w-[90%]">Name</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(user of allUsers(); track $index) {
+                            <tr>
+                                <td>{{ user.fullName }}</td>
+                                <td class="text-center">
+                                    <span (click)="switchActiveUser(user.id)" class="border px-4 rounded-lg cursor-pointer" [ngClass]="{ 'border-green-400 text-green-400': user.isActive, 'border-red-400 text-red-400': !user.isActive }" >
+                                        {{ user.isActive == true ? 'Active' : 'DeActive' }}
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="flex gap-3 mt-3">
+                    <app-btn-view routerLink="/users-company/"></app-btn-view>
+                    <app-btn-add btnText="Add User" (click)="modal6.open()"></app-btn-add>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Add Branch -->
+    <ngx-custom-modal #modal5 customClass="modal-top extra-large-modal">
+        <ng-template #modalHeader>
+            <div class="flex items-center gap-2">
+                <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_865_10413)">
+                    <mask id="mask0_865_10413" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="55" height="55">
+                    <path d="M54.9573 0H0.0438232V55H54.9573V0Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_865_10413)">
+                    <path d="M2.431e-05 45.8326C-0.0115107 50.8882 4.08341 55 9.12997 55C14.1765 55 18.2922 50.8882 18.3038 45.8326C18.3141 41.5694 15.4004 37.9764 11.4612 36.9563V36.6651C11.4704 32.8745 14.5583 29.7898 18.3418 29.7898H36.6467C39.2213 29.7898 41.5998 28.9326 43.5158 27.4931L43.4939 36.9551C39.5489 37.9752 36.619 41.5683 36.6086 45.8314C36.5971 50.8871 40.692 54.9988 45.7386 54.9988C50.7851 54.9988 54.9008 50.8871 54.9124 45.8314C54.9227 41.5683 52.009 37.9752 48.0698 36.9551L48.1148 18.0414C52.0598 17.0213 54.9896 13.4282 55 9.16512C55.0116 4.10945 50.9166 -0.00231934 45.8701 -0.00231934C40.8235 -0.00231934 36.7078 4.10945 36.6963 9.16512C36.6859 13.4282 39.5997 17.0213 43.5389 18.0414V18.3326C43.5296 22.1231 40.4417 25.2078 36.6582 25.2078H18.3534C12.0449 25.2078 6.90141 30.3478 6.88642 36.6663V36.9574C2.94029 37.9787 0.0104058 41.5694 2.431e-05 45.8326Z" fill="#F79320"/>
+                    </g>
+                    <path d="M45.7166 54.0884C50.2519 54.0884 53.9284 50.4061 53.9284 45.8637C53.9284 41.3214 50.2519 37.639 45.7166 37.639C41.1814 37.639 37.5049 41.3214 37.5049 45.8637C37.5049 50.4061 41.1814 54.0884 45.7166 54.0884Z" fill="#F7F7F7"/>
+                    <path d="M46.899 47.048V50.6306H44.5332V47.048H40.9562V44.6784H44.5332V41.0958H46.899V44.6784H50.476V47.048H46.899Z" fill="#F79320"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_865_10413">
+                    <rect width="55" height="55" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+
+                <div class="flex flex-col gap-0">
+                    <h3 class="relative top-[5px] text-[25px] font-semibold">New</h3>
+                    <h3 class="ms-3 text-[25px] font-semibold">Branch</h3>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #modalBody>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-4" [formGroup]="branchForm">
+                <!-- Region -->
+                <div>
+                    <label for="RegionId" class="block mb-1 font-medium">Region Id</label>
+                    <select id="RegionId" name="RegionId" formControlName="RegionId" (change)="onRegionsChange($event)" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor">
+                        <option value="" selected disabled>Select Region...</option>
+                        @for(region of allRegions(); track $index){
+                            <option [value]="region.id">{{region.title}}</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label for="CityId" class="block mb-1 font-medium">City</label>
+                    <select id="CityId" name="CityId" formControlName="CityId"
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor">
+                    <option value="" selected disabled>Select City...</option>
+                    @for(city of allCities(); track $index){
+                        <option [value]="city.id">{{city.name}}</option>
+                    }
+                    </select>
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label for="PhoneNumber" class="block mb-1 font-medium">Phone Number</label>
+                    <div class="flex items-center">
+                    <span class="bg-gray-100 text-gray-800 px-4 py-2 rounded-l-md border border-r-0">+966</span>
+                    <input id="PhoneNumber" type="tel" name="PhoneNumber" formControlName="PhoneNumber"
+                        class="flex-1 border rounded-r-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor"
+                        placeholder="Phone...">
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div>
+                    <label for="Address" class="block mb-1 font-medium">Address</label>
+                    <input id="Address" name="Address" formControlName="Address"
+                    class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor"
+                    placeholder="Address...">
+                </div>
+
+                <!-- Users -->
+                <div class="md:col-span-2">
+                    <label for="users" class="block mb-1 font-medium">Users</label>
+                    <div class="flex gap-2">
+                        <div formArrayName="UserIds" class="flex flex-col gap-2 w-full">
+                            <div *ngFor="let user of users.controls; let i = index" class="flex gap-2 w-full">
+                            <select name="users" id="users" class="form-select" [formControlName]="i">
+                                <option value="" selected disabled>Select User...</option>
+                                @for(user of allUsers();track $index){
+                                    <option [value]="user.id">{{user.fullName}}</option>
+                                }
+                            </select>
+                            @if(i > 0){
+                                <span class="text-danger mt-2 cursor-pointer" (click)="removeUser(i)"><i class="fa-solid fa-minus"></i></span>
+                            }
+                            @if(users.controls.length == 1){
+                                <span type="button" class="flex items-center justify-center rounded-full border border-mainColor w-[35px] h-[35px] cursor-pointer text-mainColor hover:bg-mainColor hover:text-white transition-all" (click)="addUser()"><i class="fa-solid fa-plus"></i></span>
+                            }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </ng-template>
+        <ng-template #modalFooter>
+            <!-- Save Button -->
+            <app-btn-save (click)="submitBranchForm()"></app-btn-save>
+        </ng-template>
+    </ngx-custom-modal>
+
+    <!-- Modal Add User -->
+    <ngx-custom-modal #modal6 customClass="modal-top extra-large-modal">
+        <ng-template #modalHeader>
+            <div class="flex items-center gap-0">
+                <icon-users class="h-16 w-16 text-mainColor" />
+                <div class="flex flex-col gap-0">
+                    <h3 class="relative top-[5px] text-[25px] font-semibold">New</h3>
+                    <h3 class="ms-3 text-[25px] font-semibold">User</h3>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #modalBody>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-4" [formGroup]="userForm" (ngSubmit)="submitUserForm()">
+                <!-- Full Name -->
+                <div class="md:col-span-2">
+                    <label for="fullName" class="block mb-1 font-medium">Full Name</label>
+                    <input type="text" name="fullName" id="fullName" formControlName="fullName"
+                        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor"
+                        placeholder="Full Name...">
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label for="mobile" class="block mb-1 font-medium">Phone Number</label>
+                    <div class="flex items-center">
+                    <span class="bg-gray-100 text-gray-800 px-4 py-2 rounded-l-md border border-r-0">+966</span>
+                    <input type="tel" name="mobile" id="mobile" formControlName="mobile"
+                            class="flex-1 border rounded-r-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor"
+                            placeholder="Phone...">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block mb-1 font-medium">Email</label>
+                    <input type="email" name="email" id="email" formControlName="email"
+                        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-mainColor"
+                        placeholder="Email...">
+                </div>
+
+                <!-- Roles -->
+                <div class="md:col-span-2">
+                    <label for="Roles" class="block mb-1 font-medium">Roles</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
+                        @for(role of allRoles(); track $index){
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" class="form-checkbox text-mainColor" (change)="toggleRoleSelection(role, $event)" id="{{role.name + $index}}">
+                                <label [for]="role.name + $index" class="text-sm">{{role.name}}</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </form>
+
+        </ng-template>
+        <ng-template #modalFooter>
+            <!-- Save Button -->
+            <app-btn-save (click)="submitUserForm()"></app-btn-save>
+        </ng-template>
+    </ngx-custom-modal>
+} @else if(role() == "Benzeny"){
+    <section>
+        <!-- Section Total Companies -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Total Companies -->
+            <div class="relative bg-white shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">Total Companies</p>
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ totalCompanies() }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.533203 10.8442V8.33489C0.533203 7.93559 0.684654 7.55264 0.954237 7.27029C1.22382 6.98794 1.58945 6.82931 1.9707 6.82931C1.9707 6.82931 2.88974 6.82931 2.92904 6.82931C3.522 5.44912 4.22302 4.12269 5.02491 2.86361C5.50373 2.21149 6.16725 1.73473 6.92049 1.50157C8.60812 0.642382 15.4583 0.642382 17.1459 1.50157C17.8992 1.73473 18.5627 2.21149 19.0415 2.86361C19.8434 4.12269 20.5444 5.44912 21.1374 6.82931C21.1767 6.82931 22.0957 6.82931 22.0957 6.82931C22.477 6.82931 22.8426 6.98794 23.1122 7.27029C23.3818 7.55264 23.5332 7.93559 23.5332 8.33489V10.8442C19.7254 10.243 15.8835 9.90768 12.0332 9.84048C8.18286 9.90768 4.34105 10.243 0.533203 10.8442ZM23.5332 12.8747V14.8591C23.5332 15.9239 23.1293 16.9451 22.4104 17.698C21.6916 18.451 20.7165 18.874 19.6999 18.874H4.36654C3.34987 18.874 2.37485 18.451 1.65596 17.698C0.937071 16.9451 0.533203 15.9239 0.533203 14.8591V12.8787C4.34054 12.269 8.18232 11.9247 12.0332 11.8479C15.8841 11.9247 19.7259 12.269 23.5332 12.8787V12.8747ZM6.2832 15.8628C6.2832 15.5966 6.18224 15.3413 6.00251 15.1531C5.82279 14.9648 5.57904 14.8591 5.32487 14.8591C5.0707 14.8591 4.82695 14.9648 4.64723 15.1531C4.4675 15.3413 4.36654 15.5966 4.36654 15.8628C4.36654 16.129 4.4675 16.3843 4.64723 16.5725C4.82695 16.7608 5.0707 16.8665 5.32487 16.8665C5.57904 16.8665 5.82279 16.7608 6.00251 16.5725C6.18224 16.3843 6.2832 16.129 6.2832 15.8628ZM19.6999 15.8628C19.6999 15.5966 19.5989 15.3413 19.4192 15.1531C19.2395 14.9648 18.9957 14.8591 18.7415 14.8591C18.4874 14.8591 18.2436 14.9648 18.0639 15.1531C17.8842 15.3413 17.7832 15.5966 17.7832 15.8628C17.7832 16.129 17.8842 16.3843 18.0639 16.5725C18.2436 16.7608 18.4874 16.8665 18.7415 16.8665C18.9957 16.8665 19.2395 16.7608 19.4192 16.5725C19.5989 16.3843 19.6999 16.129 19.6999 15.8628ZM7.18595 20.8814C7.74849 24.8501 1.94195 24.8481 2.50545 20.8814H7.18595ZM21.561 20.8814C22.1235 24.8501 16.317 24.8481 16.8805 20.8814H21.561Z" fill="#f79320"/>
+                    </svg>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Active Companies -->
+            <div class="relative bg-white shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">Active</p>
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ totalActiveCompanies() }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <i class="fa-regular fa-circle-check text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- DeActive Companies -->
+            <div class="relative bg-white shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col">
+                    <p class="text-[#96a0b5] text-lg">DeActive</p>
+                    <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ totalDeActiveCompanies() }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4">
+                    <i class="fa-regular fa-circle-xmark text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+        </div>
+
+        <!-- Table Company -->
+        <div class="panel shadow-none mt-6 pb-0">
+            <!-- Title Table -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                <div class="flex items-center gap-2">
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.533203 10.8442V8.33489C0.533203 7.93559 0.684654 7.55264 0.954237 7.27029C1.22382 6.98794 1.58945 6.82931 1.9707 6.82931C1.9707 6.82931 2.88974 6.82931 2.92904 6.82931C3.522 5.44912 4.22302 4.12269 5.02491 2.86361C5.50373 2.21149 6.16725 1.73473 6.92049 1.50157C8.60812 0.642382 15.4583 0.642382 17.1459 1.50157C17.8992 1.73473 18.5627 2.21149 19.0415 2.86361C19.8434 4.12269 20.5444 5.44912 21.1374 6.82931C21.1767 6.82931 22.0957 6.82931 22.0957 6.82931C22.477 6.82931 22.8426 6.98794 23.1122 7.27029C23.3818 7.55264 23.5332 7.93559 23.5332 8.33489V10.8442C19.7254 10.243 15.8835 9.90768 12.0332 9.84048C8.18286 9.90768 4.34105 10.243 0.533203 10.8442ZM23.5332 12.8747V14.8591C23.5332 15.9239 23.1293 16.9451 22.4104 17.698C21.6916 18.451 20.7165 18.874 19.6999 18.874H4.36654C3.34987 18.874 2.37485 18.451 1.65596 17.698C0.937071 16.9451 0.533203 15.9239 0.533203 14.8591V12.8787C4.34054 12.269 8.18232 11.9247 12.0332 11.8479C15.8841 11.9247 19.7259 12.269 23.5332 12.8787V12.8747ZM6.2832 15.8628C6.2832 15.5966 6.18224 15.3413 6.00251 15.1531C5.82279 14.9648 5.57904 14.8591 5.32487 14.8591C5.0707 14.8591 4.82695 14.9648 4.64723 15.1531C4.4675 15.3413 4.36654 15.5966 4.36654 15.8628C4.36654 16.129 4.4675 16.3843 4.64723 16.5725C4.82695 16.7608 5.0707 16.8665 5.32487 16.8665C5.57904 16.8665 5.82279 16.7608 6.00251 16.5725C6.18224 16.3843 6.2832 16.129 6.2832 15.8628ZM19.6999 15.8628C19.6999 15.5966 19.5989 15.3413 19.4192 15.1531C19.2395 14.9648 18.9957 14.8591 18.7415 14.8591C18.4874 14.8591 18.2436 14.9648 18.0639 15.1531C17.8842 15.3413 17.7832 15.5966 17.7832 15.8628C17.7832 16.129 17.8842 16.3843 18.0639 16.5725C18.2436 16.7608 18.4874 16.8665 18.7415 16.8665C18.9957 16.8665 19.2395 16.7608 19.4192 16.5725C19.5989 16.3843 19.6999 16.129 19.6999 15.8628ZM7.18595 20.8814C7.74849 24.8501 1.94195 24.8481 2.50545 20.8814H7.18595ZM21.561 20.8814C22.1235 24.8501 16.317 24.8481 16.8805 20.8814H21.561Z" fill="#f79320"/>
+                    </svg>
+                    <div class="flex flex-col gap-0">
+                        <h3 class="relative top-[-2px] text-[25px] font-semibold">All</h3>
+                        <h3 class="ms-3 text-[25px] font-semibold">Companies</h3>
+                    </div>
+                </div>
+                <!-- Search Input -->
+                <div class="flex items-center justify-end gap-3">
+                    <input (input)="searchCompany($event)" type="text" class="form-input w-[250px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1" placeholder="Search..." />
+                        <div class="flex flex-wrap gap-3 tems-center">
+                        <!-- Print Button -->
+                        <div class="flex items-center" ngxTippy="Print" (click)="exportTable('print')">
+                            <icon-printer class="text-mainColor h-6 w-6 cursor-pointer hover:scale-110 transition" />
+                        </div>
+
+                        <!-- Excel Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="Excel" class="text-mainColor fa-solid fa-file-excel text-xl cursor-pointer hover:scale-110 transition" (click)="exportTable('csv')"></i>
+                        </div>
+
+                        <!-- PDF Button -->
+                        <div class="flex items-center">
+                            <i ngxTippy="PDF" class="text-mainColor fa-solid fa-file-pdf text-xl cursor-pointer hover:scale-110 transition" (click)="downloadPdf()"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="datatable">
+                <ng-datatable
+                    #table
+                    [rows]="allCompanies()"
+                    [columns]="cols"
+                    [totalRows]="totalCompanies()"
+                    [sortable]="true"
+                    [pageSize]="pageSize"
+                    (pageChange)="onPageChangeCompany($event)"
+                    (pageSizeChange)="onPageSizeChangeCompany($event)"
+                    sortColumn="companyName"
+                    skin="whitespace-nowrap table-hover"
+                    firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                    nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"><path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'>
+
+                    <!-- Logo -->
+                    <ng-template slot="profilePicturePath" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <img [src]="value.profilePicturePath" class="w-[80px]" [alt]="value.name">
+                        </div>
+                    </ng-template>
+
+
+                <!-- Activation -->
+                    <ng-template slot="isActive" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <span
+                            (click)="switchActiveCompany(value.id)"
+                            class="border px-4 rounded-lg cursor-pointer"
+                            [ngClass]="{
+                                'border-green-400 text-green-400': value.isActive,
+                                'border-red-400 text-red-400': !value.isActive
+                            }"
+                            >
+                            {{ value.isActive ? 'Active' : 'DeActive' }}
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <!-- Actions -->
+                    <ng-template slot="action" let-value="data">
+                        <div class="flex items-center gap-1">
+                            <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="View" [routerLink]="'/company-dashboard/' + value.id">
+                                <icon-info-hexagon />
+                            </button>
+                            <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="Delete" (click)="deleteCompany(value.id)">
+                                <icon-trash-lines />
+                            </button>
+                        </div>
+                    </ng-template>
+
+                </ng-datatable>
+            </div>
+
+            <!-- <div class="datatable">
+                <ng-datatable
+                    [rows]="allCompanies()"
+                    [columns]="cols"
+                    [search]="searchTerm"
+                    [sortable]="true"
+                    skin="whitespace-nowrap table-hover"
+                    firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                    lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg> '
+                    previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                    nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                >
+                    <ng-template slot="profilePicturePath" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <img [src]="value.profilePicturePath" class="w-[80px]" [alt]="value.name">
+                        </div>
+                    </ng-template>
+
+                    <ng-template slot="isActive" let-value="data">
+                        <div class="flex items-center gap-2">
+                            <span
+                            (click)="switchActiveCompany(value.id)"
+                            class="border px-4 rounded-lg cursor-pointer"
+                            [ngClass]="{
+                                'border-green-400 text-green-400': value.isActive,
+                                'border-red-400 text-red-400': !value.isActive
+                            }"
+                            >
+                            {{ value.isActive ? 'Active' : 'DeActive' }}
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template slot="action" let-value="data">
+                        <div class="flex items-center gap-1">
+                            <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="View" [routerLink]="'/company-dashboard/' + value.id">
+                                <icon-info-hexagon />
+                            </button>
+                            <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="Delete" (click)="deleteCompany(value.id)">
+                                <icon-trash-lines />
+                            </button>
+                        </div>
+                    </ng-template>
+                </ng-datatable>
+            </div> -->
+        </div>
+    </section>
+}
+

@@ -1,0 +1,295 @@
+@if(role() == 'Benzeny'){
+<section>
+    <!-- Section Total Ads -->
+    <div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <!-- Total Ads -->
+            <div class="relative bg-white text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-[#96a0b5] text-lg">Total Ads</p>
+                    <h3 class="font-medium text-[#222] text-[20px]">{{ totalAds() }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4 border border-dotted">
+                    <svg fill="#f79320" width="30" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                        <g id="_x30_3_Digital_Marketing"><g><path d="m445.787 9.265h-379.524c-32.001 0-58.07 25.969-58.07 57.821v377.829c0 31.901 26.069 57.821 58.07 57.821h379.524c32.001 0 58.02-25.92 58.02-57.821v-377.829c0-31.852-26.02-57.821-58.02-57.821zm-228.542 55.577h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm-66.295 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.137 0-7.477-3.34-7.477-7.477s3.34-7.477 7.477-7.477zm-66.344 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm404.247 380.072c0 23.677-19.34 42.867-43.067 42.867h-379.523c-23.776 0-43.116-19.191-43.116-42.867v-309.54h465.706z"/><path d="m343.504 315.366-28.761-28.611c8.773-13.309 7.427-31.353-4.486-43.266-11.813-11.714-30.107-13.359-43.764-4.835l-28.911-28.761c-8.822-8.773-23.029-8.673-31.752-.249-8.922 8.673-9.022 22.829-.249 31.552l1.844 1.844-38.231 88.376c-1.047.698-.997.848-11.863 11.315-13.907 13.508-14.306 35.739-.349 49.596 11.415 11.365 29.06 13.458 42.718 5.882l37.982 37.783c10.019 10.019 26.468 10.118 36.636.249 10.169-9.82 10.468-26.169.249-36.387l-29.409-29.259 64.45-25.87 1.944 1.994c8.673 8.623 22.879 8.823 31.752.2 8.923-8.624 9.022-22.78.2-31.553zm-114.445 45.559c-2.343.947-4.087 2.991-4.586 5.433-.498 2.492.299 5.034 2.094 6.829l37.433 37.284c4.087 4.087 4.287 10.766-.15 15.053-4.337 4.187-11.365 4.137-15.652-.149l-42.369-42.169c-2.741-2.741-7.128-2.891-10.118-.399-8.175 6.978-20.586 6.53-28.163-1.047-8.075-8.025-7.726-20.636.2-28.262l5.483-5.383 23.078 22.979c2.891 2.891 7.776 2.941 10.766-.249 2.741-2.941 2.642-7.527-.199-10.418l-23.727-23.627 35.64-82.444 79.254 78.905zm103.877-24.724c-3.09 2.941-7.975 2.741-10.816-.1-33.446-33.297-54.082-53.833-66.294-65.995 0 0-.648-.648-3.14-3.14-.15-.149-.349-.299-.548-.498-.299-.349-.648-.648-.947-.947-.2-.199-.449-.498-.947-.947-.2-.249-.399-.449-.598-.598-.299-.349-.648-.648-.997-.997-.399-.399-.748-.797-1.097-1.096-.349-.399-.747-.748-1.196-1.197-.399-.399-.797-.797-1.246-1.246-.149-.149-.249-.249-.399-.399-.548-.548-1.146-1.147-1.744-1.745-1.346-1.346-1.944-1.944-2.093-2.093-.1-.05-.15-.1-.2-.149-5.932-5.882-13.907-13.857-24.524-24.424-2.891-2.841-2.791-7.427.1-10.218 2.991-2.891 7.826-2.841 10.766.05l105.972 105.523c2.839 2.839 2.839 7.375-.052 10.216z"/><path d="m289.741 228.055c3.887 1.311 8.147-.756 9.477-4.692l8.076-23.92c1.319-3.914-.781-8.156-4.692-9.477-3.919-1.329-8.156.779-9.477 4.692l-8.076 23.92c-1.32 3.913.781 8.155 4.692 9.477z"/><path d="m355.611 247.27-24.477 7.591c-3.943 1.222-6.15 5.41-4.926 9.356 1.223 3.949 5.414 6.149 9.356 4.926l24.477-7.591c3.943-1.222 6.15-5.41 4.926-9.356-1.222-3.942-5.408-6.155-9.356-4.926z"/><path d="m325.504 239.538 17.855-17.283c2.967-2.872 3.042-7.606.17-10.573-2.872-2.969-7.608-3.047-10.573-.17l-17.855 17.283c-2.967 2.872-3.042 7.606-.17 10.573 2.87 2.964 7.604 3.044 10.573.17z"/></g></g><g id="Layer_1"/>
+                    </svg>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- System Ads -->
+            <div class="relative bg-white text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-[#96a0b5] text-lg">System Ads</p>
+                    <h3 class="font-medium text-[#222] text-[20px]">{{ totalSystemAds()}}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4 border border-dotted">
+                    <i class="fa-solid fa-laptop text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Mobile Ads -->
+            <div class="relative bg-white text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-[#96a0b5] text-lg">Mobile Ads</p>
+                    <h3 class="font-medium text-[#222] text-[20px]">{{ totalMobileAds()}}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4 border border-dotted">
+                    <i class="fa-solid fa-mobile-screen text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- Active Ads -->
+            <div class="relative bg-white text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-[#96a0b5] text-lg">Active</p>
+                    <h3 class="font-medium text-[#222] text-[20px]">{{ totalAdsActive() }}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4 border border-dotted">
+                    <i class="fa-regular fa-circle-check text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+
+            <!-- DeActive Ads -->
+            <div class="relative bg-white text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5">
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-[#96a0b5] text-lg">DeActive</p>
+                    <h3 class="font-medium text-[#222] text-[20px]">{{ totalAdsDeActive()}}</h3>
+                </div>
+                <div class="p-1 rounded-lg mt-4 border border-dotted">
+                    <i class="fa-regular fa-circle-xmark text-[25px]"></i>
+                </div>
+                <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <div class="panel shadow-none mt-6 pb-0">
+        <!-- Title Table -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+            <div class="flex items-center gap-2">
+                <svg fill="#f79320" width="50" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <g id="_x30_3_Digital_Marketing"><g><path d="m445.787 9.265h-379.524c-32.001 0-58.07 25.969-58.07 57.821v377.829c0 31.901 26.069 57.821 58.07 57.821h379.524c32.001 0 58.02-25.92 58.02-57.821v-377.829c0-31.852-26.02-57.821-58.02-57.821zm-228.542 55.577h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm-66.295 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.137 0-7.477-3.34-7.477-7.477s3.34-7.477 7.477-7.477zm-66.344 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm404.247 380.072c0 23.677-19.34 42.867-43.067 42.867h-379.523c-23.776 0-43.116-19.191-43.116-42.867v-309.54h465.706z"/><path d="m343.504 315.366-28.761-28.611c8.773-13.309 7.427-31.353-4.486-43.266-11.813-11.714-30.107-13.359-43.764-4.835l-28.911-28.761c-8.822-8.773-23.029-8.673-31.752-.249-8.922 8.673-9.022 22.829-.249 31.552l1.844 1.844-38.231 88.376c-1.047.698-.997.848-11.863 11.315-13.907 13.508-14.306 35.739-.349 49.596 11.415 11.365 29.06 13.458 42.718 5.882l37.982 37.783c10.019 10.019 26.468 10.118 36.636.249 10.169-9.82 10.468-26.169.249-36.387l-29.409-29.259 64.45-25.87 1.944 1.994c8.673 8.623 22.879 8.823 31.752.2 8.923-8.624 9.022-22.78.2-31.553zm-114.445 45.559c-2.343.947-4.087 2.991-4.586 5.433-.498 2.492.299 5.034 2.094 6.829l37.433 37.284c4.087 4.087 4.287 10.766-.15 15.053-4.337 4.187-11.365 4.137-15.652-.149l-42.369-42.169c-2.741-2.741-7.128-2.891-10.118-.399-8.175 6.978-20.586 6.53-28.163-1.047-8.075-8.025-7.726-20.636.2-28.262l5.483-5.383 23.078 22.979c2.891 2.891 7.776 2.941 10.766-.249 2.741-2.941 2.642-7.527-.199-10.418l-23.727-23.627 35.64-82.444 79.254 78.905zm103.877-24.724c-3.09 2.941-7.975 2.741-10.816-.1-33.446-33.297-54.082-53.833-66.294-65.995 0 0-.648-.648-3.14-3.14-.15-.149-.349-.299-.548-.498-.299-.349-.648-.648-.947-.947-.2-.199-.449-.498-.947-.947-.2-.249-.399-.449-.598-.598-.299-.349-.648-.648-.997-.997-.399-.399-.748-.797-1.097-1.096-.349-.399-.747-.748-1.196-1.197-.399-.399-.797-.797-1.246-1.246-.149-.149-.249-.249-.399-.399-.548-.548-1.146-1.147-1.744-1.745-1.346-1.346-1.944-1.944-2.093-2.093-.1-.05-.15-.1-.2-.149-5.932-5.882-13.907-13.857-24.524-24.424-2.891-2.841-2.791-7.427.1-10.218 2.991-2.891 7.826-2.841 10.766.05l105.972 105.523c2.839 2.839 2.839 7.375-.052 10.216z"/><path d="m289.741 228.055c3.887 1.311 8.147-.756 9.477-4.692l8.076-23.92c1.319-3.914-.781-8.156-4.692-9.477-3.919-1.329-8.156.779-9.477 4.692l-8.076 23.92c-1.32 3.913.781 8.155 4.692 9.477z"/><path d="m355.611 247.27-24.477 7.591c-3.943 1.222-6.15 5.41-4.926 9.356 1.223 3.949 5.414 6.149 9.356 4.926l24.477-7.591c3.943-1.222 6.15-5.41 4.926-9.356-1.222-3.942-5.408-6.155-9.356-4.926z"/><path d="m325.504 239.538 17.855-17.283c2.967-2.872 3.042-7.606.17-10.573-2.872-2.969-7.608-3.047-10.573-.17l-17.855 17.283c-2.967 2.872-3.042 7.606-.17 10.573 2.87 2.964 7.604 3.044 10.573.17z"/></g></g><g id="Layer_1"/>
+                </svg>
+                <div class="flex flex-col gap-0">
+                    <h3 class="relative top-[-2px] text-[25px] font-semibold">All</h3>
+                    <h3 class="ms-3 text-[25px] font-semibold">Ads</h3>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 justify-end">
+                <!-- Search Input -->
+                <div class="flex items-center">
+                    <input [(ngModel)]="searchTerm" type="text" class="form-input w-full border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1" placeholder="Search..." />
+                </div>
+
+                <!-- Filter Input -->
+                <div class="flex items-center">
+                    <select name="adsFilter" id="adsFilter" (change)="switchAds($event)" class="form-input w-full border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1">
+                        <option value="1">All</option>
+                        <option value="2">System Ads</option>
+                        <option value="3">Mobile Ads</option>
+                        <option value="4">Active Ads</option>
+                    </select>
+                </div>
+
+                <!-- Inputs Add And Uploaded-->
+                <div class="flex flex-wrap md:justify-evenly justify-start items-center md:mb-0 mb-3">
+                    <!-- Add Users Button -->
+                    <div class="flex items-center" (click)="openModal()">
+                        <app-btn-add btnText="Add Ads"></app-btn-add>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="datatable">
+            <ng-datatable
+                [rows]="allAds()"
+                [columns]="cols"
+                [search]="searchTerm"
+                [sortable]="true"
+                skin="whitespace-nowrap table-hover"
+                firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg> '
+                previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+            >
+            <!-- Col Duration In Month -->
+            <ng-template slot="durationInMonths" let-value="data">
+                <div class="flex items-center gap-2">
+                    <span>{{value.durationInMonths}} Month(s)</span>
+                </div>
+            </ng-template>
+            <!-- Col Image View -->
+            <ng-template slot="image" let-value="data">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <img [src]="value.image " class="w-[60px]" alt="">
+                </div>
+            </ng-template>
+            <!-- Col URL Link -->
+            <ng-template slot="url" let-value="data">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <a [href]="value.url" target="_blank">
+                        <icon-link class="h-5 w-5" />
+                    </a>
+                </div>
+            </ng-template>
+            <ng-template slot="isActive" let-value="data">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="border px-4 rounded-lg cursor-pointer"
+                        [ngClass]="{
+                            'border-green-400 text-green-400': value.isActive,
+                            'border-red-400 text-red-400': !value.isActive
+                        }"
+                        (click)="switchAdsActive(value.id)"
+                    >
+                    {{ value.isActive ? 'Active' : 'DeActive' }}
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template slot="action" let-value="data">
+                <div class="flex items-center gap-1">
+                    <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="Edit" (click)="patchAdsData(value)">
+                        <icon-pencil />
+                    </button>
+                    <button type="button" class="ltr:mr-2 rtl:ml-2" ngxTippy="Delete" (click)="deleteAds(value.id)">
+                        <icon-trash-lines />
+                    </button>
+                </div>
+            </ng-template>
+            </ng-datatable>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Add Ads -->
+<ngx-custom-modal #modal5 customClass="modal-top extra-large-modal">
+    <ng-template #modalHeader>
+        <div class="flex items-center gap-2">
+            <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_865_10413)">
+                <mask id="mask0_865_10413" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="55" height="55">
+                <path d="M54.9573 0H0.0438232V55H54.9573V0Z" fill="white"/>
+                </mask>
+                <g mask="url(#mask0_865_10413)">
+                <path d="M2.431e-05 45.8326C-0.0115107 50.8882 4.08341 55 9.12997 55C14.1765 55 18.2922 50.8882 18.3038 45.8326C18.3141 41.5694 15.4004 37.9764 11.4612 36.9563V36.6651C11.4704 32.8745 14.5583 29.7898 18.3418 29.7898H36.6467C39.2213 29.7898 41.5998 28.9326 43.5158 27.4931L43.4939 36.9551C39.5489 37.9752 36.619 41.5683 36.6086 45.8314C36.5971 50.8871 40.692 54.9988 45.7386 54.9988C50.7851 54.9988 54.9008 50.8871 54.9124 45.8314C54.9227 41.5683 52.009 37.9752 48.0698 36.9551L48.1148 18.0414C52.0598 17.0213 54.9896 13.4282 55 9.16512C55.0116 4.10945 50.9166 -0.00231934 45.8701 -0.00231934C40.8235 -0.00231934 36.7078 4.10945 36.6963 9.16512C36.6859 13.4282 39.5997 17.0213 43.5389 18.0414V18.3326C43.5296 22.1231 40.4417 25.2078 36.6582 25.2078H18.3534C12.0449 25.2078 6.90141 30.3478 6.88642 36.6663V36.9574C2.94029 37.9787 0.0104058 41.5694 2.431e-05 45.8326Z" fill="#F79320"/>
+                </g>
+                <path d="M45.7166 54.0884C50.2519 54.0884 53.9284 50.4061 53.9284 45.8637C53.9284 41.3214 50.2519 37.639 45.7166 37.639C41.1814 37.639 37.5049 41.3214 37.5049 45.8637C37.5049 50.4061 41.1814 54.0884 45.7166 54.0884Z" fill="#F7F7F7"/>
+                <path d="M46.899 47.048V50.6306H44.5332V47.048H40.9562V44.6784H44.5332V41.0958H46.899V44.6784H50.476V47.048H46.899Z" fill="#F79320"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_865_10413">
+                <rect width="55" height="55" fill="white"/>
+                </clipPath>
+                </defs>
+            </svg>
+
+            <div class="flex flex-col gap-0">
+                <h3 class="relative top-[5px] text-[25px] font-semibold">New</h3>
+                <h3 class="ms-3 text-[25px] font-semibold">Ads</h3>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #modalBody>
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-3" [formGroup]="adsForm">
+            <!-- Type -->
+            <div>
+                <label for="Type" class="block mb-1 font-medium">Type</label>
+                <select id="Type" name="Type" formControlName="Type"
+                class="w-full border rounded px-3 py-2 border-gray-300 focus:border-mainColor focus:outline-none">
+                <option value="1">System</option>
+                <option value="2">Mobile</option>
+                </select>
+            </div>
+
+            <!-- Name -->
+            <div>
+                <label for="Name" class="block mb-1 font-medium">Name</label>
+                <input type="text" formControlName="Name" placeholder="Ads Name..."
+                class="form-input w-full border-gray-300 focus:border-mainColor" />
+            </div>
+
+            <!-- Url -->
+            <div>
+                <label for="Url" class="block mb-1 font-medium">Url</label>
+                <input type="text" formControlName="Url" placeholder="Ads Url..."
+                class="form-input w-full border-gray-300 focus:border-mainColor" />
+            </div>
+
+            <!-- DurationInMonths -->
+            <div>
+                <label for="DurationInMonths" class="block mb-1 font-medium">Duration In Months</label>
+                <input type="number" formControlName="DurationInMonths" placeholder="Duration..."
+                class="form-input w-full border-gray-300 focus:border-mainColor" />
+            </div>
+
+            <!-- Latitude -->
+            <div>
+                <label for="Latitude" class="block mb-1 font-medium">Latitude</label>
+                <input type="text" formControlName="Latitude" placeholder="Latitude..."
+                class="form-input w-full border-gray-300 focus:border-mainColor" />
+            </div>
+
+            <!-- Longitude -->
+            <div>
+                <label for="Longitude" class="block mb-1 font-medium">Longitude</label>
+                <input type="text" formControlName="Longitude" placeholder="Longitude..."
+                class="form-input w-full border-gray-300 focus:border-mainColor" />
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label for="Description" class="block mb-1 font-medium">Description</label>
+                <textarea formControlName="Description" placeholder="Description..."
+                class="form-input w-full border-gray-300 focus:border-mainColor"></textarea>
+            </div>
+
+            <!-- File -->
+            <div class="flex items-center gap-3">
+                <!-- Input -->
+                <input type="file" accept="image/*" (change)="onFileSelected($event)" class="form-input focus:border-mainColor" >
+
+                <!-- Preview -->
+                @if(selectedImage || adById?.image){
+                    <img [src]="selectedImage || adById?.image " alt="Preview" class="w-40 h-30 object-cover rounded-md border" />
+                }
+            </div>
+        </form>
+    </ng-template>
+    <ng-template #modalFooter>
+        <!-- Save Button -->
+        @if(update){
+            <app-btn-save (click)="updateAdsForm()"></app-btn-save>
+        } @else {
+            <app-btn-save (click)="submitAdsForm()"></app-btn-save>
+        }
+    </ng-template>
+</ngx-custom-modal>
+} @else {
+<section>
+        <div class="panel">
+            <div class="flex items-center gap-2 mb-4">
+                <svg fill="#f79320" width="50" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <g id="_x30_3_Digital_Marketing"><g><path d="m445.787 9.265h-379.524c-32.001 0-58.07 25.969-58.07 57.821v377.829c0 31.901 26.069 57.821 58.07 57.821h379.524c32.001 0 58.02-25.92 58.02-57.821v-377.829c0-31.852-26.02-57.821-58.02-57.821zm-228.542 55.577h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm-66.295 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.137 0-7.477-3.34-7.477-7.477s3.34-7.477 7.477-7.477zm-66.344 0h22.331c4.137 0 7.477 3.34 7.477 7.477s-3.34 7.477-7.477 7.477h-22.331c-4.087 0-7.477-3.34-7.477-7.477s3.39-7.477 7.477-7.477zm404.247 380.072c0 23.677-19.34 42.867-43.067 42.867h-379.523c-23.776 0-43.116-19.191-43.116-42.867v-309.54h465.706z"/><path d="m343.504 315.366-28.761-28.611c8.773-13.309 7.427-31.353-4.486-43.266-11.813-11.714-30.107-13.359-43.764-4.835l-28.911-28.761c-8.822-8.773-23.029-8.673-31.752-.249-8.922 8.673-9.022 22.829-.249 31.552l1.844 1.844-38.231 88.376c-1.047.698-.997.848-11.863 11.315-13.907 13.508-14.306 35.739-.349 49.596 11.415 11.365 29.06 13.458 42.718 5.882l37.982 37.783c10.019 10.019 26.468 10.118 36.636.249 10.169-9.82 10.468-26.169.249-36.387l-29.409-29.259 64.45-25.87 1.944 1.994c8.673 8.623 22.879 8.823 31.752.2 8.923-8.624 9.022-22.78.2-31.553zm-114.445 45.559c-2.343.947-4.087 2.991-4.586 5.433-.498 2.492.299 5.034 2.094 6.829l37.433 37.284c4.087 4.087 4.287 10.766-.15 15.053-4.337 4.187-11.365 4.137-15.652-.149l-42.369-42.169c-2.741-2.741-7.128-2.891-10.118-.399-8.175 6.978-20.586 6.53-28.163-1.047-8.075-8.025-7.726-20.636.2-28.262l5.483-5.383 23.078 22.979c2.891 2.891 7.776 2.941 10.766-.249 2.741-2.941 2.642-7.527-.199-10.418l-23.727-23.627 35.64-82.444 79.254 78.905zm103.877-24.724c-3.09 2.941-7.975 2.741-10.816-.1-33.446-33.297-54.082-53.833-66.294-65.995 0 0-.648-.648-3.14-3.14-.15-.149-.349-.299-.548-.498-.299-.349-.648-.648-.947-.947-.2-.199-.449-.498-.947-.947-.2-.249-.399-.449-.598-.598-.299-.349-.648-.648-.997-.997-.399-.399-.748-.797-1.097-1.096-.349-.399-.747-.748-1.196-1.197-.399-.399-.797-.797-1.246-1.246-.149-.149-.249-.249-.399-.399-.548-.548-1.146-1.147-1.744-1.745-1.346-1.346-1.944-1.944-2.093-2.093-.1-.05-.15-.1-.2-.149-5.932-5.882-13.907-13.857-24.524-24.424-2.891-2.841-2.791-7.427.1-10.218 2.991-2.891 7.826-2.841 10.766.05l105.972 105.523c2.839 2.839 2.839 7.375-.052 10.216z"/><path d="m289.741 228.055c3.887 1.311 8.147-.756 9.477-4.692l8.076-23.92c1.319-3.914-.781-8.156-4.692-9.477-3.919-1.329-8.156.779-9.477 4.692l-8.076 23.92c-1.32 3.913.781 8.155 4.692 9.477z"/><path d="m355.611 247.27-24.477 7.591c-3.943 1.222-6.15 5.41-4.926 9.356 1.223 3.949 5.414 6.149 9.356 4.926l24.477-7.591c3.943-1.222 6.15-5.41 4.926-9.356-1.222-3.942-5.408-6.155-9.356-4.926z"/><path d="m325.504 239.538 17.855-17.283c2.967-2.872 3.042-7.606.17-10.573-2.872-2.969-7.608-3.047-10.573-.17l-17.855 17.283c-2.967 2.872-3.042 7.606-.17 10.573 2.87 2.964 7.604 3.044 10.573.17z"/></g></g><g id="Layer_1"/>
+                </svg>
+                <div class="flex flex-col gap-0">
+                    <h3 class="relative top-[-2px] text-[25px] font-semibold">All</h3>
+                    <h3 class="ms-3 text-[25px] font-semibold">Ads</h3>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                @for (item of allAds(); track $index) {
+                    <a href="javascript:;" [ngClass]="{ 'md:row-span-2 md:col-span-2': $index == 3 }" (click)="open($index)">
+                        <img [src]="item?.src" alt="image-gallery" class="rounded-md object-cover" />
+                    </a>
+                }
+            </div>
+        </div>
+</section>
+}
