@@ -52,6 +52,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { BenzenyInvoicesComponent } from './benzeny-invoices/benzeny-invoices.component';
 import { logedGuard } from 'src/core/guards/loged/loged.guard';
 import { authGuard } from 'src/core/guards/auth/auth.guard';
+import { Error404Component } from './pages/error404';
 
 export const routes: Routes = [
     {
@@ -60,7 +61,8 @@ export const routes: Routes = [
         canActivate:[authGuard],
         children: [
             // dashboard
-            { path: '', component: IndexComponent, data: { title: 'Sales Admin' } },
+            { path: '', component: Error404Component, data: { title: 'Error 404' } },
+            { path: 'index', component: IndexComponent, data: { title: 'Sales Admin' } },
             { path: 'dashboard', component: IndexComponent, data: { title: 'Dashboard' } },
             { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics Admin' } },
             { path: 'finance', component: FinanceComponent, data: { title: 'Finance Admin' } },
@@ -93,6 +95,8 @@ export const routes: Routes = [
                 {path: 'car-type', component: CarTypeComponent},
                 {path: 'tags', component: TagsComponent},
             ]},
+
+            { path: '**', component: Error404Component, data: { title: 'Error 404' } },
 
             // widgets
             { path: 'widgets', component: WidgetsComponent, data: { title: 'Widgets' } },
