@@ -16,6 +16,7 @@ import { CoverRegisterComponent } from './cover-register';
 import { ImageCropperComponent } from 'ngx-image-cropper';
 
 const routes: Routes = [
+    { path: '', component: BoxedSigninComponent, data: { title: 'Login' } },
     { path: 'auth/boxed-lockscreen', component: BoxedLockscreenComponent, data: { title: 'Boxed Lockscreen' } },
     {
         path: 'auth/boxed-password-reset',

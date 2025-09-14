@@ -57,16 +57,28 @@ import { Error404Component } from './pages/error404';
 export const routes: Routes = [
     {
         path: '',
+        component: AuthLayout,
+        canActivate:[logedGuard],
+        children: [
+            // auth
+            { path: '', loadChildren: () => import('./auth/auth.module').then((d) => d.AuthModule) },
+
+            // pages
+            // { path: '', loadChildren: () => import('./pages/pages.module').then((d) => d.PagesModule) },
+        ],
+    },
+    {
+        path: '',
         component: AppLayout,
         canActivate:[authGuard],
         children: [
             // dashboard
-            { path: '', component: Error404Component, data: { title: 'Error 404' } },
-            { path: 'index', component: IndexComponent, data: { title: 'Sales Admin' } },
-            { path: 'dashboard', component: IndexComponent, data: { title: 'Dashboard' } },
-            { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics Admin' } },
-            { path: 'finance', component: FinanceComponent, data: { title: 'Finance Admin' } },
-            { path: 'crypto', component: CryptoComponent, data: { title: 'Crypto Admin' } },
+            { path: '', component: AdsComponent, data: { title: 'Ads' } },
+            // { path: 'index', component: IndexComponent, data: { title: 'Sales Admin' } },
+            // { path: 'dashboard', component: IndexComponent, data: { title: 'Dashboard' } },
+            // { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics Admin' } },
+            // { path: 'finance', component: FinanceComponent, data: { title: 'Finance Admin' } },
+            // { path: 'crypto', component: CryptoComponent, data: { title: 'Crypto Admin' } },
 
             // Main Benzeny Components
             { path: 'benzeny-dashboard', component: BenzenyDashboardComponent, data: { title: 'Dashboard' } },
@@ -99,52 +111,41 @@ export const routes: Routes = [
             { path: '**', component: Error404Component, data: { title: 'Error 404' } },
 
             // widgets
-            { path: 'widgets', component: WidgetsComponent, data: { title: 'Widgets' } },
+            // { path: 'widgets', component: WidgetsComponent, data: { title: 'Widgets' } },
 
             // font-icons
-            { path: 'font-icons', component: FontIconsComponent, data: { title: 'Font Icons' } },
+            // { path: 'font-icons', component: FontIconsComponent, data: { title: 'Font Icons' } },
 
             // charts
-            { path: 'charts', component: ChartsComponent, data: { title: 'Charts' } },
+            // { path: 'charts', component: ChartsComponent, data: { title: 'Charts' } },
 
             // dragndrop
-            { path: 'dragndrop', component: DragndropComponent, data: { title: 'Dragndrop' } },
+            // { path: 'dragndrop', component: DragndropComponent, data: { title: 'Dragndrop' } },
 
             // pages
-            { path: 'pages/knowledge-base', component: KnowledgeBaseComponent, data: { title: 'Knowledge Base' } },
-            { path: 'pages/faq', component: FaqComponent, data: { title: 'FAQ' } },
+            // { path: 'pages/knowledge-base', component: KnowledgeBaseComponent, data: { title: 'Knowledge Base' } },
+            // { path: 'pages/faq', component: FaqComponent, data: { title: 'FAQ' } },
 
             //apps
-            { path: '', loadChildren: () => import('./apps/apps.module').then((d) => d.AppsModule) },
+            // { path: '', loadChildren: () => import('./apps/apps.module').then((d) => d.AppsModule) },
 
             // components
-            { path: '', loadChildren: () => import('./components/components.module').then((d) => d.ComponentsModule) },
+            // { path: '', loadChildren: () => import('./components/components.module').then((d) => d.ComponentsModule) },
 
             // elements
-            { path: '', loadChildren: () => import('./elements/elements.module').then((d) => d.ElementsModule) },
+            // { path: '', loadChildren: () => import('./elements/elements.module').then((d) => d.ElementsModule) },
 
             // forms
-            { path: '', loadChildren: () => import('./forms/form.module').then((d) => d.FormModule) },
+            // { path: '', loadChildren: () => import('./forms/form.module').then((d) => d.FormModule) },
 
             // users
-            { path: '', loadChildren: () => import('./users/user.module').then((d) => d.UsersModule) },
+            // { path: '', loadChildren: () => import('./users/user.module').then((d) => d.UsersModule) },
 
             // tables
-            { path: 'tables', component: TablesComponent, data: { title: 'Tables' } },
-            { path: '', loadChildren: () => import('./datatables/datatables.module').then((d) => d.DatatablesModule) },
+            // { path: 'tables', component: TablesComponent, data: { title: 'Tables' } },
+            // { path: '', loadChildren: () => import('./datatables/datatables.module').then((d) => d.DatatablesModule) },
         ],
     },
 
-    {
-        path: '',
-        component: AuthLayout,
-        canActivate:[logedGuard],
-        children: [
-            // pages
-            { path: '', loadChildren: () => import('./pages/pages.module').then((d) => d.PagesModule) },
 
-            // auth
-            { path: '', loadChildren: () => import('./auth/auth.module').then((d) => d.AuthModule) },
-        ],
-    },
 ];
