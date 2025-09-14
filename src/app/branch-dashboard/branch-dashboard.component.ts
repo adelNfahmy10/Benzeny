@@ -66,17 +66,18 @@ export class BranchDashboardComponent implements OnInit{
         this.GetBranchById()
         this.GetAllCarsInBranch()
         this.GetDriversInBranch()
+
     }
 
     // Get Company Data By Id
     GetBranchById(): void {
-        if(this.branchId()){
+        if(this.branchId() !== 'undefined'){
             this._BranchService.GetBranchById(this.branchId()).subscribe({
                 next:(res)=>{
                     this.branchData.set(res.data)
                 }
             })
-        } else {
+        } else if(this.branchId()){
             this._ActivatedRoute.paramMap.subscribe({
                 next:(params)=>{
                     this.branchId.set(params.get('id'))
@@ -281,7 +282,6 @@ export class BranchDashboardComponent implements OnInit{
         doc.save('branches-list.pdf');
     }
 
-
     message1 = this.branchData().iban || 'SA03 8000 0000 6080 1016 7519';
     showMessage(msg = '', type = 'success') {
         const toast: any = Swal.mixin({
@@ -299,15 +299,12 @@ export class BranchDashboardComponent implements OnInit{
     }
 
 
-
     fuelBudge: any;
     savingsInsights: any;
     fuelConsumed: any;
     transactionsToday: any;
     store: any;
     isLoading = true;
-
-
 
     constructor(public storeData: Store<any>) {
         this.initStore();

@@ -23,7 +23,7 @@ import { UserService } from '../service/users/user.service';
 @Component({
   selector: 'app-company-dashboard',
   standalone: true,
-  imports: [IconModule, MenuModule, NgApexchartsModule, ClipboardModule, FormsModule, DataTableModule],
+  imports: [IconModule, MenuModule, NgApexchartsModule, ClipboardModule, FormsModule, DataTableModule, RouterLink, NgClass],
   templateUrl: './company-dashboard.component.html',
   styleUrl: './company-dashboard.component.css'
 })
