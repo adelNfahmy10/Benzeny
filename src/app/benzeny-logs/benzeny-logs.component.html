@@ -1,0 +1,70 @@
+<section>
+  <div class="panel rounded-[20px] mt-6 pb-0">
+    <!-- Header -->
+    <div class="mb-5 flex flex-col gap-5 md:flex-row md:items-center">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-file-circle-question text-[40px] text-mainColor"></i>
+        <div class="flex flex-col">
+          <h3 class="text-[25px] font-semibold leading-none">All</h3>
+          <h3 class="ms-3 text-[25px] font-semibold leading-none">Logs</h3>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="ltr:ml-auto rtl:mr-auto flex flex-wrap items-center gap-3">
+        <!-- Search Box -->
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearch($event)"
+          placeholder="Search logs..."
+          class="form-input w-[220px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1 px-3"
+        />
+
+        <!-- Date From -->
+        <input
+          type="date"
+          [(ngModel)]="dateFrom"
+          (change)="onDateFilterChange()"
+          class="form-input w-[160px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1 px-2"
+        />
+
+        <!-- Date To -->
+        <input
+          type="date"
+          [(ngModel)]="dateTo"
+          (change)="onDateFilterChange()"
+          class="form-input w-[160px] border rounded-full focus:outline-none focus:border-[#F79320] transition-all py-1 px-2"
+        />
+
+        <!-- Clear Filters Button -->
+        <button
+          class="bg-[#F79320] text-white rounded-full px-4 py-1 font-medium hover:bg-[#d67d19] transition"
+          (click)="resetFilters()"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="datatable">
+      <ng-datatable
+        #table
+        [rows]="allLogs()"
+        [columns]="cols"
+        [totalRows]="totalLogsCount()"
+        [sortable]="true"
+        [pageSize]="pageSize()"
+        (pageChange)="onPageChangeCompany($event)"
+        (pageSizeChange)="onPageSizeChangeCompany($event)"
+        sortColumn="companyName"
+        skin="whitespace-nowrap table-hover"
+        firstArrow='<svg width="24" height="24" viewBox="0 0 24 24"><path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5"/></svg>'
+        lastArrow='<svg width="24" height="24" viewBox="0 0 24 24"><path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5"/></svg>'
+        previousArrow='<svg width="24" height="24" viewBox="0 0 24 24"><path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5"/></svg>'
+        nextArrow='<svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5"/></svg>'
+      ></ng-datatable>
+    </div>
+  </div>
+</section>

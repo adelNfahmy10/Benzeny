@@ -41,4 +41,13 @@ export class CompaniesService {
     CompanySwitchActive(companyId:string):Observable<any>{
         return this._HttpClient.post(`${environment.baseUrl}api/Company/CompanySwitchActive/${companyId}`, {})
     }
+
+    ExportCsv():Observable<any>{
+        return this._HttpClient.get(`${environment.baseUrl}api/Company/ExportCsv`, {responseType: 'blob' as 'json'})
+    }
+
+    ExportPdf():Observable<any>{
+        return this._HttpClient.get(`${environment.baseUrl}api/Company/ExportPdf`, { responseType: 'blob' as 'json'})
+    }
+
 }

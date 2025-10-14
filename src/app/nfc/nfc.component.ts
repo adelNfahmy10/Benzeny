@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DataTableModule } from "@bhplugin/ng-datatable";
 import { IconModule } from "../shared/icon/icon.module";
@@ -12,16 +12,33 @@ import { RouterLink } from "@angular/router";
   templateUrl: './nfc.component.html',
   styleUrl: './nfc.component.css'
 })
-export class NfcComponent {
+export class NfcComponent implements OnInit {
     search = '';
-    cols = [
-        { field: 'id', title: 'ID', isUnique: true },
-        { field: 'nfc', title: 'NFC', isUnique: true },
-        { field: 'company', title: 'Compnay' },
-        { field: 'driver', title: 'Driver' },
-        { field: 'isActive', title: 'Status' },
-        { field: 'action', title: 'Action', sort: false },
-    ];
+    role:string = ''
+    cols:any[] = []
+
+    ngOnInit(): void {
+        this.role = localStorage.getItem('role') || '';
+        if(this.role == 'CompanyOwner' || this.role == 'BranchManager'){
+            this.cols = [
+                { field: 'id', title: 'ID', isUnique: true },
+                { field: 'nfc', title: 'NFC', isUnique: true },
+                { field: 'company', title: 'Compnay' },
+                { field: 'driver', title: 'Driver' },
+                { field: 'isActive', title: 'Status' },
+                { field: 'action', title: 'Action', sort: false },
+            ];
+        } if(this.role == 'Benzeny'){
+            this.cols = [
+                { field: 'id', title: 'ID', isUnique: true },
+                { field: 'nfc', title: 'NFC', isUnique: true },
+                { field: 'company', title: 'Compnay' },
+                { field: 'isActive', title: 'Status' },
+                { field: 'action', title: 'Action', sort: false },
+            ];
+        }
+    }
+
 
     nfcRows = [
         { id: 1, company: 'POLARAX', driver: 'Caroline Jensen', nfc: 'NFC-1001', isActive: true},

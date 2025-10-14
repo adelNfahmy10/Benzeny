@@ -6,6 +6,7 @@ import { MenuModule } from "headlessui-angular";
 import { CompaniesService } from '../service/companies/companies.service';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from "@angular/router";
+import { UserService } from '../service/users/user.service';
 
 @Component({
   selector: 'app-benzeny-dashboard',
@@ -16,18 +17,21 @@ import { RouterLink } from "@angular/router";
 })
 export class BenzenyDashboardComponent implements OnInit {
     private readonly _CompaniesService = inject(CompaniesService)
+    private readonly _UserService = inject(UserService)
 
     store: any;
     balanceStatistics: any;
     revenueChart: any;
     isLoading = true;
     allCompanies:WritableSignal<any[]> = signal([])
+    benzenyUsers:WritableSignal<any> = signal({})
     totalCompanies:WritableSignal<number> = signal(0)
     totalActiveCompanies:WritableSignal<number> = signal(0)
     totalDeActiveCompanies:WritableSignal<number> = signal(0)
 
     ngOnInit(): void {
         this.getAllCompanies()
+        this.getBenzenyUsers()
     }
 
     getAllCompanies(pageNumber:number = 1, pageSize:number = 10, searchTerm:string = ''):void{
@@ -37,6 +41,14 @@ export class BenzenyDashboardComponent implements OnInit {
                 this.totalCompanies.set(res.data.totalCount)
                 this.totalActiveCompanies.set(res.data.activeCount)
                 this.totalDeActiveCompanies.set(res.data.inActiveCount)
+            }
+        })
+    }
+
+    getBenzenyUsers():void{
+        this._UserService.GetBenzenyUsers().subscribe({
+            next:(res)=>{
+                this.benzenyUsers.set(res.data)
             }
         })
     }

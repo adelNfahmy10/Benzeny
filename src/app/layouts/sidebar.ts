@@ -1,4 +1,4 @@
-﻿import { Component, signal, WritableSignal } from '@angular/core';
+﻿import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -64,5 +64,10 @@ export class SidebarComponent {
         } else {
             this.activeDropdown.push(name);
         }
+    }
+
+    logout():void{
+        localStorage.clear()
+        this.router.navigate(['/auth/boxed-signin'])
     }
 }

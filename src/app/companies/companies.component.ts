@@ -174,38 +174,18 @@ export class CompaniesComponent implements OnInit{
         newVariable = window.navigator;
 
         if (type == 'csv') {
-            let coldelimiter = ';';
-            let linedelimiter = '\n';
-            let result = columns
-                .map((d: any) => {
-                    return this.capitalize(d);
-                })
-                .join(coldelimiter);
-            result += linedelimiter;
-            records.map((item: { [x: string]: any }) => {
-                columns.map((d: any, index: number) => {
-                    if (index > 0) {
-                        result += coldelimiter;
-                    }
-                    let val = item[d] ? item[d] : '';
-                    result += val;
-                });
-                result += linedelimiter;
-            });
-
-            if (result == null) return;
-            if (!result.match(/^data:text\/csv/i) && !newVariable.msSaveOrOpenBlob) {
-                var data = 'data:application/csv;charset=utf-8,' + encodeURIComponent(result);
-                var link = document.createElement('a');
-                link.setAttribute('href', data);
-                link.setAttribute('download', filename + '.csv');
-                link.click();
-            } else {
-                var blob = new Blob([result]);
-                if (newVariable.msSaveOrOpenBlob) {
-                    newVariable.msSaveBlob(blob, filename + '.csv');
+            console.log('test');
+            this._CompaniesService.ExportCsv().subscribe({
+                next:(res)=>{
+                    const blob = new Blob([res], { type: 'text/csv' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'companies-list.csv';
+                    a.click();
+                    window.URL.revokeObjectURL(url);
                 }
-            }
+            })
         } else if (type == 'print') {
             var rowhtml = '<p>' + filename + '</p>';
             rowhtml +=
@@ -235,50 +215,29 @@ export class CompaniesComponent implements OnInit{
                 winPrint.close();
             };
             winPrint.print();
-        } else if (type == 'txt') {
-            let coldelimiter = ',';
-            let linedelimiter = '\n';
-            let result = columns
-                .map((d: any) => {
-                    return this.capitalize(d);
-                })
-                .join(coldelimiter);
-            result += linedelimiter;
-            records.map((item: { [x: string]: any }) => {
-                columns.map((d: any, index: number) => {
-                    if (index > 0) {
-                        result += coldelimiter;
-                    }
-                    let val = item[d] ? item[d] : '';
-                    result += val;
-                });
-                result += linedelimiter;
-            });
-
-            if (result == null) return;
-            if (!result.match(/^data:text\/txt/i) && !newVariable.msSaveOrOpenBlob) {
-                var data = 'data:application/txt;charset=utf-8,' + encodeURIComponent(result);
-                var link = document.createElement('a');
-                link.setAttribute('href', data);
-                link.setAttribute('download', filename + '.txt');
-                link.click();
-            } else {
-                var blob = new Blob([result]);
-                if (newVariable.msSaveOrOpenBlob) {
-                    newVariable.msSaveBlob(blob, filename + '.txt');
-                }
-            }
         }
     }
 
     downloadPdf() {
-        const doc = new jsPDF();
-        const filteredCols = this.cols.filter(col => col.title !== 'Action');
-        autoTable(doc, {
-            head: [filteredCols.map(col => col.title)],
-            body: this.allCompanies().map(company => [company.id, company.name, company.companyEmail, company.companyPhone, company.iban, company.description, company.isActive]),
-        });
-        doc.save('companies-list.pdf');
+        this._CompaniesService.ExportPdf().subscribe({
+            next:(res)=>{
+                const blob = new Blob([res], { type: 'application/pdf' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'companies-list.pdf';
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        })
+
+        // const doc = new jsPDF();
+        // const filteredCols = this.cols.filter(col => col.title !== 'Action');
+        // autoTable(doc, {
+        //     head: [filteredCols.map(col => col.title)],
+        //     body: this.allCompanies().map(company => [company.id, company.name, company.companyEmail, company.companyPhone, company.iban, company.description, company.isActive]),
+        // });
+        // doc.save('companies-list.pdf');
     }
 
     // Get Logo Compnay

@@ -53,6 +53,8 @@ import { BenzenyInvoicesComponent } from './benzeny-invoices/benzeny-invoices.co
 import { logedGuard } from 'src/core/guards/loged/loged.guard';
 import { authGuard } from 'src/core/guards/auth/auth.guard';
 import { Error404Component } from './pages/error404';
+import { BenzenyUsersComponent } from './benzeny-users/benzeny-users.component';
+import { BenzenyLogsComponent } from './benzeny-logs/benzeny-logs.component';
 
 export const routes: Routes = [
     {
@@ -82,6 +84,7 @@ export const routes: Routes = [
 
             // Main Benzeny Components
             { path: 'benzeny-dashboard', component: BenzenyDashboardComponent, data: { title: 'Dashboard' } },
+            { path: 'benzeny-users', component: BenzenyUsersComponent, data: { title: 'Users' } },
             { path: 'company-dashboard', component: CompanyDashboardComponent, data: { title: 'Dashboard' } },
             { path: 'company-dashboard/:id', component: CompanyDashboardComponent, data: { title: 'Dashboard' } },
             { path: 'branch-dashboard', component: BranchDashboardComponent, data: { title: 'Dashboard' } },
@@ -95,6 +98,7 @@ export const routes: Routes = [
             { path: 'nfc-details/:id', component: NfcDetailsComponent, data: { title: 'NFC' } },
             { path: 'balance', component: BalanceComponent, data: { title: 'Balance' } },
             { path: 'subscription', component: SubscriptionComponent, data: { title: 'Subscription' } },
+            { path: 'benzeny-logs', component: BenzenyLogsComponent, data: { title: 'Logs' } },
             { path: 'transaction', component: TransactionComponent, data: { title: 'Transaction' } },
             { path: 'invoices', component: BenzenyInvoicesComponent, data: { title: 'Invoices' } },
             { path: 'fuel-transfer', component: FuelTransferComponent, data: { title: 'Fuel Transfer' } },

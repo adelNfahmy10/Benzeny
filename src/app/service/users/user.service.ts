@@ -26,12 +26,20 @@ export class UserService {
         return this._HttpClient.get(`${environment.baseUrl}api/UserManager/GetAdminBenzenyCount`)
     }
 
+    GetBenzenyUsers():Observable<any>{
+        return this._HttpClient.get(`${environment.baseUrl}api/UserManager/GetBenzenyUsers`)
+    }
+
     CreateUser(data:any):Observable<any>{
         return this._HttpClient.post(`${environment.baseUrl}api/UserManager/RegisterNewUser`, data)
     }
 
     UpdateUser(id:any, data:any):Observable<any>{
         return this._HttpClient.put(`${environment.baseUrl}api/UserManager/Update?id=${id}`, data)
+    }
+
+    changeUserRole(data:any):Observable<any>{
+        return this._HttpClient.put(`${environment.baseUrl}api/UserManager/UpdateUserRoles`, data)
     }
 
     DeleteUser(id:any):Observable<any>{

@@ -1,5 +1,5 @@
 <section>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <!-- Total Companies -->
         <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/companies">
             <div class="flex flex-col">
@@ -23,8 +23,8 @@
         <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/balance">
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">Total Balance</p>
-                <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
-                    <svg fill="#222" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" ><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px] flex items-center">
+                    <svg class="dark:fill-[#96a0b5] fill-[#222]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1124.14 1256.39" ><path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"></path><path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"></path></svg>
                     {{ 6350 }}
                 </h3>
             </div>
@@ -39,6 +39,23 @@
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">Total NFCs</p>
                 <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">{{ 40 }}</h3>
+            </div>
+            <div class="p-1 rounded-lg mt-4">
+                <i class="fa-brands fa-nfc-directional text-[25px]"></i>
+            </div>
+            <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+        </div>
+
+        <!-- Total Users -->
+        <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl py-2 px-5 cursor-pointer" routerLink="/benzeny-users">
+            <div class="flex flex-col">
+                <p class="text-[#96a0b5] text-lg">Total Users</p>
+                <h3 class="font-medium dark:text-[#fff] text-[#222] text-[20px]">
+                    {{ benzenyUsers().count }}
+                    <sub class="text-dark text-[14px]">
+                        <span class="text-mainColor font-bold">{{benzenyUsers().activeCount}}</span> Active - <span class="text-mainColor font-bold">{{this.benzenyUsers().inActiveCount}}</span> DeActive
+                    </sub>
+                </h3>
             </div>
             <div class="p-1 rounded-lg mt-4">
                 <i class="fa-brands fa-nfc-directional text-[25px]"></i>

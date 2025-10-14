@@ -17,13 +17,13 @@ import { DriverService } from '../service/driver/driver.service';
 import { DataTableModule } from "@bhplugin/ng-datatable";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { UserService } from '../service/users/user.service';
 
 @Component({
   selector: 'app-company-dashboard',
   standalone: true,
-  imports: [IconModule, MenuModule, NgApexchartsModule, ClipboardModule, FormsModule, DataTableModule, RouterLink, NgClass],
+  imports: [IconModule, MenuModule, NgApexchartsModule, ClipboardModule, FormsModule, DataTableModule, RouterLink, NgClass, DatePipe],
   templateUrl: './company-dashboard.component.html',
   styleUrl: './company-dashboard.component.css'
 })
