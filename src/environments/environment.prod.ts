@@ -1,4 +1,4 @@
 export const environment = {
-    baseUrl : 'https://benzenymain.runasp.net/',
+    baseUrl : 'https://benzenysystem.runasp.net/',
     production: true
 };

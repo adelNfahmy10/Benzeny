@@ -3,6 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    baseUrl : 'https://benzenymain.runasp.net/',
+    baseUrl : 'https://benzenysystem.runasp.net/',
     production: false,
 };
