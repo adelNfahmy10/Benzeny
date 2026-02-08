@@ -56,6 +56,7 @@ import { Error404Component } from './pages/error404';
 import { BenzenyUsersComponent } from './benzeny-users/benzeny-users.component';
 import { BenzenyLogsComponent } from './benzeny-logs/benzeny-logs.component';
 import { BenzenyOnboardingComponent } from './benzeny-onboarding/benzeny-onboarding.component';
+import { BenzenyOnboardingDetailsComponent } from './benzeny-onboarding-details/benzeny-onboarding-details.component';
 
 export const routes: Routes = [
     {
@@ -85,6 +86,7 @@ export const routes: Routes = [
 
             // Main Benzeny Components
             { path: 'benzeny-onboarding', component: BenzenyOnboardingComponent, data: { title: 'Onboarding' } },
+            { path: 'benzeny-onboarding-details/:id', component: BenzenyOnboardingDetailsComponent, data: { title: 'Onboarding-Details' } },
             { path: 'benzeny-dashboard', component: BenzenyDashboardComponent, data: { title: 'Dashboard' } },
             { path: 'benzeny-users', component: BenzenyUsersComponent, data: { title: 'Users' } },
             { path: 'company-dashboard', component: CompanyDashboardComponent, data: { title: 'Dashboard' } },

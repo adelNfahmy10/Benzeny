@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { IconModule } from '../shared/icon/icon.module';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { DataTableModule } from '@bhplugin/ng-datatable';
   styleUrl: './benzeny-onboarding.component.css'
 })
 export class BenzenyOnboardingComponent {
+    private readonly _Router = inject(Router)
+
     search = '';
     cols = [
         { field: 'id', title: 'ID', isUnique: true },
@@ -49,9 +51,13 @@ export class BenzenyOnboardingComponent {
 
     // فلترة العناصر حسب الـ activeTab
     get filteredItems() {
-    if (this.activeTab === 'All') {
-        return this.onboardingItems;
+        if (this.activeTab === 'All') {
+            return this.onboardingItems;
+        }
+        return this.onboardingItems.filter(item => item.isActive === this.activeTab);
     }
-    return this.onboardingItems.filter(item => item.isActive === this.activeTab);
+
+    onRowClick(company: any) {
+        this._Router.navigate(['/benzeny-onboarding-details/' + company.id])
     }
 }

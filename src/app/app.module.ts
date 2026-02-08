@@ -63,7 +63,7 @@ import { headerInterceptor } from 'src/core/interceptors/header/header.intercept
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', useHash: true }),
+        RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,

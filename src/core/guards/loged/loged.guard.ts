@@ -6,14 +6,15 @@ export const logedGuard: CanActivateFn = (route, state) => {
     const _Router = inject(Router)
     const _PLATFORM_ID = inject(PLATFORM_ID)
     const role = localStorage.getItem('role')
+    const mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
 
     if(isPlatformBrowser(_PLATFORM_ID)){
       if(localStorage.getItem('token') !== null){
-        if(role == 'Benzeny'){
+        if(mainRole.includes('BSuperAdmin')){
             _Router.navigate(['/benzeny-dashboard'])
-        } else if(role == 'CompanyOwner' || role == 'Admin' ){
+        } else if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin') ){
             _Router.navigate(['/company-dashboard'])
-        } else if(role == 'BranchManager'){
+        } else if(mainRole.includes('BranchManager') ){
             _Router.navigate(['/branch-dashboard'])
         }
         return false
