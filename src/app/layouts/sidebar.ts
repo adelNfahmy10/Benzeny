@@ -10,6 +10,7 @@ import { slideDownUp } from '../shared/animations';
     animations: [slideDownUp],
 })
 export class SidebarComponent {
+    mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
     role:WritableSignal<string | null> = signal(localStorage.getItem('role') || null)
     menu:WritableSignal<string | null> = signal(localStorage.getItem('menu') || null)
     active = false;

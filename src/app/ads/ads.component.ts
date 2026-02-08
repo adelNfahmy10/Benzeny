@@ -23,7 +23,8 @@ export class AdsComponent implements OnInit{
     private readonly _lightbox = inject(Lightbox)
     private readonly _lightboxConfig = inject(LightboxConfig)
 
-    role:WritableSignal<string | null> = signal(localStorage.getItem('role'))
+    mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
+    role:WritableSignal<string | null> = signal(localStorage.getItem('roles'))
     allAds:WritableSignal<any[]> = signal([])
     allAdsSystem:WritableSignal<any[]> = signal([])
     allAdsMobile:WritableSignal<any[]> = signal([])

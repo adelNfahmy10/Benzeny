@@ -55,6 +55,7 @@ import { authGuard } from 'src/core/guards/auth/auth.guard';
 import { Error404Component } from './pages/error404';
 import { BenzenyUsersComponent } from './benzeny-users/benzeny-users.component';
 import { BenzenyLogsComponent } from './benzeny-logs/benzeny-logs.component';
+import { BenzenyOnboardingComponent } from './benzeny-onboarding/benzeny-onboarding.component';
 
 export const routes: Routes = [
     {
@@ -83,6 +84,7 @@ export const routes: Routes = [
             // { path: 'crypto', component: CryptoComponent, data: { title: 'Crypto Admin' } },
 
             // Main Benzeny Components
+            { path: 'benzeny-onboarding', component: BenzenyOnboardingComponent, data: { title: 'Onboarding' } },
             { path: 'benzeny-dashboard', component: BenzenyDashboardComponent, data: { title: 'Dashboard' } },
             { path: 'benzeny-users', component: BenzenyUsersComponent, data: { title: 'Users' } },
             { path: 'company-dashboard', component: CompanyDashboardComponent, data: { title: 'Dashboard' } },

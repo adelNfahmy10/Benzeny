@@ -1,4 +1,4 @@
-﻿<div [ngClass]="{ 'dark text-white-dark': store.semidark }">
+<div [ngClass]="{ 'dark text-white-dark': store.semidark }">
     <nav class="sidebar fixed bottom-0 top-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300">
         <div class="h-full bg-white dark:bg-[#0e1726]">
             <div class="flex items-center justify-between px-2 py-3">
@@ -141,7 +141,19 @@
 
                     <li class="nav-item">
                         <ul>
-                            @if(role() == 'Benzeny'){
+                            @if(mainRole.includes('BSuperAdmin')){
+                                <li class="nav-item">
+                                    <a routerLink="/benzeny-onboarding" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
+                                        <div class="flex items-center">
+                                        <icon-menu-apps class="fa-solid fa-money-bill-1-wave text-[22px] shrink-0 text-[#bebebe] group-[.active]:text-[#f79320] group-hover:!text-mainColor transition-all" />
+
+                                            <span class="text-black dark:text-[#506690] group-[.active]:text-[#f79320] group-hover:text-mainColor transition-all ltr:pl-3 rtl:pr-3">
+                                                {{ 'Onboarding' | translate }}
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a routerLink="/benzeny-dashboard" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -167,7 +179,7 @@
                                 </li>
                             }
 
-                            @if(role() == 'CompanyOwner' || role() == 'Admin'){
+                            @if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
                                 <li class="nav-item">
                                     <a routerLink="/company-dashboard" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -181,7 +193,7 @@
                                 </li>
                             }
 
-                            @if(role() == 'BranchManager'){
+                            @if(mainRole.includes('BranchManager')){
                                 <li class="nav-item">
                                     <a routerLink="/branch-dashboard" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -195,7 +207,7 @@
                                 </li>
                             }
 
-                            @if (role() == 'Benzeny' || role() == 'CompanyOwner' || role() == 'Ádmin') {
+                            @if (mainRole.includes('BSuperAdmin') || mainRole.includes('CompanyOwner') || mainRole.includes('Admin')) {
                                 <li class="nav-item">
                                     <a routerLink="/companies" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -203,11 +215,11 @@
                                                 <path d="M9.15833 0.795914H5.32499C4.05416 0.795914 2.83538 1.30075 1.93677 2.19936C1.03816 3.09797 0.533325 4.31675 0.533325 5.58758L0.533325 19.0042C0.533325 19.6335 0.657265 20.2566 0.898069 20.8379C1.13887 21.4193 1.49182 21.9475 1.93677 22.3925C2.83538 23.2911 4.05416 23.7959 5.32499 23.7959H13.95V5.58758C13.95 4.95833 13.8261 4.33524 13.5852 3.75389C13.3444 3.17254 12.9915 2.64431 12.5465 2.19936C12.1016 1.75441 11.5734 1.40146 10.992 1.16066C10.4107 0.919854 9.78758 0.795914 9.15833 0.795914ZM5.32499 19.0042H4.36666C4.11249 19.0042 3.86874 18.9033 3.68901 18.7236C3.50929 18.5438 3.40833 18.3001 3.40833 18.0459C3.40833 17.7917 3.50929 17.548 3.68901 17.3683C3.86874 17.1885 4.11249 17.0876 4.36666 17.0876H5.32499C5.57916 17.0876 5.82291 17.1885 6.00264 17.3683C6.18236 17.548 6.28333 17.7917 6.28333 18.0459C6.28333 18.3001 6.18236 18.5438 6.00264 18.7236C5.82291 18.9033 5.57916 19.0042 5.32499 19.0042ZM5.32499 15.1709H4.36666C4.11249 15.1709 3.86874 15.0699 3.68901 14.8902C3.50929 14.7105 3.40833 14.4667 3.40833 14.2126C3.40833 13.9584 3.50929 13.7147 3.68901 13.5349C3.86874 13.3552 4.11249 13.2542 4.36666 13.2542H5.32499C5.57916 13.2542 5.82291 13.3552 6.00264 13.5349C6.18236 13.7147 6.28333 13.9584 6.28333 14.2126C6.28333 14.4667 6.18236 14.7105 6.00264 14.8902C5.82291 15.0699 5.57916 15.1709 5.32499 15.1709ZM5.32499 11.3376H4.36666C4.11249 11.3376 3.86874 11.2366 3.68901 11.0569C3.50929 10.8772 3.40833 10.6334 3.40833 10.3792C3.40833 10.1251 3.50929 9.88133 3.68901 9.7016C3.86874 9.52188 4.11249 9.42091 4.36666 9.42091H5.32499C5.57916 9.42091 5.82291 9.52188 6.00264 9.7016C6.18236 9.88133 6.28333 10.1251 6.28333 10.3792C6.28333 10.6334 6.18236 10.8772 6.00264 11.0569C5.82291 11.2366 5.57916 11.3376 5.32499 11.3376ZM5.32499 7.50425H4.36666C4.11249 7.50425 3.86874 7.40328 3.68901 7.22356C3.50929 7.04384 3.40833 6.80008 3.40833 6.54591C3.40833 6.29175 3.50929 6.04799 3.68901 5.86827C3.86874 5.68855 4.11249 5.58758 4.36666 5.58758H5.32499C5.57916 5.58758 5.82291 5.68855 6.00264 5.86827C6.18236 6.04799 6.28333 6.29175 6.28333 6.54591C6.28333 6.80008 6.18236 7.04384 6.00264 7.22356C5.82291 7.40328 5.57916 7.50425 5.32499 7.50425ZM10.1167 19.0042H9.15833C8.90416 19.0042 8.6604 18.9033 8.48068 18.7236C8.30096 18.5438 8.19999 18.3001 8.19999 18.0459C8.19999 17.7917 8.30096 17.548 8.48068 17.3683C8.6604 17.1885 8.90416 17.0876 9.15833 17.0876H10.1167C10.3708 17.0876 10.6146 17.1885 10.7943 17.3683C10.974 17.548 11.075 17.7917 11.075 18.0459C11.075 18.3001 10.974 18.5438 10.7943 18.7236C10.6146 18.9033 10.3708 19.0042 10.1167 19.0042ZM10.1167 15.1709H9.15833C8.90416 15.1709 8.6604 15.0699 8.48068 14.8902C8.30096 14.7105 8.19999 14.4667 8.19999 14.2126C8.19999 13.9584 8.30096 13.7147 8.48068 13.5349C8.6604 13.3552 8.90416 13.2542 9.15833 13.2542H10.1167C10.3708 13.2542 10.6146 13.3552 10.7943 13.5349C10.974 13.7147 11.075 13.9584 11.075 14.2126C11.075 14.4667 10.974 14.7105 10.7943 14.8902C10.6146 15.0699 10.3708 15.1709 10.1167 15.1709ZM10.1167 11.3376H9.15833C8.90416 11.3376 8.6604 11.2366 8.48068 11.0569C8.30096 10.8772 8.19999 10.6334 8.19999 10.3792C8.19999 10.1251 8.30096 9.88133 8.48068 9.7016C8.6604 9.52188 8.90416 9.42091 9.15833 9.42091H10.1167C10.3708 9.42091 10.6146 9.52188 10.7943 9.7016C10.974 9.88133 11.075 10.1251 11.075 10.3792C11.075 10.6334 10.974 10.8772 10.7943 11.0569C10.6146 11.2366 10.3708 11.3376 10.1167 11.3376ZM10.1167 7.50425H9.15833C8.90416 7.50425 8.6604 7.40328 8.48068 7.22356C8.30096 7.04384 8.19999 6.80008 8.19999 6.54591C8.19999 6.29175 8.30096 6.04799 8.48068 5.86827C8.6604 5.68855 8.90416 5.58758 9.15833 5.58758H10.1167C10.3708 5.58758 10.6146 5.68855 10.7943 5.86827C10.974 6.04799 11.075 6.29175 11.075 6.54591C11.075 6.80008 10.974 7.04384 10.7943 7.22356C10.6146 7.40328 10.3708 7.50425 10.1167 7.50425ZM18.7417 5.58758H15.8667V23.7959H18.7417C20.012 23.7944 21.2299 23.2891 22.1282 22.3908C23.0265 21.4925 23.5318 20.2746 23.5333 19.0042V10.3792C23.5318 9.10888 23.0265 7.89099 22.1282 6.99271C21.2299 6.09443 20.012 5.5891 18.7417 5.58758ZM19.7 19.0042C19.5105 19.0042 19.3252 18.948 19.1676 18.8427C19.01 18.7374 18.8871 18.5878 18.8146 18.4127C18.7421 18.2375 18.7231 18.0448 18.7601 17.859C18.7971 17.6731 18.8883 17.5023 19.0223 17.3683C19.1564 17.2342 19.3271 17.143 19.513 17.106C19.6989 17.069 19.8916 17.088 20.0667 17.1605C20.2418 17.2331 20.3915 17.3559 20.4968 17.5135C20.6021 17.6711 20.6583 17.8564 20.6583 18.0459C20.6583 18.3001 20.5574 18.5438 20.3776 18.7236C20.1979 18.9033 19.9542 19.0042 19.7 19.0042ZM19.7 15.1709C19.5105 15.1709 19.3252 15.1147 19.1676 15.0094C19.01 14.9041 18.8871 14.7544 18.8146 14.5793C18.7421 14.4042 18.7231 14.2115 18.7601 14.0256C18.7971 13.8397 18.8883 13.669 19.0223 13.5349C19.1564 13.4009 19.3271 13.3096 19.513 13.2727C19.6989 13.2357 19.8916 13.2547 20.0667 13.3272C20.2418 13.3997 20.3915 13.5226 20.4968 13.6802C20.6021 13.8378 20.6583 14.023 20.6583 14.2126C20.6583 14.4667 20.5574 14.7105 20.3776 14.8902C20.1979 15.0699 19.9542 15.1709 19.7 15.1709ZM19.7 11.3376C19.5105 11.3376 19.3252 11.2814 19.1676 11.1761C19.01 11.0708 18.8871 10.9211 18.8146 10.746C18.7421 10.5709 18.7231 10.3782 18.7601 10.1923C18.7971 10.0064 18.8883 9.83563 19.0223 9.7016C19.1564 9.56758 19.3271 9.47631 19.513 9.43933C19.6989 9.40235 19.8916 9.42133 20.0667 9.49386C20.2418 9.5664 20.3915 9.68923 20.4968 9.84682C20.6021 10.0044 20.6583 10.1897 20.6583 10.3792C20.6583 10.6334 20.5574 10.8772 20.3776 11.0569C20.1979 11.2366 19.9542 11.3376 19.7 11.3376Z"/>
                                             </svg>
 
-                                            @if(role() == 'Benzeny'){
+                                            @if(mainRole.includes('BSuperAdmin')){
                                                 <span class="text-black dark:text-[#506690] group-[.active]:text-[#f79320] group-hover:text-mainColor transition-all ltr:pl-3 rtl:pr-3">
                                                     {{ 'Companies' | translate }}
                                                 </span>
-                                            } @else if(role() == 'CompanyOwner' || role() == 'Ádmin'){
+                                            } @else if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
                                                 <span class="text-black dark:text-[#506690] group-[.active]:text-[#f79320] group-hover:text-mainColor transition-all ltr:pl-3 rtl:pr-3">
                                                     {{ 'Company' | translate }}
                                                 </span>
@@ -218,7 +230,7 @@
                                 </li>
                             }
 
-                            @if(role() == 'BranchManager'){
+                            @if(mainRole.includes('BranchManager')){
                                 <li class="nav-item">
                                     <a routerLink="/cars" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -257,7 +269,7 @@
                             }
 
 
-                            @if(role() == 'CompanyOwner' || role() == 'Ádmin'){
+                            @if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
                                 <li class="nav-item">
                                     <a routerLink="/branches" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -294,7 +306,7 @@
                                 </a>
                             </li>
 
-                            @if(role() == 'Benzeny' || role() == 'CompanyOwner' || role() == 'BranchManager'){
+                            @if( mainRole.includes('BSuperAdmin') || mainRole.includes('CompanyOwner') || mainRole.includes('BranchManager')){
                                 <li class="nav-item">
                                     <a routerLink="/nfc" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -307,7 +319,7 @@
                                 </li>
                             }
 
-                            @if(role() == 'Benzeny'){
+                            @if(mainRole.includes('BSuperAdmin')){
                                 <li class="nav-item">
                                     <a routerLink="/subscription" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -355,7 +367,7 @@
                                 </a>
                             </li>
 
-                            @if(role() == 'BranchManager' || role() == "CompanyOwner" || role() == "Admin"){
+                            @if(mainRole.includes('BranchManager') || mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
                                 <li class="nav-item">
                                     <a routerLink="/setting-benzeny" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">

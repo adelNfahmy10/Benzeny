@@ -18,7 +18,7 @@ export class BoxedSigninComponent {
 
     loginForm:FormGroup = this._FormBuilder.group({
         username: ['admin@benzeny.com'],
-        password: ['Admin@123'],
+        password: ['123456'],
     })
 
     submiLoginForm():void{
@@ -35,14 +35,17 @@ export class BoxedSigninComponent {
                 localStorage.setItem('fullName', res.data.fullName),
                 localStorage.setItem('token', res.data.accessToken),
                 localStorage.setItem('refreshToken', res.data.refreshToken),
-                localStorage.setItem('role', res.data.roles)
+                localStorage.setItem('roles', res.data.roles)
                 localStorage.setItem('branchId', res.data?.branches[0]?.branchId)
                 localStorage.setItem('allBranches', JSON.stringify(res.data?.branches));
-                if(localStorage.getItem('role') == 'Benzeny'){
+
+                let mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
+
+                if(mainRole.includes('BSuperAdmin')){
                     this.router.navigate(['/benzeny-dashboard'])
-                } else if(localStorage.getItem('role') == 'CompanyOwner' || localStorage.getItem('role') == 'Admin'){
+                } else if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')) {
                     this.router.navigate(['/company-dashboard'])
-                } else if(localStorage.getItem('role') == 'BranchManager'){
+                } else if(mainRole.includes('BranchManager')){
                     this.router.navigate(['/branch-dashboard'])
                 }
             }
