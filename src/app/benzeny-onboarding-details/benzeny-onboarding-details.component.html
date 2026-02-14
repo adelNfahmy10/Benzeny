@@ -23,12 +23,12 @@
                         [(ngModel)]="selectedOtp"
                         [searchable]="false"
                         [clearable]="false"
-                        class="custom-multiselect"
+                        class="custom-multiselect my-2"
                         (ngModelChange)="changeOption($event)"
                         >
                         </ng-select>
 
-                        <p>Current selection: {{ selectedOtp }}</p>
+                        <p>Current selection: <span class="text-[#f79320]">{{ selectedOtp }}</span></p>
                 </div>
            </div>
 
@@ -45,7 +45,16 @@
 
                 <div>
                     <span>Priority</span>
-                    <h4 class="text-[20px] mt-2">Medium</h4>
+                    <h4
+                        class="text-[14px] mt-2 px-3 py-1 rounded-full text-white"
+                        [ngClass]="{
+                            'bg-green-100 text-green-600': level === 'Low',
+                            'bg-yellow-100 text-yellow-600': level === 'Medium',
+                            'bg-red-100 text-red-600': level === 'High'
+                        }"
+                        >
+                        {{ level }}
+                        </h4>
                 </div>
 
                 <div>
@@ -105,51 +114,46 @@
         <div class="mb-5 mt-3 flex flex-wrap border-b border-white-light dark:border-[#191e3a]">
             <a
                 href="javascript:;"
-                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-secondary hover:text-secondary"
-                [ngClass]="{ 'border-b !border-secondary text-secondary': tab.toLowerCase() === 'overview' }"
+                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-[#f79320] hover:text-[#f79320]"
+                [ngClass]="{ 'border-b !border-[#f79320] text-[#f79320]': tab.toLowerCase() === 'overview' }"
                 (click)="tab = 'overview'"
             >
-                <icon-home class="ltr:mr-2 rtl:ml-2" />
                 Overview
             </a>
 
             <a
                 href="javascript:;"
-                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-secondary hover:text-secondary"
-                [ngClass]="{ 'border-b !border-secondary text-secondary': tab.toLowerCase() === 'subscription' }"
+                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-[#f79320] hover:text-[#f79320]"
+                [ngClass]="{ 'border-b !border-[#f79320] text-[#f79320]': tab.toLowerCase() === 'subscription' }"
                 (click)="tab = 'subscription'"
             >
-                <icon-user class="h-5 w-5 ltr:mr-2 rtl:ml-2" />
                 Subscription
             </a>
 
             <a
                 href="javascript:;"
-                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-secondary hover:text-secondary"
-                [ngClass]="{ 'border-b !border-secondary text-secondary': tab.toLowerCase() === 'documents' }"
+                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-[#f79320] hover:text-[#f79320]"
+                [ngClass]="{ 'border-b !border-[#f79320] text-[#f79320]': tab.toLowerCase() === 'documents' }"
                 (click)="tab = 'documents'"
             >
-                <icon-phone class="ltr:mr-2 rtl:ml-2" />
-                Documents
+                Documents (0)
             </a>
 
             <a
                 href="javascript:;"
-                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-secondary hover:text-secondary"
-                [ngClass]="{ 'border-b !border-secondary text-secondary': tab.toLowerCase() === 'setup' }"
+                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-[#f79320] hover:text-[#f79320]"
+                [ngClass]="{ 'border-b !border-[#f79320] text-[#f79320]': tab.toLowerCase() === 'setup' }"
                 (click)="tab = 'setup'"
             >
-                <icon-phone class="ltr:mr-2 rtl:ml-2" />
                 Setup
             </a>
 
             <a
                 href="javascript:;"
-                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-secondary hover:text-secondary"
-                [ngClass]="{ 'border-b !border-secondary text-secondary': tab.toLowerCase() === 'activity' }"
+                class="-mb-[1px] flex items-center border-transparent p-5 py-3 !outline-none transition duration-300 hover:border-b hover:!border-[#f79320] hover:text-[#f79320]"
+                [ngClass]="{ 'border-b !border-[#f79320] text-[#f79320]': tab.toLowerCase() === 'activity' }"
                 (click)="tab = 'activity'"
             >
-                <icon-phone class="ltr:mr-2 rtl:ml-2" />
                 Activity
             </a>
         </div>
@@ -203,7 +207,6 @@
                     </div>
                 </div>
 
-
                  <div class="relative bg-white dark:bg-transparent shadow h-full flex justify-between items-center rounded-2xl p-5 my-5">
                     <div class="flex flex-col">
                         <h4 class=" text-lg">Notes</h4>
@@ -213,33 +216,138 @@
                 </div>
             }
 
-            @if(tab.toLowerCase() === 'profile'){
-                <div class="flex items-start">
-                    <div class="h-20 w-20 flex-none ltr:mr-4 rtl:ml-4">
-                        <img
-                            src="/assets/images/profile-34.jpeg"
-                            alt=""
-                            class="m-0 h-20 w-20 rounded-full object-cover ring-2 ring-[#ebedf2] dark:ring-white-dark"
-                        />
+            @if(tab.toLowerCase() === 'subscription'){
+                <div class="head-tab flex justify-between items-center">
+                    <h2 class="text-[20px] font-semibold">Billing Plan</h2>
+                    <div class="head-btn flex justify-between items-center gap-2">
+                        <button class="btn btn-danger">
+                            Deactive
+                        </button>
+
+                        <button class="btn btn-primary">
+                            Send Reminder
+                        </button>
                     </div>
-                    <div class="flex-auto">
-                        <h5 class="mb-4 text-xl font-medium">Media heading</h5>
-                        <p class="text-white-dark">
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum
-                            in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                            in faucibus.
-                        </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-3">
+                    <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl p-5">
+                        <div class="flex flex-col">
+                            <p class="text-[#96a0b5] text-lg">Monthly Rate</p>
+                            <h3 class="font-medium mt-3 dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                                $100.00
+                            </h3>
+                        </div>
+
+                        <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
                     </div>
+
+                    <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl p-5">
+                        <div class="flex flex-col">
+                            <p class="text-[#96a0b5] text-lg">Billing Period</p>
+                            <h3 class="font-medium mt-3 dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                                3 months
+                            </h3>
+                        </div>
+                        <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+                    </div>
+
+                    <div class="relative bg-white dark:bg-transparent shadow text-mainColor h-full flex justify-between items-center rounded-2xl p-5">
+                        <div class="flex flex-col">
+                            <p class="text-[#96a0b5] text-lg">Total Amount</p>
+                            <h3 class="font-medium mt-3 dark:text-[#222] text-[#222] text-[20px] flex items-center">
+                                $300.00
+                            </h3>
+                        </div>
+                        <img loading="lazy" src="assets/images/company-image/corner-img.png" class="absolute bottom-0 right-0 w-[130px] rounded-2xl h-full object-cover rounded-br-[10px] sepia-[3.5]" alt="" />
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Due Date</th>
+                                <th>Amount</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of tableData;">
+                                <td>{{ data.period }}</td>
+                                <td>{{ data.data }}</td>
+                                <td>{{ data.amount }}</td>
+                                <td class="whitespace-nowrap text-center">
+                                    <span
+                                        class="text-[12px] mt-2 px-3 py-1 rounded-full text-white"
+                                        [ngClass]="{
+                                            'bg-green-100 text-green-600': data.status === 'Paid',
+                                            'bg-yellow-100 text-yellow-600': data.status === 'Pending',
+                                            'bg-red-100 text-red-600': data.status === 'Upcoming'
+                                        }"
+                                        >
+                                        {{ data.status }}
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             }
 
-            @if(tab.toLowerCase() === 'contact'){
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                    enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+            @if(tab.toLowerCase() === 'documents'){
+                <div class="text-center">
+                    <p class="mb-9 text-[#a0a0a0]">
+                        No documents uploaded yet
+                    </p>
+
+                    <span>Documents will appear here once uploaded</span>
+                </div>
+            }
+
+            @if(tab.toLowerCase() === 'setup'){
+                <div class="text-center">
+                    <p class="mb-9 text-[#a0a0a0]">
+                        Setup configuration
+                    </p>
+
+                    <span>Complete document collection to proceed with setup</span>
+                </div>
+            }
+
+            @if(tab.toLowerCase() === 'activity'){
+                 <div class="head-tab flex justify-between items-center">
+                    <h2 class="text-[20px] font-semibold">Transaction History</h2>
+                </div>
+
+                <div class="table-responsive my-3">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Transaction Type</th>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of tableData2;">
+                                <td>{{ data.date }}</td>
+                                <td>{{ data.type }}</td>
+                                <td>{{ data.method }}</td>
+                                <td
+                                    [ngClass]="{
+                                        'text-green-600': data.amount.includes('+'),
+                                        'text-red-600': data.amount.includes('-')
+                                    }"
+                                    >
+                                    {{ data.amount }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             }
         </div>
     </div>

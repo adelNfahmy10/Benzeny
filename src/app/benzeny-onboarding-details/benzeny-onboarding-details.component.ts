@@ -16,6 +16,7 @@ export class BenzenyOnboardingDetailsComponent {
     tab: string = 'overview';
     // component.ts
     activeTab5 = 1;
+    level = 'Low'; // Small | Medium | High
     tabNames: string[] = [
         'Negotiation',
         'Proposal',
@@ -27,7 +28,85 @@ export class BenzenyOnboardingDetailsComponent {
         'Installation',
         'Active',
         'DONE'
-    ];
+    ]
+
+    tableData = [
+        {
+            id: 1,
+            name: 'John Doe',
+            period:'January 2026',
+            data:'Jan 31, 2026',
+            amount:'$100.00',
+            status:'Paid',
+        },
+        {
+            id: 2,
+            name: 'Shaun Park',
+            period:'January 2026',
+            data:'Jan 5, 2026',
+            amount:'$100.00',
+            status:'Upcoming',
+        },
+        {
+            id: 3,
+            name: 'Alma Clarke',
+            period:'January 2026',
+            data:'Jan 28, 2026',
+            amount:'$100.00',
+            status:'Pending',
+        },
+        {
+            id: 4,
+            name: 'Vincent Carpenter',
+            period:'January 2026',
+            data:'Jan 2, 2026',
+            amount:'$100.00',
+            status:'Paid',
+        },
+    ]
+
+     tableData2 = [
+        {
+            id: 1,
+            name: 'John Doe',
+            date:'March 15, 2026 at 2:30 PM',
+            type:'Subscription Payment',
+            method:'Bank Transfer',
+            amount:'+$500.00',
+        },
+        {
+            id: 2,
+            name: 'Shaun Park',
+            date:'February 28, 2026 at 11:00 AM',
+            type:'Main Account Top-up',
+            method:'Monthly subscription fee',
+            amount:'-$100.00',
+        },
+        {
+            id: 3,
+            name: 'Alma Clarke',
+            date:'February 10, 2026 at 9:15 AM',
+            type:'Subscription Payment',
+            method:'Credit Card',
+            amount:'+$750.00',
+        },
+        {
+            id: 4,
+            name: 'Vincent Carpenter',
+            date:'January 31, 2026 at 10:45 AM',
+            type:'Subscription Payment',
+            method:'Monthly subscription fee',
+            amount:'-$100.00',
+        },
+        {
+            id: 5,
+            name: 'Vincent Carpenter',
+            date:'January 5, 2026 at 3:00 PM',
+            type:'Main Account Top-up',
+            method:'Bank Transfer',
+            amount:'+$870.00',
+        },
+    ]
 
     selectedOtp = this.tabNames[this.activeTab5 - 1]; // المرحلة الحالية حسب activeTab5
 
