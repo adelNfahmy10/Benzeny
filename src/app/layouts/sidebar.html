@@ -179,7 +179,7 @@
                                 </li>
                             }
 
-                            @if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
+                            @if(mainRole.includes('CompanyOwner')){
                                 <li class="nav-item">
                                     <a routerLink="/company-dashboard" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -207,7 +207,7 @@
                                 </li>
                             }
 
-                            @if (mainRole.includes('BSuperAdmin') || mainRole.includes('CompanyOwner') || mainRole.includes('Admin')) {
+                            @if (mainRole.includes('BSuperAdmin') || mainRole.includes('CompanyOwner')) {
                                 <li class="nav-item">
                                     <a routerLink="/companies" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -219,7 +219,7 @@
                                                 <span class="text-black dark:text-[#506690] group-[.active]:text-[#f79320] group-hover:text-mainColor transition-all ltr:pl-3 rtl:pr-3">
                                                     {{ 'Companies' | translate }}
                                                 </span>
-                                            } @else if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
+                                            } @else if(mainRole.includes('CompanyOwner')){
                                                 <span class="text-black dark:text-[#506690] group-[.active]:text-[#f79320] group-hover:text-mainColor transition-all ltr:pl-3 rtl:pr-3">
                                                     {{ 'Company' | translate }}
                                                 </span>
@@ -269,7 +269,7 @@
                             }
 
 
-                            @if(mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
+                            @if(mainRole.includes('CompanyOwner')){
                                 <li class="nav-item">
                                     <a routerLink="/branches" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">
@@ -367,7 +367,7 @@
                                 </a>
                             </li>
 
-                            @if(mainRole.includes('BranchManager') || mainRole.includes('CompanyOwner') || mainRole.includes('Admin')){
+                            @if(mainRole.includes('BranchManager') || mainRole.includes('CompanyOwner')){
                                 <li class="nav-item">
                                     <a routerLink="/setting-benzeny" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
                                         <div class="flex items-center">

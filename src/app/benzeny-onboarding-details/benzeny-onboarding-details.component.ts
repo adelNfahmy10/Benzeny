@@ -118,9 +118,6 @@ export class BenzenyOnboardingDetailsComponent {
     }
 
     getTabColor(tab: number): string {
-        const tabName = this.tabNames[tab - 1];
-
-        if (tabName === 'DONE') return '#28a745'; // أخضر للـ DONE
         if (this.isTabActive(tab)) return '#f79320'; // برتقالي للتاب الحالي
         if (this.isTabFinished(tab)) return '#f79320'; // برتقالي للسابقة
         return '#f3f2ee'; // اللون العادي للتاب القادمة

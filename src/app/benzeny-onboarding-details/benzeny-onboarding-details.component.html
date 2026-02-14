@@ -97,8 +97,7 @@
                         <span
                             class="mt-2 block text-center"
                             [ngClass]="{
-                                'text-[#28a745]': tabNames[i] === 'DONE',
-                                'text-[#f79320]': (isTabActive(i+1) || isTabFinished(i+1)) && tabNames[i] !== 'DONE',
+                                'text-[#f79320]': (isTabActive(i+1) || isTabFinished(i+1)),
                                 'text-black dark:text-white': !isTabActive(i+1) && !isTabFinished(i+1) && tabNames[i] !== 'DONE'
                             }"
                         >
