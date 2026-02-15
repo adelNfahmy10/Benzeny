@@ -32,6 +32,7 @@ export class CompaniesComponent implements OnInit{
     private readonly _RegionandcityService = inject(RegionandcityService)
     private readonly _CompaniesService = inject(CompaniesService)
 
+    mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
     companyId:WritableSignal<string | null> = signal(localStorage.getItem('companyId') || null)
     companyName:WritableSignal<string | null> = signal(localStorage.getItem('companyName') || null)
     role:WritableSignal<string | null> = signal(localStorage.getItem('role'))

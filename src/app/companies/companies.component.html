@@ -1,4 +1,4 @@
-@if(role() == "Admin" || role() == "CompanyOwner"){
+@if(mainRole.includes('CompanyOwner')){
     <section>
         <div class="grid grid-cols-1 md:grid-cols-2 mb-4 gap-4">
             <!-- Company Data -->
@@ -274,7 +274,7 @@
             <app-btn-save (click)="submitUserForm()"></app-btn-save>
         </ng-template>
     </ngx-custom-modal>
-} @else if(role() == "Benzeny"){
+} @else if(mainRole.includes('BSuperAdmin')){
     <section>
         <!-- Section Total Companies -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

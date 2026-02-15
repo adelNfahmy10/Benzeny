@@ -43,6 +43,7 @@ export class CompanyDashboardComponent implements OnInit{
 
     companyData:WritableSignal<any> = signal({})
     companyId:WritableSignal<string | null> = signal(localStorage.getItem('companyId') || '')
+    mainRole = localStorage.getItem('roles')?.split(',').map(r => r.trim()) || [];
     role:WritableSignal<string | null> = signal(localStorage.getItem('role') || '')
     allUsersInCompany:WritableSignal<any[]> = signal([])
     usersCount:WritableSignal<any[]> = signal([])
@@ -96,9 +97,9 @@ export class CompanyDashboardComponent implements OnInit{
 
     // Get Company Data By Id
     getCompaniesData(): void {
-        if (this.role() === "CompanyOwner" || this.role() === "Admin" || this.role() == 'BranchManager') {
+        if (this.mainRole.includes('CompanyOwner') || this.mainRole.includes('Admin') || this.mainRole.includes('BranchManager')) {
             this.fetchCompany(this.companyId()!);
-        } else if (this.role() === "Benzeny") {
+        } else if (this.mainRole.includes('BSuperAdmin')) {
             this._ActivatedRoute.paramMap.pipe(
                 map(params => params.get('id')),
                 filter((id): id is string => !!id),
