@@ -14,6 +14,7 @@ import { CoverLoginComponent } from './cover-login';
 import { CoverPasswordResetComponent } from './cover-password-reset';
 import { CoverRegisterComponent } from './cover-register';
 import { ImageCropperComponent } from 'ngx-image-cropper';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 const routes: Routes = [
     { path: '', component: BoxedSigninComponent, data: { title: 'Login' } },
@@ -36,7 +37,13 @@ const routes: Routes = [
     { path: 'auth/cover-register', component: CoverRegisterComponent, data: { title: 'Cover Register' } },
 ];
 @NgModule({
-    imports: [RouterModule.forChild(routes), CommonModule, SharedModule.forRoot(), ImageCropperComponent],
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        SharedModule.forRoot(),
+        ImageCropperComponent,
+        NgxDropzoneModule
+    ],
     declarations: [
         BoxedLockscreenComponent,
         BoxedPasswordResetComponent,

@@ -10,8 +10,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-[30px] mb-2">Shurfan Logistics Co.</h1>
-                        <span class="text-[18px]">Khalid Hassan</span>
+                        <h1 class="text-[30px] mb-2">{{companyDetails.name || '-'}}</h1>
+                        <span class="text-[18px]">{{companyDetails.ownerName || '-'}}</span>
                     </div>
                 </div>
 
@@ -35,12 +35,12 @@
            <div class="company-info flex justify-between items-center mx-5 my-8">
                 <div>
                     <span>Email</span>
-                    <h4 class="text-[20px] mt-2">mchen%%metrofleet.com</h4>
+                    <h4 class="text-[20px] mt-2">{{companyDetails.companyEmail || '-'}}</h4>
                 </div>
 
                 <div>
                     <span>Phone</span>
-                    <h4 class="text-[20px] mt-2">+1 (555) 345-6789</h4>
+                    <h4 class="text-[20px] mt-2">{{companyDetails.companyPhone || '-'}}</h4>
                 </div>
 
                 <div>
@@ -48,18 +48,18 @@
                     <h4
                         class="text-[14px] mt-2 px-3 py-1 rounded-full text-white"
                         [ngClass]="{
-                            'bg-green-100 text-green-600': level === 'Low',
-                            'bg-yellow-100 text-yellow-600': level === 'Medium',
-                            'bg-red-100 text-red-600': level === 'High'
+                            'bg-green-100 text-green-600': priority === 'Low',
+                            'bg-yellow-100 text-yellow-600': priority === 'Medium',
+                            'bg-red-100 text-red-600': priority === 'High'
                         }"
                         >
-                        {{ level }}
+                        {{ priority }}
                         </h4>
                 </div>
 
                 <div>
                     <span>Main Balance</span>
-                    <h4 class="text-[20px] mt-2">$1,250.00</h4>
+                    <h4 class="text-[20px] mt-2">{{companyDetails.totalBalance || 0}}</h4>
                 </div>
            </div>
 

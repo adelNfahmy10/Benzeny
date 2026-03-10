@@ -8,6 +8,7 @@ import { FileUploadWithPreview } from 'file-upload-with-preview';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { CompaniesService } from '../service/companies/companies.service';
 import Swal from 'sweetalert2';
 
@@ -17,201 +18,301 @@ import Swal from 'sweetalert2';
 })
 export class BoxedSignupComponent implements AfterViewInit, OnInit  {
     private readonly _FormBuilder = inject(FormBuilder)
-    private readonly _CompaniesService = inject(CompaniesService)
+    // private readonly _CompaniesService = inject(CompaniesService)
     private readonly _ActivatedRoute = inject(ActivatedRoute)
     private readonly _Router = inject(Router)
 
 
-    activeTab = 1;
-    companyId:string | null = null
-    companyData:any = {}
-    files: any;
+    tab:number = 0;
+    activeTab: number = 1;
+    authorizedPerson: string | number = '';
+
+    toggleTabs(tabNumber:number):void{
+        this.tab = tabNumber
+    }
+
+    backTabs():void{
+        if(this.activeTab == 1){
+            this.tab = 0
+        }
+        else if(this.activeTab == 2){
+            this.activeTab = 1
+        }
+        else if(this.activeTab == 3){
+            this.activeTab = 2
+        }
+        else if(this.activeTab == 4){
+            this.activeTab = 2
+        }
+    }
+
+    startNewCompanyForm: FormGroup = this._FormBuilder.group({
+        FullName: [''],
+        Email: [''],
+        Phone: [''],
+        IdNumber: [''],
+        CompanyName: [''],
+        JobTitle: [''],
+        CompanyIndustry: [''],
+        NumberOfEmployees: [''],
+        NumberOfVehicles: [''],
+    })
+
+    contiuneNewCompanyForm: FormGroup = this._FormBuilder.group({
+        FullName: [''],
+        Email: [''],
+        Phone: [''],
+        IdNumber: [''],
+    })
+
+
+    submitNewCompanyForm(): void {
+        let data = this.startNewCompanyForm.value
+        this.activeTab = 2;
+    }
+
+    submitContinueCompanyForm(): void {
+        let data = this.contiuneNewCompanyForm.value
+        this.activeTab = 4;
+    }
+
+
+    selectAuthorizedPerson(): void {
+        this.authorizedPerson == 'not authorized' ? this.activeTab = 3 : this.activeTab = 4
+    }
+
+
+    CommercialRegistration: File | null = null;
+    ArticlesOfAssociation: File | null = null;
+    AuthorizedPersonID: File | null = null;
+    NationalAddress: File | null = null;
+    VATCertificate: File | null = null;
+    CompanyLogo: File | null = null;
+
+    // Select functions
+    onSelectCommercialRegistration(event: any) {
+        this.CommercialRegistration = event.addedFiles[0] ?? null;
+        console.log(this.CommercialRegistration)
+    }
+    onSelectArticlesOfAssociation(event: any) {
+        this.ArticlesOfAssociation = event.addedFiles[0] ?? null;
+        console.log(this.ArticlesOfAssociation)
+    }
+    onSelectAuthorizedPersonID(event: any) {
+        this.AuthorizedPersonID = event.addedFiles[0] ?? null;
+        console.log(this.AuthorizedPersonID)
+    }
+    onSelectNationalAddress(event: any) {
+        this.NationalAddress = event.addedFiles[0] ?? null;
+        console.log(this.NationalAddress)
+    }
+    onSelectVATCertificate(event: any) {
+        this.VATCertificate = event.addedFiles[0] ?? null;
+        console.log(this.VATCertificate)
+    }
+    onSelectCompanyLogo(event: any) {
+        this.CompanyLogo = event.addedFiles[0] ?? null;
+        console.log(this.CompanyLogo)
+    }
+
+    // Remove functions
+    onRemoveCommercialRegistration() { this.CommercialRegistration = null; }
+    onRemoveArticlesOfAssociation() { this.ArticlesOfAssociation = null; }
+    onRemoveAuthorizedPersonID() { this.AuthorizedPersonID = null; }
+    onRemoveNationalAddress() { this.NationalAddress = null; }
+    onRemoveVATCertificate() { this.VATCertificate = null; }
+    onRemoveCompanyLogo() { this.CompanyLogo = null; }
+
+    // activeTab = 1;
+    // companyId:string | null = null
+    // companyData:any = {}
+    // files: any;
 
     ngOnInit(): void {
-        this.contiuneRegister()
-        if(this.companyId){
-            this.getCompanyById()
-        }
+        // this.contiuneRegister()
+        // if(this.companyId){
+        //     this.getCompanyById()
+        // }
     }
 
     ngAfterViewInit(): void {
-        if(!this.companyId){
-            this.files  = new FileUploadWithPreview('mySecondImage', {
-                images: {
-                    baseImage: '/assets/images/file-preview.svg',
-                    backgroundImage: '',
-                },
-                multiple: true,
-            });
-        }
+        // if(!this.companyId){
+        //     this.files  = new FileUploadWithPreview('mySecondImage', {
+        //         images: {
+        //             baseImage: '/assets/images/file-preview.svg',
+        //             backgroundImage: '',
+        //         },
+        //         multiple: true,
+        //     });
+        // }
     }
 
-    imageChangedEvent: Event | null = null;
-    croppedImage: SafeUrl  = '';
-    filesLogo: File[] = [];
+    // imageChangedEvent: Event | null = null;
+    // croppedImage: SafeUrl  = '';
+    // filesLogo: File[] = [];
 
-    onSelectLogo(event:any) {
-        this.filesLogo.push(...event.addedFiles);
-    }
-    onRemoveLogo(event:any) {
-        this.filesLogo.splice(this.filesLogo.indexOf(event), 1);
-    }
-    fileChangeEvent(event: Event): void {
-        const input = event.target as HTMLInputElement;
-        if (input.files && input.files.length > 0) {
-            const file = input.files[0];
-            const reader = new FileReader();
+    // onSelectLogo(event:any) {
+    //     this.filesLogo.push(...event.addedFiles);
+    // }
+    // onRemoveLogo(event:any) {
+    //     this.filesLogo.splice(this.filesLogo.indexOf(event), 1);
+    // }
+    // fileChangeEvent(event: Event): void {
+    //     const input = event.target as HTMLInputElement;
+    //     if (input.files && input.files.length > 0) {
+    //         const file = input.files[0];
+    //         const reader = new FileReader();
 
-            reader.onload = (e) => {
-                const imageBase64 = e.target?.result;
-                this.registerForm.get('CompanyPicture')?.setValue(file);
-                this.registerForm.get('ViewCompanyPicture')?.setValue(imageBase64);
-            };
+    //         reader.onload = (e) => {
+    //             const imageBase64 = e.target?.result;
+    //             this.registerForm.get('CompanyPicture')?.setValue(file);
+    //             this.registerForm.get('ViewCompanyPicture')?.setValue(imageBase64);
+    //         };
 
-            reader.readAsDataURL(file);
-            this.imageChangedEvent = event;
-        }
-    }
-    imageCropped(event: ImageCroppedEvent) {
-        this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(event.objectUrl!);
-        this.registerForm.get('ViewCompanyPicture')?.setValue(this.croppedImage)
-    }
+    //         reader.readAsDataURL(file);
+    //         this.imageChangedEvent = event;
+    //     }
+    // }
+    // imageCropped(event: ImageCroppedEvent) {
+    //     this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(event.objectUrl!);
+    //     this.registerForm.get('ViewCompanyPicture')?.setValue(this.croppedImage)
+    // }
 
-    registerForm:FormGroup = this._FormBuilder.group({
-        Name: [''],
-        Description: [''],
-        CompanyEmail: [''],
-        CompanyPhone: [''],
-        CompanyPicture: [''],
-        ViewCompanyPicture: ['assets/images/auth/defult logo.jpg'],
-        Files: [''],
-    })
+    // registerForm:FormGroup = this._FormBuilder.group({
+    //     Name: [''],
+    //     Description: [''],
+    //     CompanyEmail: [''],
+    //     CompanyPhone: [''],
+    //     CompanyPicture: [''],
+    //     ViewCompanyPicture: ['assets/images/auth/defult logo.jpg'],
+    //     Files: [''],
+    // })
 
-    submitRegisterForm():void{
-        let data = this.registerForm.value
-        data.Files = this.files.cachedFileArray.map((item: any) => {
-            const safeName = item.name.replace(/\.(jpg|png|jpeg|gif|webp|pdf|xls|xlsx).*$/i, '.$1');
-            return new File([item], safeName, { type: item.type });
-        });
+    // submitRegisterForm():void{
+    //     let data = this.registerForm.value
+    //     data.Files = this.files.cachedFileArray.map((item: any) => {
+    //         const safeName = item.name.replace(/\.(jpg|png|jpeg|gif|webp|pdf|xls|xlsx).*$/i, '.$1');
+    //         return new File([item], safeName, { type: item.type });
+    //     });
 
-        let formData = new FormData
-        formData.append('Name', data.Name),
-        formData.append('Description', data.Description),
-        formData.append('CompanyPicture', data.CompanyPicture),
-        formData.append('CompanyEmail', data.CompanyEmail),
-        formData.append('CompanyPhone', data.CompanyPhone)
-        if(data.Files){
-            data.Files.forEach((items:any) => {
-                formData.append('Files', items)
-            });
-        }
+    //     let formData = new FormData
+    //     formData.append('Name', data.Name),
+    //     formData.append('Description', data.Description),
+    //     formData.append('CompanyPicture', data.CompanyPicture),
+    //     formData.append('CompanyEmail', data.CompanyEmail),
+    //     formData.append('CompanyPhone', data.CompanyPhone)
+    //     if(data.Files){
+    //         data.Files.forEach((items:any) => {
+    //             formData.append('Files', items)
+    //         });
+    //     }
 
-        this._CompaniesService.CreateCompany(formData).subscribe({
-            next:(res)=>{
-                Swal.fire({
-                    icon: 'success',
-                    title: res.msg,
-                    padding: '2em',
-                    customClass: { popup: 'sweet-alerts' },
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'https://benzeny.netlify.app';
-                    }
-                });
-                this.registerForm.reset()
-                this.registerForm.get('ViewCompanyPicture')?.setValue('assets/images/auth/defult logo.jpg')
-                this.filesLogo = []
-                this.imageChangedEvent = null
-                this.croppedImage = ''
-            }
-        })
-    }
+    //     this._CompaniesService.CreateCompany(formData).subscribe({
+    //         next:(res)=>{
+    //             Swal.fire({
+    //                 icon: 'success',
+    //                 title: res.msg,
+    //                 padding: '2em',
+    //                 customClass: { popup: 'sweet-alerts' },
+    //             }).then((result) => {
+    //                 if (result.isConfirmed) {
+    //                     window.location.href = 'https://benzeny.netlify.app';
+    //                 }
+    //             });
+    //             this.registerForm.reset()
+    //             this.registerForm.get('ViewCompanyPicture')?.setValue('assets/images/auth/defult logo.jpg')
+    //             this.filesLogo = []
+    //             this.imageChangedEvent = null
+    //             this.croppedImage = ''
+    //         }
+    //     })
+    // }
 
-    contiuneRegister():void{
-        this._ActivatedRoute.paramMap.subscribe({
-            next:(param)=>{
-                this.companyId = param.get('id')
-                if(this.companyId){
-                    this.activeTab = 2
-                }
-            }
-        })
-    }
+    // contiuneRegister():void{
+    //     this._ActivatedRoute.paramMap.subscribe({
+    //         next:(param)=>{
+    //             this.companyId = param.get('id')
+    //             if(this.companyId){
+    //                 this.activeTab = 2
+    //             }
+    //         }
+    //     })
+    // }
 
-    getCompanyById():void{
-        if(this.companyId){
-            this._CompaniesService.GetCompanyById(this.companyId).subscribe({
-                next:(res)=>{
-                    this.companyData = res.data
-                    this.registerForm.patchValue({
-                        Name: [this.companyData.name],
-                        Description: [this.companyData.description],
-                        CompanyEmail: [this.companyData.companyEmail],
-                        CompanyPhone: [this.companyData.companyPhone],
-                        ViewCompanyPicture: [this.companyData.profilePicturePath],
-                    })
+    // getCompanyById():void{
+    //     if(this.companyId){
+    //         this._CompaniesService.GetCompanyById(this.companyId).subscribe({
+    //             next:(res)=>{
+    //                 this.companyData = res.data
+    //                 this.registerForm.patchValue({
+    //                     Name: [this.companyData.name],
+    //                     Description: [this.companyData.description],
+    //                     CompanyEmail: [this.companyData.companyEmail],
+    //                     CompanyPhone: [this.companyData.companyPhone],
+    //                     ViewCompanyPicture: [this.companyData.profilePicturePath],
+    //                 })
 
-                    this.registerForm.get('Name')?.disable();
-                    this.registerForm.get('Description')?.disable();
-                    this.registerForm.get('CompanyEmail')?.disable();
-                    this.registerForm.get('CompanyPhone')?.disable();
-                    this.registerForm.get('ViewCompanyPicture')?.disable();
-                }
-            })
-        }
-    }
+    //                 this.registerForm.get('Name')?.disable();
+    //                 this.registerForm.get('Description')?.disable();
+    //                 this.registerForm.get('CompanyEmail')?.disable();
+    //                 this.registerForm.get('CompanyPhone')?.disable();
+    //                 this.registerForm.get('ViewCompanyPicture')?.disable();
+    //             }
+    //         })
+    //     }
+    // }
 
-    isImage(file: string): boolean {
-        return /\.(jpg|jpeg|png|gif|webp)$/i.test(file);
-    }
+    // isImage(file: string): boolean {
+    //     return /\.(jpg|jpeg|png|gif|webp)$/i.test(file);
+    // }
 
-    isPDF(file: string): boolean {
-        return /\.pdf$/i.test(file);
-    }
+    // isPDF(file: string): boolean {
+    //     return /\.pdf$/i.test(file);
+    // }
 
-    isExcel(file: string): boolean {
-        return /\.(xls|xlsx)$/i.test(file);
-    }
+    // isExcel(file: string): boolean {
+    //     return /\.(xls|xlsx)$/i.test(file);
+    // }
 
-    continueRegisterForm:FormGroup = this._FormBuilder.group({
-        Id:[''],
-        FullName:[''],
-        Email:[''],
-        Mobile:[''],
-        Username:[''],
-        Password :[''],
-        SSN:[''],
-    })
+    // continueRegisterForm:FormGroup = this._FormBuilder.group({
+    //     Id:[''],
+    //     FullName:[''],
+    //     Email:[''],
+    //     Mobile:[''],
+    //     Username:[''],
+    //     Password :[''],
+    //     SSN:[''],
+    // })
 
-    submitContinueRegisterForm():void{
-        if(this.companyId && this.continueRegisterForm.valid){
-            let data = this.continueRegisterForm.value
+    // submitContinueRegisterForm():void{
+    //     if(this.companyId && this.continueRegisterForm.valid){
+    //         let data = this.continueRegisterForm.value
 
-            let formData = new FormData
-            formData.append('Id', this.companyId),
-            formData.append('FullName', data.FullName),
-            formData.append('Email', data.Email),
-            formData.append('Mobile', data.Mobile),
-            formData.append('Username', data.Username),
-            formData.append('Password', data.Password)
-            formData.append('SSN', data.SSN)
+    //         let formData = new FormData
+    //         formData.append('Id', this.companyId),
+    //         formData.append('FullName', data.FullName),
+    //         formData.append('Email', data.Email),
+    //         formData.append('Mobile', data.Mobile),
+    //         formData.append('Username', data.Username),
+    //         formData.append('Password', data.Password)
+    //         formData.append('SSN', data.SSN)
 
-            this._CompaniesService.UpdateCompany(this.companyId, formData).subscribe({
-                next:(res)=>{
-                    Swal.fire({
-                        icon: 'success',
-                        title: res.msg,
-                        padding: '2em',
-                        customClass: { popup: 'sweet-alerts' },
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                             window.location.href = 'https://benzeny.netlify.app';
-                        }
-                    });
-                }
-            })
-        }
-    }
+    //         this._CompaniesService.UpdateCompany(this.companyId, formData).subscribe({
+    //             next:(res)=>{
+    //                 Swal.fire({
+    //                     icon: 'success',
+    //                     title: res.msg,
+    //                     padding: '2em',
+    //                     customClass: { popup: 'sweet-alerts' },
+    //                 }).then((result) => {
+    //                     if (result.isConfirmed) {
+    //                          window.location.href = 'https://benzeny.netlify.app';
+    //                     }
+    //                 });
+    //             }
+    //         })
+    //     }
+    // }
 
     store: any;
     constructor(

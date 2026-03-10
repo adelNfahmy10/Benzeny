@@ -61,6 +61,8 @@ import { SidebarComponent } from './layouts/sidebar';
 import { ThemeCustomizerComponent } from './layouts/theme-customizer';
 import { headerInterceptor } from 'src/core/interceptors/header/header.interceptor';
 
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),

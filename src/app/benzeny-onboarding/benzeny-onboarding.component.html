@@ -5,7 +5,7 @@
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">Total Customers</p>
                 <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
-                    {{ 6350 }}
+                    {{ cardStats.totalCompanies || 0 }}
                 </h3>
             </div>
             <div class="p-1 rounded-lg mt-4">
@@ -18,8 +18,7 @@
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">In Progress</p>
                 <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
-
-                    {{ 1350 }}
+                    {{ cardStats.inProgressCompanies || 0 }}
                 </h3>
             </div>
             <div class="p-1 rounded-lg mt-4">
@@ -32,7 +31,7 @@
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">Active</p>
                 <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
-                    89
+                    {{ cardStats.activeCompanies || 0 }}
                 </h3>
             </div>
             <div class="p-1 rounded-lg mt-4">
@@ -45,7 +44,7 @@
             <div class="flex flex-col">
                 <p class="text-[#96a0b5] text-lg">This Month</p>
                 <h3 class="font-medium dark:text-[#222] text-[#222] text-[20px] flex items-center">
-                    24
+                    {{ cardStats.newCompaniesThisMonth || 0}}
                 </h3>
             </div>
             <div class="p-1 rounded-lg mt-4">
@@ -68,8 +67,17 @@
             <div class="ltr:ml-auto rtl:mr-auto flex items-center gap-2 flex-wrap">
                 <div class="flex gap-3">
                     @for (tab of tabs; track $index) {
-                        <span (click)="activeTabs(tab)" [ngClass]="activeTab === tab ? 'bg-[#f79320] text-white font-bold' : 'text-black'" class="transition-all border cursor-pointer border-[#f79320] w-24 text-center rounded-lg py-1">
-                            {{ tab }}
+                        <span
+                        (click)="activeTabs(tab)"
+                        class="transition-all border cursor-pointer border-[#f79320]
+                                w-24 text-center rounded-lg py-1"
+                        [ngClass]="
+                            activeTab === tab
+                            ? 'bg-[#f79320] text-white font-bold'
+                            : 'text-black'
+                        "
+                        >
+                        {{ tab }}
                         </span>
                     }
 
@@ -81,7 +89,7 @@
         <div class="datatable">
             <ng-datatable
                 [rows]="filteredItems"
-                [columns]="cols"
+                [columns]="onboardingColumns"
                 [search]="search"
                 [sortable]="true"
                 (rowClick)="onRowClick($event)"
@@ -91,17 +99,23 @@
                 previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                 nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
             >
-                <ng-template slot="isActive" let-value="data">
-                    <div class="flex items-center gap-2">
+                <ng-template slot="status" let-value="data">
+                   <div class="flex items-center gap-2">
                         <span
                             class="border px-4 rounded-lg"
                             [ngClass]="{
-                                'bg-green-200 font-bold text-green-700': value.isActive == 'Active',
-                                'bg-[#FEF3C6] font-bold text-[#cb7a28]': value.isActive == 'In Progress',
-                                'bg-red-200 font-bold text-red-700': value.isActive == 'Rejected'
+                            'bg-green-200 font-bold text-green-700': value.status === 'Done',
+                            'bg-[#FEF3C6] font-bold text-[#cb7a28]': value.status && value.status !== 'Done',
+                            'bg-red-200 font-bold text-red-700': !value.status
                             }"
                         >
-                        {{ value.isActive }}
+                            {{
+                            value.status === 'Done'
+                                ? 'Done'
+                                : value.status
+                                ? 'In Progress'
+                                : 'Rejected'
+                            }}
                         </span>
                     </div>
                 </ng-template>

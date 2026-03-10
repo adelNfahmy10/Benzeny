@@ -12,7 +12,7 @@
         <img src="/assets/images/auth/coming-soon-object3.png" alt="image" class="absolute right-0 top-0 h-[300px]" />
         <img src="/assets/images/auth/polygon-object.svg" alt="image" class="absolute bottom-0 end-[28%]" />
         <div
-            class="relative w-full max-w-[870px] rounded-md bg-[linear-gradient(45deg,#fff9f9_0%,rgba(255,255,255,0)_25%,rgba(255,255,255,0)_75%,_#fff9f9_100%)] p-2 dark:bg-[linear-gradient(52.22deg,#0E1726_0%,rgba(14,23,38,0)_18.66%,rgba(14,23,38,0)_51.04%,rgba(14,23,38,0)_80.07%,#0E1726_100%)]"
+            class="relative w-full rounded-md bg-[linear-gradient(45deg,#fff9f9_0%,rgba(255,255,255,0)_25%,rgba(255,255,255,0)_75%,_#fff9f9_100%)] p-2 dark:bg-[linear-gradient(52.22deg,#0E1726_0%,rgba(14,23,38,0)_18.66%,rgba(14,23,38,0)_51.04%,rgba(14,23,38,0)_80.07%,#0E1726_100%)]"
         >
             <div class="relative flex flex-col justify-center rounded-md bg-white/60 px-6 py-20 backdrop-blur-lg dark:bg-black/50 lg:min-h-[500px]">
                 <!-- <div class="absolute end-6 top-6">
@@ -61,46 +61,90 @@
                     </div>
                 </div> -->
                 <div class="mx-auto w-full">
-                    <div>
-                        <div class="relative z-[1]">
-                            <div
-                                class="absolute top-[30px] -z-[1] m-auto h-1 w-[15%] bg-mainColor transition-[width] ltr:left-[25%] rtl:right-[25%]"
-                                [ngClass]="{'w-[10%]' : activeTab === 1, 'w-[50%]' : activeTab === 2, 'w-[100%]' : activeTab === 3}"
-                            ></div>
-                            <ul class="mb-5 grid grid-cols-2">
-                                <li class="mx-auto">
-                                    <a
-                                        href="javascript:;"
-                                        class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
-                                        [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 1}"
-                                        (click)="activeTab = 1"
-                                    >
-                                        <icon-home />
-                                    </a>
-                                </li>
-                                <li class="mx-auto">
-                                    <a
-                                        href="javascript:;"
-                                        class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
-                                        [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 2}"
-                                        (click)="companyId ? activeTab = 2 : activeTab = 1"
-                                    >
-                                        <icon-user class="h-5 w-5" />
-                                    </a>
-                                </li>
-                                <!-- <li class="mx-auto">
-                                    <a
-                                        href="javascript:;"
-                                        class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
-                                        [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 3}"
-                                        (click)="activeTab = 3"
-                                    >
-                                        <icon-thumb-up class="h-5 w-5" />
-                                    </a>
-                                </li> -->
-                            </ul>
+                    @if(tab == 0){
+                    <div class="signup-tabs">
+                        <!-- SignUp Tabs Header -->
+                        <div class="mb-10 flex flex-col justify-center items-center text-center gap-3">
+                            <img src="assets/images/company-image/logo-benz.webp" alt="benzeny">
+                            <div>
+                                <h1 class="text-3xl font-bold uppercase !leading-snug dark:text-white md:text-4xl">Welcome</h1>
+                                <p class="text-base leading-normal dark:text-white/60">How would you like to proceed today? Select one of the options below.</p>
+                            </div>
                         </div>
-                        <div>
+
+
+                        <!-- SignUp Tabs Cards -->
+                        <div class="mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
+                            <div class="card-tab cursor-pointer rounded-xl shadow-lg p-3 border border-transparent hover:border-mainColor transition-all duration-300" (click)="toggleTabs(1)">
+                                <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 rounded-full flex items-center justify-center mb-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 lucide-building-2 w-8 h-8 text-[rgb(255,153,36)]"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
+                                </div>
+                                <h3 class="font-bold text-[18px]">Start New Company</h3>
+                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Begin a fresh registration for your new company</p>
+                                <div class="card-footer w-fit flex items-center gap-2 text-mainColor">
+                                    <span class="rounded-md py-2">Select</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-tab cursor-pointer rounded-xl shadow-lg p-3 border border-transparent hover:border-mainColor transition-all duration-300" (click)="toggleTabs(2)">
+                                <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 rounded-full flex items-center justify-center mb-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-8 h-8 text-[rgb(255,153,36)]"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                </div>
+                                <h3 class="font-bold text-[18px]">Continue Where You Left</h3>
+                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Pick up where you left off on a previous application</p>
+                                <div class="card-footer w-fit flex items-center gap-2 text-mainColor">
+                                    <span class="rounded-md py-2">Select</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </div>
+
+                            <div class="card-tab cursor-pointer rounded-xl shadow-lg p-3 border border-transparent hover:border-mainColor transition-all duration-300" (click)="toggleTabs(3)">
+                                <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 rounded-full flex items-center justify-center mb-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-8 h-8 text-[rgb(255,153,36)]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                                </div>
+                                <h3 class="font-bold text-[18px]">Approve & Review</h3>
+                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">For authorized company representatives only</p>
+                                <div class="card-footer w-fit flex items-center gap-2 text-mainColor">
+                                    <span class="rounded-md py-2">Select</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- SignUp Old Version -->
+                        <!-- <div class="signup-login">
+                            <div class="relative z-[1]">
+                                <div
+                                    class="absolute top-[30px] -z-[1] m-auto h-1 w-[15%] bg-mainColor transition-[width] ltr:left-[25%] rtl:right-[25%]"
+                                    [ngClass]="{'w-[10%]' : activeTab === 1, 'w-[50%]' : activeTab === 2, 'w-[100%]' : activeTab === 3}"
+                                ></div>
+                                <ul class="mb-5 grid grid-cols-2">
+                                    <li class="mx-auto">
+                                        <a
+                                            href="javascript:;"
+                                            class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
+                                            [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 1}"
+                                            (click)="activeTab = 1"
+                                        >
+                                            <icon-home />
+                                        </a>
+                                    </li>
+                                    <li class="mx-auto">
+                                        <a
+                                            href="javascript:;"
+                                            class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
+                                            [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 2}"
+                                            (click)="companyId ? activeTab = 2 : activeTab = 1"
+                                        >
+                                            <icon-user class="h-5 w-5" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                             <ng-container *ngIf="activeTab === 1">
                                 <div class="mb-10 flex items-center gap-3">
                                     <svg width="100" height="100" viewBox="0 0 45 85" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,20 +177,17 @@
                                         <p class="text-base font-bold leading-normal dark:text-white/60">Create Your Account, It's Free and Only Takes a Minute</p>
                                     </div>
                                 </div>
+
                                 <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
 
-                                    <!-- Row: Logo + Fields -->
                                     <div class="col-span-12 grid grid-cols-12 gap-4 items-start">
 
-                                        <!-- Logo -->
                                         <div class="col-span-12 lg:col-span-3">
                                             <label for="Name">Company Logo</label>
                                             <img loading="lazy" [class]="!companyId ? 'cursor-pointer' : '' " class="object-cover w-[180px] h-[180px] " [src]="registerForm.get('ViewCompanyPicture')?.value" (click)="companyId ?  modal6.close(): modal6.open()" />
                                         </div>
 
-                                        <!-- Fields -->
                                         <div class="col-span-12 lg:col-span-9 grid grid-cols-12 gap-4">
-                                            <!-- Company Name -->
                                             <div class="col-span-12">
                                                 <label for="Name">Company Name</label>
                                                 <div class="relative text-white-dark">
@@ -157,7 +198,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Company Email -->
                                             <div class="col-span-12 md:col-span-6">
                                                 <label for="Email">Company Email</label>
                                                 <div class="relative text-white-dark">
@@ -168,7 +208,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Company Phone -->
                                             <div class="col-span-12 md:col-span-6">
                                                 <label for="Phone">Company Phone</label>
                                                 <div class="relative text-white-dark">
@@ -179,7 +218,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Description -->
                                             <div class="col-span-12">
                                                 <label for="Description">Description</label>
                                                 <div class="relative text-white-dark">
@@ -192,7 +230,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Dropzone or File Upload -->
                                     <div class="col-span-12">
                                         @if(!companyId){
                                             <div class="custom-file-container" data-upload-id="mySecondImage"></div>
@@ -210,7 +247,7 @@
                                                                 <img src="assets/images/auth/pdf-icon.png" class="w-full" alt="pdf-file">
                                                             </a>
                                                         </div>
-                                                          <!-- <iframe [src]="safeFileUrl" class="w-full h-full" frameborder="0"></iframe> -->
+                                                            <iframe [src]="safeFileUrl" class="w-full h-full" frameborder="0"></iframe>
                                                     } @else if(isExcel(file)){
                                                         <div class="text-center text-sm text-gray-500 p-4 border border-dashed rounded-md flex flex-col gap-3">
                                                             <span>📄 Excel File: </span>
@@ -224,7 +261,6 @@
                                         }
                                     </div>
 
-                                    <!-- Submit -->
                                     @if(!companyId){
                                         <div class="col-span-12">
                                             <button type="submit" class="btn bg-[linear-gradient(45deg,#F79320,rgba(255,255,255,0)_40%,rgba(255,255,255,0)_60%,#F79320)] !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_#f7932070]">
@@ -234,10 +270,11 @@
                                     }
                                 </form>
 
-                                <!-- <div class="relative my-7 text-center md:mb-9">
+                                <div class="relative my-7 text-center md:mb-9">
                                     <span class="absolute inset-x-0 top-1/2 h-px w-full -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
                                     <span class="relative bg-white px-2 font-bold uppercase text-white-dark dark:bg-dark dark:text-white-light">or</span>
                                 </div>
+
                                 <div class="mb-10 md:mb-[60px]">
                                     <ul class="flex justify-center gap-3.5 text-white">
                                         <li>
@@ -277,7 +314,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </div> -->
+                                </div>
 
                                 @if(!companyId){
                                     <div class="text-center dark:text-white/60 mt-5">
@@ -287,10 +324,10 @@
                                         </a>
                                     </div>
                                 }
-
                             </ng-container>
+
                             <ng-container *ngIf="activeTab === 2">
-                                 <div class="mb-10 flex items-center gap-3">
+                                <div class="mb-10 flex items-center gap-3">
                                     <svg width="100" height="100" viewBox="0 0 45 85" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M39.94 7.06545C40.0599 1.7812 37.0813 0.316895 32.1772 0.316895C25.4935 0.316895 18.8098 0.316895 12.1167 0.326326C7.54649 0.326326 4.60076 1.69396 4.61722 6.62215C4.65248 13.9767 4.60076 21.3643 4.47852 28.7801L39.9894 28.7896C39.8601 18.6974 39.8436 11.456 39.9377 7.06545H39.94ZM32.8331 19.4425C32.8331 20.6805 31.8316 21.685 30.6045 21.685H13.8752C12.641 21.685 11.6395 20.6805 11.6395 19.4425V9.54134C11.6395 8.31047 12.641 7.30597 13.8752 7.30597H30.6021C31.8293 7.30597 32.8308 8.31047 32.8308 9.54134V19.4425H32.8331Z" fill="#DCDDE6"/>
                                         <path d="M32.0085 5.11572H12.469C10.7099 5.11572 9.27734 6.52612 9.27734 8.26934V20.8279C9.27734 22.5712 10.7099 23.9909 12.469 23.9909H32.0085C33.7675 23.9909 35.1907 22.5712 35.1907 20.8279V8.26934C35.1907 6.52612 33.7675 5.11572 32.0085 5.11572ZM32.8211 19.4455C32.8211 20.6674 31.8206 21.6588 30.5947 21.6588H13.8828C12.6498 21.6588 11.6493 20.6674 11.6493 19.4455V9.67276C11.6493 8.45786 12.6498 7.46639 13.8828 7.46639H30.5923C31.8182 7.46639 32.8187 8.45786 32.8187 9.67276V19.4455H32.8211Z" fill="black"/>
@@ -321,12 +358,9 @@
                                         <p class="text-base font-bold leading-normal dark:text-white/60">Create Your Account, It's Free and Only Takes a Minute</p>
                                     </div>
                                 </div>
-                                 <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="continueRegisterForm" (ngSubmit)="submitContinueRegisterForm()">
-                                    <!-- Row: Logo + Fields -->
+                                <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="continueRegisterForm" (ngSubmit)="submitContinueRegisterForm()">
                                     <div class="col-span-12 grid grid-cols-12 gap-4 items-start">
-                                        <!-- Fields -->
                                         <div class="col-span-12 grid grid-cols-12 gap-4">
-                                            <!-- Full Name -->
                                             <div class="col-span-6">
                                                 <label for="fullName">Full Name</label>
                                                 <div class="relative text-white-dark">
@@ -337,7 +371,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- SSN -->
                                             <div class="col-span-6">
                                                 <label for="SSN">SSN</label>
                                                 <div class="relative text-white-dark">
@@ -348,7 +381,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- User Email -->
                                             <div class="col-span-12 md:col-span-6">
                                                 <label for="Email">Email</label>
                                                 <div class="relative text-white-dark">
@@ -359,7 +391,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Phone -->
                                             <div class="col-span-12 md:col-span-6">
                                                 <label for="Phone">Phone</label>
                                                 <div class="relative text-white-dark">
@@ -370,7 +401,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- User Name -->
                                             <div class="col-span-6">
                                                 <label for="Name">User Name</label>
                                                 <div class="relative text-white-dark">
@@ -381,7 +411,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- User Password -->
                                             <div class="col-span-6">
                                                 <label for="password">Password</label>
                                                 <div class="relative text-white-dark">
@@ -393,7 +422,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Submit -->
                                     <div class="col-span-12">
                                         <button type="submit" class="btn bg-[linear-gradient(45deg,#F79320,rgba(255,255,255,0)_40%,rgba(255,255,255,0)_60%,#F79320)] !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_#f7932070]">
                                         Sign Up
@@ -401,11 +429,428 @@
                                     </div>
                                 </form>
                             </ng-container>
-                            <!-- <ng-container *ngIf="activeTab === 3">
-                                <p class="mb-5">Wonderful transition effects.</p>
-                            </ng-container> -->
-                        </div>
+                        </div> -->
                     </div>
+                    }
+
+                    @if(tab != 0){
+                        <div class="back-icon absolute top-[20px] left-[30px] w-fit flex items-center gap-2 cursor-pointer" (click)="backTabs()">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span class="rounded-md">Back</span>
+                        </div>
+
+                        <div class="signup-pages">
+                            @if(tab == 1){
+                                <div class="start-company lg:w-[50%] xl:w-[35%] w-100 mx-auto"  [ngClass]="{'xl:w-[50%]' : activeTab == 4,}" >
+
+                                    <div class="relative z-[1]">
+                                        <div
+                                            class="absolute top-[30px] -z-[1] m-auto h-1 bg-mainColor transition-all duration-300 ltr:left-[16%] rtl:right-[16%]"
+                                            [ngClass]="{
+                                                'w-[12%]' : activeTab === 1,
+                                                'w-[38%]' : activeTab === 2,
+                                                'w-[70%]' : activeTab === 3 || activeTab === 4
+                                            }"
+                                        ></div>
+
+                                        <ul class="mb-5 grid grid-cols-3">
+
+                                            <!-- Tab 1 -->
+                                            <li class="mx-auto">
+                                                <a
+                                                    href="javascript:;"
+                                                    class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
+                                                    [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 1}"
+                                                >
+                                                    @if(activeTab == 1){
+                                                        1
+                                                    } @else{
+                                                        <i class="fa-solid fa-check"></i>
+                                                    }
+                                                </a>
+                                            </li>
+
+                                            <!-- Tab 2 -->
+                                            <li class="mx-auto">
+                                                <a
+                                                    href="javascript:;"
+                                                    class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
+                                                    [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 2}"
+                                                >
+                                                    @if(activeTab == 2){
+                                                        2
+                                                    } @else if(activeTab == 1){
+                                                        2
+                                                    } @else {
+                                                        <i class="fa-solid fa-check"></i>
+                                                    }
+                                                </a>
+                                            </li>
+
+                                            <!-- Tab 3 -->
+                                            <li class="mx-auto">
+                                                <a
+                                                    href="javascript:;"
+                                                    class="flex h-16 w-16 items-center justify-center border-[3px] border-[#f3f2ee] bg-white dark:border-[#1b2e4b] dark:bg-[#253b5c] rounded-full"
+                                                    [ngClass]="{'!border-mainColor !bg-mainColor text-white': activeTab === 3 || activeTab === 4 }"
+                                                >
+                                                    @if(activeTab == 1 || activeTab == 2 || activeTab == 3){
+                                                        3
+                                                    } @else {
+                                                    <i class="fa-solid fa-check"></i>
+                                                    }
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    @if(activeTab == 1){
+                                        <div class="card-start-company">
+                                            <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2 lucide-building-2 w-8 h-8 text-[rgb(255,153,36)]"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <h3 class="font-bold text-[26px]">Start New Company</h3>
+                                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Fill in your details to begin the company registration process.</p>
+                                            </div>
+
+                                            <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="startNewCompanyForm">
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="FullName">Full Name</label>
+                                                    <input id="FullName" formControlName="FullName" type="text" placeholder="Enter Full Name" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="Email">Email</label>
+                                                    <input id="Email" formControlName="Email" type="email" placeholder="Enter Email" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="Phone">Phone Number</label>
+                                                    <input id="Phone" formControlName="Phone" type="tel" placeholder="Enter Phone" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="IdNumber">ID Number</label>
+                                                    <input id="IdNumber" formControlName="IdNumber" type="number" placeholder="Enter ID Number" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="companyName">Company Name</label>
+                                                    <input id="companyName" formControlName="CompanyName" type="text" placeholder="Enter Company Name" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="jobTitle">Job Title</label>
+                                                    <input id="jobTitle" formControlName="JobTitle" type="text" placeholder="e.g.CEO, Operation Manager" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="companyIndustry">Company Industry</label>
+                                                    <input id="companyIndustry" formControlName="CompanyIndustry" type="text" placeholder="e.g.Logistics, Retail" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="numberofEmployees">Number of Employees</label>
+                                                    <select name="numberofEmployees" formControlName="NumberOfEmployees" id="numberofEmployees" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl">
+                                                        <option value="" selected disabled>Select Number of Employees</option>
+                                                        <option value="1-100">1-100</option>
+                                                        <option value="100-500">100-500</option>
+                                                        <option value="500-1000">500-1000</option>
+                                                        <option value="1000+">1000+</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="numberofVehicles">Number of Vehicles</label>
+                                                    <select name="numberofVehicles" formControlName="NumberOfVehicles" id="numberofVehicles" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl">
+                                                        <option value="" selected disabled>Select Number of Vehicles</option>
+                                                        <option value="1-100">1-100</option>
+                                                        <option value="100-500">100-500</option>
+                                                        <option value="500-1000">500-1000</option>
+                                                        <option value="1000+">1000+</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <button class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="submitNewCompanyForm()">
+                                                        <span>Get Started</span>
+                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+
+                                    @if(activeTab == 2){
+                                        <div class="card-authorization-Role">
+                                            <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-8 h-8 text-[rgb(255,153,36)]"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <h3 class="font-bold text-[26px]">Authorization Role</h3>
+                                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Are you the authorized person for this company?</p>
+                                            </div>
+
+                                           <div class="grid grid-cols-1 gap-4">
+                                                <!-- Option 1 -->
+                                                <label class="cursor-pointer">
+                                                    <input type="radio" name="authorized" class="peer hidden" value="authorized" [(ngModel)]="authorizedPerson">
+                                                    <div class="flex justify-between items-center p-5 rounded-xl border border-gray-300 bg-white dark:bg-[#253b5c] text-gray-800 dark:text-white shadow hover:shadow-lg transition-all duration-300 peer-checked:border-mainColor peer-checked:bg-[#FFF7ED]">
+                                                        <div class="icon-check flex items-center gap-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-7 h-7 text-[rgb(255,153,36)]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                                            <div>
+                                                                <p class="font-bold">I am the authorized person</p>
+                                                                <span class="text-[#767676]">I am the official company representative</span>
+                                                            </div>
+                                                        </div>
+                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                    </div>
+                                                </label>
+
+                                                <!-- Option 2 -->
+                                                <label class="cursor-pointer">
+                                                    <input type="radio" name="authorized" class="peer hidden" value="not authorized" [(ngModel)]="authorizedPerson">
+                                                    <div class="flex justify-between items-center p-5 rounded-xl border border-gray-300 bg-white dark:bg-[#253b5c] text-gray-800 dark:text-white shadow hover:shadow-lg transition-all duration-300 peer-checked:border-mainColor peer-checked:bg-[#FFF7ED]">
+                                                        <div class="icon-check flex items-center gap-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-7 h-7 text-[rgb(255,153,36)]"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                                            <div>
+                                                                <p class="font-bold">I am not the authorized person</p>
+                                                                <span class="text-[#767676]">Someone else is the official representative</span>
+                                                            </div>
+                                                        </div>
+                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                    </div>
+                                                </label>
+
+                                                <button [disabled]="!authorizedPerson" class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="selectAuthorizedPerson()">
+                                                    <span>Continue</span>
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if(activeTab == 3){
+                                        <div class="card-Authorized-Person-Information">
+                                            <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check w-8 h-8 text-[rgb(255,153,36)]"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <h3 class="font-bold text-[26px]">Authorized Person Information</h3>
+                                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Please provide the details of the authorized company representative.</p>
+                                            </div>
+
+                                            <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="contiuneNewCompanyForm">
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="Name">Full Name</label>
+                                                    <input id="Name" formControlName="FullName" type="text" placeholder="Enter Full Name" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="Email">Email</label>
+                                                    <input id="Email" formControlName="Email" type="email" placeholder="authorized@comapany.com" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="Phone">Phone Number</label>
+                                                    <input id="Phone" formControlName="Phone" type="tel" placeholder="+966 5X XXX XXXX" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <label class="text-[12px] ps-2" for="NationalID">National ID Number</label>
+                                                    <input id="NationalID" formControlName="IdNumber" type="number" placeholder="Enter National ID Number" class="form-input placeholder:text-[#C5C5CC] w-full rounded-xl" />
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <button class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="submitContinueCompanyForm()">
+                                                        <span>Continue to Documents</span>
+                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    }
+
+                                    @if(activeTab == 4){
+                                        <div class="card-Authorized-Person-Information">
+                                            <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-8 h-8 text-[rgb(255,153,36)]"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                            </div>
+
+                                            <div class="text-center my-4">
+                                                <h3 class="font-bold text-[26px]">Upload Documents</h3>
+                                                <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Please upload all required documents to complete your registration.</p>
+                                            </div>
+
+                                            <form class="dark:ext-white grid grid-cols-12 gap-4" [formGroup]="contiuneNewCompanyForm">
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectCommercialRegistration($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                            <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">Commercial Registration</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+
+                                                        @if(CommercialRegistration){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveCommercialRegistration()">
+                                                                <ngx-dropzone-label>{{ CommercialRegistration.name }} ({{ CommercialRegistration.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectArticlesOfAssociation($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                                <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">Articles of Association</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+                                                        @if(ArticlesOfAssociation){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveArticlesOfAssociation()">
+                                                                <ngx-dropzone-label>{{ ArticlesOfAssociation.name }} ({{ ArticlesOfAssociation.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectAuthorizedPersonID($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                                <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">Authorized Person ID</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+                                                        @if(AuthorizedPersonID){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveAuthorizedPersonID()">
+                                                                <ngx-dropzone-label>{{ AuthorizedPersonID.name }} ({{ AuthorizedPersonID.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectNationalAddress($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                                <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">National Address</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+                                                        @if(NationalAddress){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveNationalAddress()">
+                                                                <ngx-dropzone-label>{{ NationalAddress.name }} ({{ NationalAddress.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectVATCertificate($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                                <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">VAT Certificate</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+                                                        @if(VATCertificate){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveVATCertificate()">
+                                                                <ngx-dropzone-label>{{ VATCertificate.name }} ({{ VATCertificate.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <ngx-dropzone (change)="onSelectCompanyLogo($event)">
+                                                        <ngx-dropzone-label>
+                                                            <div class="bg-[#cccccc41] w-fit mx-auto p-3 rounded-full mb-2">
+                                                                <i class="fa-solid fa-arrow-up-from-bracket text-[18px]"></i>
+                                                            </div>
+                                                            <h6 class="text-[16px]">Company Logo</h6>
+                                                            <span class="text-[10px]">Click to upload or drag and drop</span>
+                                                        </ngx-dropzone-label>
+                                                        @if(CompanyLogo){
+                                                            <ngx-dropzone-preview [removable]="true" (removed)="onRemoveCompanyLogo()">
+                                                                <ngx-dropzone-label>{{ CompanyLogo.name }} ({{ CompanyLogo.type }})</ngx-dropzone-label>
+                                                            </ngx-dropzone-preview>
+                                                        }
+                                                    </ngx-dropzone>
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <button class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="submitContinueCompanyForm()">
+                                                        <span>Continue to Documents</span>
+                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    }
+
+                                </div>
+                            }
+
+                            @if(tab == 2){
+                                <div class="continue-you-left lg:w-[50%] xl:w-[35%] w-100 mx-auto">
+                                    <div class="card-continue text-center">
+
+                                        <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-8 h-8 text-[rgb(255,153,36)]"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        </div>
+
+                                        <h3 class="font-bold text-[26px]">Continue Your Journey</h3>
+                                        <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">Enter your email address to resume your previous application.</p>
+
+                                        <div class="card-input text-mainColor">
+                                            <input type="text" placeholder="Enter Your Email" class="form-input w-full border-0 focus:ring-0 focus:outline-none mb-3" />
+                                            <button class="btn bg-mainColor text-white w-full flex justify-center items-center gap-3">
+                                                <span>Continue</span>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            @if(tab == 3){
+                                <div class="approve lg:w-[50%] xl:w-[35%] w-100 mx-auto">
+                                    <div class="card-approve text-center">
+
+                                        <div class="icon-card bg-mainColor/10 text-mainColor w-12 h-12 mx-auto rounded-full flex items-center justify-center text-center mb-5">
+                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-8 h-8 text-[rgb(255,153,36)]"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                                        </div>
+
+                                        <h3 class="font-bold text-[26px]">Approve & Review</h3>
+                                        <p class="text-[#767676] my-3 text-[14px] dark:text-white/60">This section is for authorized company representatives. Enter your email to proceed.</p>
+
+                                        <div class="card-input text-mainColor">
+                                            <input type="text" placeholder="Enter Your Email" class="form-input w-full border-0 focus:ring-0 focus:outline-none mb-3" />
+                                            <button class="btn bg-mainColor text-white w-full flex justify-center items-center gap-3">
+                                                <span>Proceed to Review</span>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -414,7 +859,7 @@
 
 
  <!-- Modal -->
-<ngx-custom-modal #modal6 customClass="modal-top large-modal">
+<!-- <ngx-custom-modal #modal6 customClass="modal-top large-modal">
     <ng-template #modalHeader> <div>Company Logo</div> </ng-template>
     <ng-template #modalBody>
         <input type="file" (change)="fileChangeEvent($event)"/>
@@ -431,4 +876,4 @@
         <button type="button" (click)="modal6.close()" class="btn btn-outline-danger">Discard</button>
         <button type="button" (click)="modal6.close()" class="btn btn-primary ltr:ml-4 rtl:mr-4">Save</button>
     </ng-template>
-</ngx-custom-modal>
+</ngx-custom-modal> -->
