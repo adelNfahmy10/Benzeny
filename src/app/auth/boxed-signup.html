@@ -454,7 +454,6 @@
                                         ></div>
 
                                         <ul class="mb-5 grid grid-cols-3">
-
                                             <!-- Tab 1 -->
                                             <li class="mx-auto">
                                                 <a
@@ -793,7 +792,14 @@
                                                 </div>
 
                                                 <div class="col-span-12">
-                                                    <button class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="submitContinueCompanyForm()">
+                                                    <div class="flex justify-between items-center px-2 text-gray-800">
+                                                        <span>{{ uploadedCount }} of 6 documents uploaded</span>
+                                                        <span>{{ 6 - uploadedCount }} remaining</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-span-12">
+                                                    <button [disabled]="!isFormComplete" class="btn bg-mainColor text-white rounded-xl w-full flex justify-center items-center gap-3" (click)="submitContinueCompanyForm()">
                                                         <span>Continue to Documents</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </button>

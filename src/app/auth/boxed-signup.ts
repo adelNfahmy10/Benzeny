@@ -89,6 +89,23 @@ export class BoxedSignupComponent implements AfterViewInit, OnInit  {
     VATCertificate: File | null = null;
     CompanyLogo: File | null = null;
 
+    // Getter لحساب الملفات المختارة وعددها
+    get uploadedCount(): number {
+        let count = 0;
+        if (this.CommercialRegistration) count++;
+        if (this.ArticlesOfAssociation) count++;
+        if (this.AuthorizedPersonID) count++;
+        if (this.NationalAddress) count++;
+        if (this.VATCertificate) count++;
+        if (this.CompanyLogo) count++;
+        return count;
+    }
+
+    // Getter للزرار: مفعّل فقط لو كل الملفات موجودة
+    get isFormComplete(): boolean {
+        return this.uploadedCount === 6;
+    }
+
     // Select functions
     onSelectCommercialRegistration(event: any) {
         this.CommercialRegistration = event.addedFiles[0] ?? null;
